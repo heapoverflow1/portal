@@ -3,6 +3,6 @@ import java.lang.System;
 
 public class main {
 
-System.Out.
+System.Out.BENCEASDASDASdasdfdfgf
 	
 }
