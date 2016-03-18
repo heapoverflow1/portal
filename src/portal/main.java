@@ -1,8 +1,7 @@
 package portal;
-import java.lang.System;
 
 public class main {
 
-System.Out.BENCEASDASDASdasdfdfgf
+System.out.println("Ez wBranch");
 	
 }
