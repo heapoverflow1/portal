@@ -3,9 +3,15 @@ package portal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ososztaly {
-	ArrayList position;
+public abstract class Ososztaly {
+	ArrayList<Ososztaly> position;
 	
+	//Konstruktor
+	public Ososztaly() {
+		position = new ArrayList<Ososztaly>();
+	}
+	
+	//
 	void Add(List<Ososztaly> ososzt){}
 	
 
