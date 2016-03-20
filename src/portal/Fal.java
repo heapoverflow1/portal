@@ -1,5 +1,10 @@
 package portal;
 
 public class Fal extends Ososztaly{
-	void blockTolteny(Tolteny t){}
+	
+	public Fal() {}
+	
+	void blockTolteny(Tolteny t){
+		t.destroy();
+	}
 }
