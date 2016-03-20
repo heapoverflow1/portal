@@ -3,12 +3,11 @@ package portal;
 public class Ezredes extends Ososztaly{
 	Doboz doboz;
 	boolean tolteny_kek;	
-	//szamlalo helyett, ez beszédesebb
 	int zpmcount;
-	//ez hogy is volt?
-	//Irany irany
+	enum Irany{};
+	Irany irany;
 	
-	void move(int code){}
+	void move(Irany irany){}
 	void fallAndDie(){}
 	void shoot(Tolteny t){}
 	void lift(Doboz d){}
