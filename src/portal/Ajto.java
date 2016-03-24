@@ -12,8 +12,8 @@ public class Ajto extends Fal{
 	void open(){
 		isOpen = true;
 	}
-	ASDASD
-	//Ajtócsukás ASDASDASDASDASD
+	
+	//Ajtócsukás
 	void close(){
 		isOpen = false;
 	}
