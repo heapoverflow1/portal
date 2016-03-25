@@ -14,5 +14,6 @@ public abstract class Ososztaly {
 	//
 	void Add(List<Ososztaly> ososzt){}
 	
+	//Ide pedig szerintem kéne egy notify fv, hogy mindegyiknek legyen, és azt lehessen hívni
 
 }
