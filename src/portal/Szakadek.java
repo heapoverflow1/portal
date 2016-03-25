@@ -6,7 +6,7 @@ public class Szakadek extends Ososztaly {
 	public Szakadek() {}
 	
 	//Doboz megsemmisítése, ha beleesett
-	void destroy(Doboz d){
+	void destroy(Doboz d) throws Throwable{
 		d.destroy();
 	}
 	

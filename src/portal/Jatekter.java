@@ -7,7 +7,8 @@ public class Jatekter {
 	List<Ososztaly> objects;
 	
 	public Jatekter() {
+		System.out.println(">Jatekter::konstruktor");	
 		objects = new ArrayList<Ososztaly>();
-		
+		System.out.println("<Jatekter::konstruktor");
 	}
 }
