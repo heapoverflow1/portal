@@ -3,8 +3,6 @@ package portal;
 import java.util.ArrayList;
 import java.util.List;
 
-import portal.Ezredes.Irany;
-
 public class Jatekter {
 	List<Ososztaly> objects;
 	
@@ -13,7 +11,6 @@ public class Jatekter {
 	 * ATgondolni
 	 * -WM
 	 */
-	Ezredes foszereplo;
 	
 	/* Konstruktor
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
@@ -41,15 +38,12 @@ public class Jatekter {
 	public Pont checkfield(Pont regihely, Pont ujhely){
 		System.out.println(">Jatekter::checkfield");
 		
-		boolean falvolt = false;
-		
 		for (Ososztaly i : objects){
 			if (i.position.compareTo(ujhely)){
 				ujhely = i.ertesit(regihely);
 			}				
 		}		
 		//Elmozgatjuk az Ezredest, ha nem falba akart menni:
-		if (!falvolt) foszereplo.position = ujhely;
 		
 		System.out.println("<Jatekter::checkfield");
 		
