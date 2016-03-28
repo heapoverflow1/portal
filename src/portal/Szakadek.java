@@ -2,7 +2,9 @@ package portal;
 
 public class Szakadek extends Ososztaly {
 	
-	//Konstruktor
+	/* Konstruktor
+	 * A SZAKADEK inicializálása x, y koordinátákkal
+	 */
 	public Szakadek(int x, int y) {
 		System.out.println(">Szakadek::konstruktor");
 		this.position = new Pont(x,y);		
