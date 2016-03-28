@@ -5,7 +5,13 @@ import java.util.List;
 
 public class Jatekter {
 	List<Ososztaly> objects;
-
+	
+	/* !TODO
+	 * Ha ez benne marad, akkor konstruktorban valahogy meg kene kapnia
+	 * ATgondolni
+	 * -WM
+	 */
+	
 	/* Konstruktor
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
 	 */
