@@ -54,7 +54,8 @@ public class Pont {
 		return y;
 	}
 	
-	public void move(Irany irany){
+	public void move(Irany irany)
+	{
 		switch (irany)
 		{
 			case jobbra:

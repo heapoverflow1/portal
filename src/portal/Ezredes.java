@@ -47,7 +47,7 @@ public class Ezredes extends Ososztaly{
 			default:
 			break;
 		}*/
-		main.palya.checkfield(position, ujhely);		//!TODO Ez jó igy? Pls check
+		position = main.palya.checkfield(position, ujhely);		//!TODO Ez jó igy? Pls check
 		System.out.println("<Ezredes::move");
 	}
 	

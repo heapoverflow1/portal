@@ -38,7 +38,7 @@ public class Jatekter {
 	}
 	
 	//Irany iranyban levo mezo ellenorzese
-	public void checkfield(Pont regihely, Pont ujhely){
+	public Pont checkfield(Pont regihely, Pont ujhely){
 		System.out.println(">Jatekter::checkfield");
 		
 		boolean falvolt = false;
