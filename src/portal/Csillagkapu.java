@@ -1,8 +1,12 @@
 package portal;
 
+
+//!TODO
+// Ez nem kell leszármazzon az Ososztalybol?  -WM
 public class Csillagkapu {
 	SpecFal blue;
 	SpecFal yellow;
+	//!TODO
 	// mikor lesz false-ra allitva?
 	boolean feregjarat;
 	
@@ -10,7 +14,7 @@ public class Csillagkapu {
 	/* Konstruktor
 	 * beallitja a feregjaratot false-ra. Alapertelmezes.
 	 */
-	public Csillagkapu() {
+	public Csillagkapu(int x, int y) {
 		
 		feregjarat = false;
 	}
