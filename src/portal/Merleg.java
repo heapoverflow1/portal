@@ -14,6 +14,15 @@ public class Merleg extends Ososztaly{
 		this.nyitando = nyitando;
 	}
 	
+	public Pont ertesit(Pont regi){
+		
+		System.out.println(">Merleg::ertesit");
+		//TODO!!!
+		//NINCS KEZELVE A SÚLY ÉS AZ AJTÓNYITÁS!!
+		System.out.println("<Merleg::ertesit");
+		return position;
+	}
+	
 	
 	//!TODO
 	//Azt vizsgalja, van-e sulya a merlegen

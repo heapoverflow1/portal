@@ -24,4 +24,13 @@ public class Szakadek extends Ososztaly {
 		e.fallAndDie();
 		System.out.println("<Szakadek::kill");
 	}
+	
+	public Pont ertesit(Pont regi){		
+		System.out.println(">Szakadek::ertesit");
+		//TODO!!!
+		//NINCS KEZELVE AZ EZREDES KINYÍRÁS!
+		//this.kill(Ezredes);
+		System.out.println("<Szakadek::ertesit");
+		return position;
+	}
 }

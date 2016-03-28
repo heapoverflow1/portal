@@ -21,10 +21,39 @@ public class Ezredes extends Ososztaly{
 		
 	}
 	
+	public Pont ertesit(Pont regi){
+		System.out.println(">Ezredes::ertesit");
+		System.out.println("<Ezredes::ertesit");
+		return position;
+	}
+	
 	//Ezredes mozgatasa
 	void move(Irany irany){	
 		System.out.println(">Ezredes::move");
-		main.palya.checkfield(irany);		//!TODO Ez jó igy? Pls check
+		Pont ujhely = position;
+		ujhely.move(irany);
+		/*switch (irany)
+		{
+			case jobbra:
+				ujhely.moveY(1);
+			break;
+			
+			case balra:
+				ujhely.moveY(-1);
+			break;
+			
+			case fel:
+				ujhely.moveX(-1);
+			break;
+			
+			case le:
+				ujhely.moveX(1);
+			break;
+			
+			default:
+			break;
+		}*/
+		position = main.palya.checkfield(position, ujhely);		//!TODO Ez jó igy? Pls check
 		System.out.println("<Ezredes::move");
 	}
 	
