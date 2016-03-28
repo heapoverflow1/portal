@@ -49,8 +49,7 @@ public class Ezredes extends Ososztaly{
 	/***HIBA: atadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemasoljuk, referenciat kene adni*/
 	void lift(Doboz d){
 		d.isLifted=true;
-	}
-	
+	}	
 	
 	void drop(Doboz d){
 		d.isLifted=false;
