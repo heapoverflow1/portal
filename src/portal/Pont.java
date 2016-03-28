@@ -1,5 +1,7 @@
 package portal;
 
+import portal.Ezredes.Irany;
+
 public class Pont {
 	private int x, y;
 	
@@ -50,6 +52,30 @@ public class Pont {
 		
 		System.out.println("<Pont::getY");
 		return y;
+	}
+	
+	public void move(Irany irany){
+		switch (irany)
+		{
+			case jobbra:
+				this.y+=1;
+			break;
+			
+			case balra:
+				this.y-=1;
+			break;
+			
+			case fel:
+				this.x-=1;
+			break;
+			
+			case le:
+				this.x+=1;
+			break;
+			
+			default:
+			break;
+		}
 	}
 	
 	//Mozgatas Y iranyban

@@ -25,7 +25,8 @@ public class Ezredes extends Ososztaly{
 	void move(Irany irany){	
 		System.out.println(">Ezredes::move");
 		Pont ujhely = position;
-		switch (irany)
+		ujhely.move(irany);
+		/*switch (irany)
 		{
 			case jobbra:
 				ujhely.moveY(1);
@@ -45,7 +46,7 @@ public class Ezredes extends Ososztaly{
 			
 			default:
 			break;
-		}
+		}*/
 		main.palya.checkfield(position, ujhely);		//!TODO Ez jó igy? Pls check
 		System.out.println("<Ezredes::move");
 	}
