@@ -9,29 +9,18 @@ public class Jatekter {
 	List<Ososztaly> objects;
 	Ezredes foszereplo;
 	
-	/* Konstruktor
-	 * A JATEKTER inicializálása, az objects lista létrehozása
-	 */
 	public Jatekter() {
 		System.out.println(">Jatekter::konstruktor");	
 		objects = new ArrayList<Ososztaly>();
 		System.out.println("<Jatekter::konstruktor");
 	}
 	
-	//Új objektum hozzáadása a JATEKTER-hez
 	public void add(Ososztaly uj){
 		uj.Add(objects);	//Ezt biztos így akarjuk? Nekem jó, de olyan fura.
 		//Mert hogy objects.add(uj); nekem logikusabb lenne.
 		//Az inicializáláshoz tartozik, ezért szerintem kiírás nem szükgséges
-		
-		/** Szerintem ez így jó:
-		 *  objects.add(uj);
-		 *  máshogy én sem értem, szóval akkor az OSOSZTALY beli Add-ot sem értem
-		 *  -WM
-		 */
 	}
 	
-	//Irany irányban levõ mezõ ellenõrzése
 	public void checkfield(Irany erre){
 		System.out.println(">Jatekter::checkfield");
 		Pont ellenorizendo = foszereplo.position;
