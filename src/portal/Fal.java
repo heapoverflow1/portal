@@ -18,4 +18,10 @@ public class Fal extends Ososztaly{
 	void blockTolteny(Tolteny t){
 		t.destroy();
 	}
+	
+	public Pont ertesit(Pont regi){
+		System.out.println(">Pont::ertesit");
+		System.out.println("<Pont::ertesit");
+		return regi;
+	}
 }

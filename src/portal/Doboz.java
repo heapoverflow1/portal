@@ -19,6 +19,11 @@ public class Doboz extends Ososztaly{
 		System.out.println("<Doboz::setLifted");
 	}
 */
+	public Pont ertesit(Pont regi){
+		System.out.println(">Doboz::ertesit");
+		System.out.println("<Doboz::ertesit");
+		return position;
+	}
 	
 	//Doboz megszunik
 	void destroy() throws Throwable{

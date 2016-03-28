@@ -21,6 +21,12 @@ public class Ezredes extends Ososztaly{
 		
 	}
 	
+	public Pont ertesit(Pont regi){
+		System.out.println(">Ezredes::ertesit");
+		System.out.println("<Ezredes::ertesit");
+		return position;
+	}
+	
 	//Ezredes mozgatasa
 	void move(Irany irany){	
 		System.out.println(">Ezredes::move");

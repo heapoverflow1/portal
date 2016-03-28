@@ -45,7 +45,7 @@ public class Jatekter {
 		
 		for (Ososztaly i : objects){
 			if (i.position.compareTo(ujhely)){
-				i.
+				ujhely = i.ertesit(regihely);
 			}				
 		}		
 		//Elmozgatjuk az Ezredest, ha nem falba akart menni:

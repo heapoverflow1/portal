@@ -12,6 +12,13 @@ public class Tolteny extends Ososztaly{
 		type_kek = blueType;
 	}
 	
+	public Pont ertesit(Pont regi){
+		
+		System.out.println(">Tolteny::ertesit");
+		System.out.println("<Tolteny::ertesit");
+		return position;
+	}
+	
 	
 	//!TODO
 	void shoot(){}
