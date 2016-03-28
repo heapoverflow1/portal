@@ -45,16 +45,14 @@ public class Jatekter {
 		
 		for (Ososztaly i : objects){
 			if (i.position.compareTo(ujhely)){
-				if (i instanceof Fal) falvolt = true;
-				else if (i instanceof Merleg) ((Merleg) i).weighted();//TODO!!!
-				/*
-				 * EHELYETT: i.notify(regihely);
-				 * */
+				i.
 			}				
 		}		
 		//Elmozgatjuk az Ezredest, ha nem falba akart menni:
 		if (!falvolt) foszereplo.position = ujhely;
 		
 		System.out.println("<Jatekter::checkfield");
+		
+		return ujhely;
 	}
 }
