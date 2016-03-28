@@ -37,13 +37,13 @@ public class Pont {
 		return y;
 	}
 	public void moveY(int amount){
-		this.y = this.y+amount;
+		this.y = this.y + amount;
 	}
 	public void moveX(int amount){
-		this.x = this.x+amount;
+		this.x = this.x + amount;
 	}
 	public boolean compareTo(Pont masik){
-		if (masik.x==this.x && masik.y==this.y) return true;
+		if (masik.x == this.x && masik.y == this.y) return true;
 		return false;
 	}
 
