@@ -18,7 +18,9 @@ public class Ezredes extends Ososztaly{
 	
 	//Ezredes mozgatása
 	void move(Irany irany){	
-		
+		System.out.println(">Ezredes::move");
+		main.palya.checkfield(irany);		//Ez jó így? Pls chck
+		System.out.println("<Ezredes::move");
 	}
 	
 	//Ezredes leesik, ezáltal meghal, vége a játéknak

@@ -6,14 +6,13 @@ import java.util.List;
 
 public abstract class Ososztaly {
 	
-	//ArrayList<Integer> position;
-	//a 0. helyen az X az 1. helyen az Y koordináta van.
-	public List<Pont> position;
+	//ArrayList<Integer> position; Helyett saját osztályt, a Pontot használjuk.
+	public Pont position;
 	
 	//Konstruktor
 	public Ososztaly() {
 		System.out.println(">Ososztaly::konstruktor");		
-		position = new ArrayList<Pont>();
+		position = new Pont();
 		System.out.println("<Ososztaly::konstruktor");
 	}
 	

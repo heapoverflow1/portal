@@ -5,8 +5,7 @@ public class Szakadek extends Ososztaly {
 	//Konstruktor
 	public Szakadek(int x, int y) {
 		System.out.println(">Szakadek::konstruktor");
-		this.position.add(new Pont(x,y));
-		
+		this.position = new Pont(x,y);		
 		System.out.println("<Szakadek::konstruktor");
 	}
 	
