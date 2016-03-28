@@ -21,6 +21,15 @@ public class Jatekter {
 		System.out.println("<Jatekter::konstruktor");
 	}
 	
+	public Doboz getDoboz(Pont innen){
+		for (Ososztaly i : objects){
+			if (i instanceof Doboz && i.position.compareTo(innen)){
+				return (Doboz) i;
+			}				
+		}
+		return null;
+	}
+	
 	//Új objektum hozzaadasa a JATEKTER-hez
 	public void add(Ososztaly uj){
 		uj.Add(objects);	//Ezt biztos igy akarjuk? Nekem jo, de olyan fura.
