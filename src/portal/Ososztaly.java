@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class Ososztaly {
 	
-	//ArrayList<Integer> position; Helyett saját osztályt, a Pontot használjuk.
+	//ArrayList<Integer> position; Helyett sajat osztalyt, a Pontot hasznaljuk.
 	public Pont position;
 	
 	
@@ -28,6 +28,6 @@ public abstract class Ososztaly {
 	
 	
 	
-	//Ide pedig szerintem kéne egy notify fv, hogy mindegyiknek legyen, és azt lehessen hívni  -WM
+	//Ide pedig szerintem kene egy notify fv, hogy mindegyiknek legyen, es azt lehessen hivni  -WM
 
 }

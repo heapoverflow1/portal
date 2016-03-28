@@ -4,16 +4,22 @@ public class Merleg extends Ososztaly{
 	boolean isPressed;
 	Ajto nyitando;
 	
-	//Konstruktor
-	public Merleg(Ajto nyitando) {
-		isPressed=false;
+	/* Konstruktor
+	 * A MERLEG inicializalasa x, y koordinatakkal
+	 */
+	public Merleg(int x, int y, Ajto nyitando) {
+		
+		isPressed = false;
+		position = new Pont(x, y);
 		this.nyitando = nyitando;
 	}
 	
-	//Azt vizsgálja, van-e súlya a mérlegen
+	
+	//!TODO
+	//Azt vizsgalja, van-e sulya a merlegen
 	void weighted(){
-		if(true/*van e ugyanazon a koordinátán valami?*/){			
-		//kéne, hogy melyik ajtót nyissuk, melyik tartozik hozzá
+		if(true/*van e ugyanazon a koordinatan valami?*/){			
+		//kene, hogy melyik ajtot nyissuk, melyik tartozik hozza
 			
 		isPressed = true;
 		}

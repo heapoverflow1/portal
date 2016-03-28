@@ -4,7 +4,7 @@ public class Pont {
 	private int x, y;
 	
 	/* DEFAULT Konstruktor
-	 * A PONT inicializálása -1, -1 koordinátákkal
+	 * A PONT inicializalasa -1, -1 koordinatakkal
 	 */
 	public Pont(){
 		x = -1;
@@ -12,7 +12,7 @@ public class Pont {
 	}
 	
 	/* Konstruktor
-	 * A PONT inicializálása x, y koordinátákkal
+	 * A PONT inicializalasa x, y koordinatakkal
 	 */
 	public Pont(int x, int y){
 		System.out.println(">Pont::konstruktor");	
@@ -22,21 +22,21 @@ public class Pont {
 	}
 	
 	
-	//X beállítása
+	//X beallitasa
 	public void setX(int x){
 		System.out.println(">Pont::setX");
 		this.x = x;
 		System.out.println("<Pont::setX");
 	}
 	
-	//Y beállítása
+	//Y beallitasa
 	public void setY(int y){
 		System.out.println(">Pont::setY");
 		this.y = y;
 		System.out.println("<Pont::setY");
 	}
 	
-	//X visszaadása
+	//X visszaadasa
 	public int getX(){
 		System.out.println(">Pont::getX");
 		
@@ -44,7 +44,7 @@ public class Pont {
 		return x;
 	}
 	
-	//Y visszaadása
+	//Y visszaadasa
 	public int getY(){
 		System.out.println(">Pont::getY");
 		
@@ -52,12 +52,12 @@ public class Pont {
 		return y;
 	}
 	
-	//Mozgatás Y irányban
+	//Mozgatas Y iranyban
 	public void moveY(int amount){
 		this.y = this.y + amount;
 	}
 	
-	//Mozgatás X irányban
+	//Mozgatas X iranyban
 	public void moveX(int amount){
 		this.x = this.x + amount;
 	}

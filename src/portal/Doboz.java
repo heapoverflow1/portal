@@ -4,7 +4,7 @@ public class Doboz extends Ososztaly{
 	boolean isLifted;
 	
 	/* Konstruktor
-	 * A DOBOZ inicializálása x, y koordinátákkal
+	 * A DOBOZ inicializalasa x, y koordinatakkal
 	 */
 	public Doboz(int x, int y) {
 		System.out.println(">Doboz::konstruktor");
@@ -22,7 +22,7 @@ public class Doboz extends Ososztaly{
 	}
 */
 	
-	//Doboz megszûnik
+	//Doboz megszunik
 	void destroy() throws Throwable{
 		System.out.println(">Doboz::destroy");
 		this.finalize();

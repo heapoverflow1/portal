@@ -7,10 +7,16 @@ import portal.Ezredes.Irany;
 
 public class Jatekter {
 	List<Ososztaly> objects;
+	
+	/* !TODO
+	 * Ha ez benne marad, akkor konstruktorban valahogy meg kene kapnia
+	 * ATgondolni
+	 * -WM
+	 */
 	Ezredes foszereplo;
 	
 	/* Konstruktor
-	 * A JATEKTER inicializálása, az objects lista létrehozása
+	 * A JATEKTER inicializalasa, az objects lista letrehozasa
 	 */
 	public Jatekter() {
 		System.out.println(">Jatekter::konstruktor");	
@@ -18,20 +24,20 @@ public class Jatekter {
 		System.out.println("<Jatekter::konstruktor");
 	}
 	
-	//Új objektum hozzáadása a JATEKTER-hez
+	//Új objektum hozzaadasa a JATEKTER-hez
 	public void add(Ososztaly uj){
-		uj.Add(objects);	//Ezt biztos így akarjuk? Nekem jó, de olyan fura.
+		uj.Add(objects);	//Ezt biztos igy akarjuk? Nekem jo, de olyan fura.
 		//Mert hogy objects.add(uj); nekem logikusabb lenne.
-		//Az inicializáláshoz tartozik, ezért szerintem kiírás nem szükgséges
+		//Az inicializalashoz tartozik, ezert szerintem kiiras nem szükgseges
 		
-		/** Szerintem ez így jó:
+		/** Szerintem ez igy jo:
 		 *  objects.add(uj);
-		 *  máshogy én sem értem, szóval akkor az OSOSZTALY beli Add-ot sem értem
+		 *  mashogy en sem ertem, szoval akkor az OSOSZTALY beli Add-ot sem ertem
 		 *  -WM
 		 */
 	}
 	
-	//Irany irányban levõ mezõ ellenõrzése
+	//Irany iranyban levo mezo ellenorzese
 	public void checkfield(Irany erre){
 		System.out.println(">Jatekter::checkfield");
 		Pont ellenorizendo = foszereplo.position;
