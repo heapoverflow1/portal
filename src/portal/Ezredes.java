@@ -32,27 +32,6 @@ public class Ezredes extends Ososztaly{
 		System.out.println(">Ezredes::move");
 		Pont ujhely = position;
 		ujhely.move(irany);
-		/*switch (irany)
-		{
-			case jobbra:
-				ujhely.moveY(1);
-			break;
-			
-			case balra:
-				ujhely.moveY(-1);
-			break;
-			
-			case fel:
-				ujhely.moveX(-1);
-			break;
-			
-			case le:
-				ujhely.moveX(1);
-			break;
-			
-			default:
-			break;
-		}*/
 		position = main.palya.checkfield(position, ujhely);		//!TODO Ez jó igy? Pls check
 		System.out.println("<Ezredes::move");
 	}
