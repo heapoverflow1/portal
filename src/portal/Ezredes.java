@@ -7,19 +7,24 @@ public class Ezredes extends Ososztaly{
 	enum Irany{fel, le, jobbra, balra};
 	Irany irany;	
 	
-	//Konstruktor
-	public Ezredes() {
+	/* Konstruktor
+	 * Az Ezredes a játék elején jobbra áll és kék tölténye van.
+	 * Az EZREDES inicializálása x, y koordinátákkal
+	 */
+	public Ezredes(int x, int y) {
+		
+		position = new Pont(x, y);
 		tolteny_kek = true;
 		zpmcount = 0;
 		irany = Irany.jobbra;
 		doboz = null;
-		/*Az Ezredes a játék elején jobbra áll és kék tölténye van.*/
+		
 	}
 	
 	//Ezredes mozgatása
 	void move(Irany irany){	
 		System.out.println(">Ezredes::move");
-		main.palya.checkfield(irany);		//Ez jó így? Pls chck
+		main.palya.checkfield(irany);		//!TODO Ez jó így? Pls check
 		System.out.println("<Ezredes::move");
 	}
 	

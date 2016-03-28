@@ -3,13 +3,14 @@ package portal;
 public class Doboz extends Ososztaly{
 	boolean isLifted;
 	
-	//Konstruktor
+	/* Konstruktor
+	 * A DOBOZ inicializálása x, y koordinátákkal
+	 */
 	public Doboz(int x, int y) {
 		System.out.println(">Doboz::konstruktor");
-		isLifted = false;
 		
-		//kezdőhely beállítása
-		this.position = new Pont(x,y);
+		isLifted = false;
+		position = new Pont(x,y);
 		
 		System.out.println("<Doboz::konstruktor");
 	}

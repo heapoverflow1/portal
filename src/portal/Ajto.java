@@ -3,10 +3,15 @@ package portal;
 public class Ajto extends Fal{
 	boolean isOpen;
 	
-	//Konstruktor
-	public Ajto(){
+	/* Konstruktor
+	 * Az AJTO inicializálása x, y koordinátákkal
+	 */
+	public Ajto(int x, int y){
 		System.out.println(">Ajto::konstruktor");
-		isOpen = false;
+		
+		isOpen = false;		
+		position = new Pont(x,y);
+		
 		System.out.println("<Ajto::konstruktor");
 	}
 	
