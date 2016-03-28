@@ -17,12 +17,17 @@ public class Csillagkapu {
 	public Csillagkapu(int x, int y) {
 		
 		feregjarat = false;
+		blue = null;
+		yellow = null;
 	}
 	
 	// Beallitja a kek privat SpecFal erteket a kapottra
 	void setBlue(SpecFal s){
 		System.out.println(">Csillagkapu::setBlue");
 		blue = s;
+		if(yellow != null){
+			this.makeFeregjarat();
+		}
 		System.out.println("<Csillagkapu::setBlue");
 	}
 	
@@ -30,6 +35,9 @@ public class Csillagkapu {
 	void setYellow(SpecFal s){
 		System.out.println(">Csillagkapu::setYellow");
 		yellow = s;
+		if(blue != null){
+			this.makeFeregjarat();
+		}
 		System.out.println("<Csillagkapu::setYellow");
 	}
 	
