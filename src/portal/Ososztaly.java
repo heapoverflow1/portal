@@ -12,9 +12,8 @@ public abstract class Ososztaly {
 	
 	//Konstruktor
 	public Ososztaly() {
-		System.out.println(">Ososztaly::konstruktor");		
+				
 		position = new ArrayList<Pont>();
-		System.out.println("<Ososztaly::konstruktor");
 	}
 	
 	//

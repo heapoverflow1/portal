@@ -4,10 +4,8 @@ public class Pont {
 	private int x, y;
 	
 	public Pont(int x, int y){
-		System.out.println(">Pont::konstruktor");	
 		this.x=x;
 		this.y=y;
-		System.out.println("<Pont::konstruktor");
 	}
 	public void setX(int x){
 		System.out.println(">Pont::setX");

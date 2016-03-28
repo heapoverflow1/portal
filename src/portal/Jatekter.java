@@ -6,9 +6,7 @@ import java.util.List;
 public class Jatekter {
 	List<Ososztaly> objects;
 	
-	public Jatekter() {
-		System.out.println(">Jatekter::konstruktor");	
+	public Jatekter() {	
 		objects = new ArrayList<Ososztaly>();
-		System.out.println("<Jatekter::konstruktor");
 	}
 }

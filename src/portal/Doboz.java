@@ -5,13 +5,11 @@ public class Doboz extends Ososztaly{
 	
 	//Konstruktor
 	public Doboz(int x, int y) {
-		System.out.println(">Doboz::konstruktor");
 		isLifted = false;
 		
 		//kezdőhely beállítása
 		this.position.add(new Pont(x,y));
 		
-		System.out.println("<Doboz::konstruktor");
 	}
 /*
   	public void setLifted(boolean b){ 
