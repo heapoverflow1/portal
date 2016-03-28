@@ -27,10 +27,17 @@ public class Merleg extends Ososztaly{
 	//!TODO
 	//Azt vizsgalja, van-e sulya a merlegen
 	void weighted(){
+		System.out.println(">Merleg::weighted");
 		if(true/*van e ugyanazon a koordinatan valami?*/){			
 		//kene, hogy melyik ajtot nyissuk, melyik tartozik hozza
 			
 		isPressed = true;
+		nyitando.open();
+		System.out.println("<Merleg::weighted");
+		}
+		else{
+			isPressed = false;
+			System.out.println("<Merleg::weighted");
 		}
 	}
 }
