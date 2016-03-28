@@ -7,12 +7,10 @@ public class Doboz extends Ososztaly{
 	 * A DOBOZ inicializalasa x, y koordinatakkal
 	 */
 	public Doboz(int x, int y) {
-		System.out.println(">Doboz::konstruktor");
 		
 		isLifted = false;
 		position = new Pont(x,y);
 		
-		System.out.println("<Doboz::konstruktor");
 	}
 /*
   	public void setLifted(boolean b){ 
