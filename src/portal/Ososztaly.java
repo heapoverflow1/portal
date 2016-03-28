@@ -25,6 +25,7 @@ public abstract class Ososztaly {
 		System.out.println("<Ososztaly::Add");
 	}
 	
+	public abstract Pont ertesit(Pont innenlep);
 	
 	
 	
