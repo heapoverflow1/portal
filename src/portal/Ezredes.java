@@ -7,33 +7,38 @@ public class Ezredes extends Ososztaly{
 	enum Irany{fel, le, jobbra, balra};
 	Irany irany;	
 	
-	//Konstruktor
-	public Ezredes() {
+	/* Konstruktor
+	 * Az Ezredes a jatek elejen jobbra all es kek toltenye van.
+	 * Az EZREDES inicializalasa x, y koordinatakkal
+	 */
+	public Ezredes(int x, int y) {
+		
+		position = new Pont(x, y);
 		tolteny_kek = true;
 		zpmcount = 0;
 		irany = Irany.jobbra;
 		doboz = null;
-		/*Az Ezredes a játék elején jobbra áll és kék tölténye van.*/
+		
 	}
 	
-	//Ezredes mozgatása
+	//Ezredes mozgatasa
 	void move(Irany irany){	
 		System.out.println(">Ezredes::move");
-		main.palya.checkfield(irany);		//Ez jó így? Pls chck
+		main.palya.checkfield(irany);		//!TODO Ez jó igy? Pls check
 		System.out.println("<Ezredes::move");
 	}
 	
-	//Ezredes leesik, ezáltal meghal, vége a játéknak
+	//Ezredes leesik, ezaltal meghal, vege a jateknak
 	void fallAndDie(){}
 	
-	//Töltény lövése
+	//Tolteny lovese
 	/**HIBA: IDE SZERINTEM NEM KELL TOLTENY PARAMETERBEN, mert itt hozzuk letre*/
 	void shoot(/*Tolteny t*/){
 		Tolteny t1 = new Tolteny(tolteny_kek);
 	}
 	
-	//Doboz felemelése, kapott doboz isLifted értékének beállítása igazra	
-	/***HIBA: átadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemásoljuk, referenciát kéne adni*/
+	//Doboz felemelese, kapott doboz isLifted ertekenek beallitasa igazra	
+	/***HIBA: atadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemasoljuk, referenciat kene adni*/
 	void lift(Doboz d){
 		d.isLifted=true;
 	}
@@ -43,12 +48,18 @@ public class Ezredes extends Ososztaly{
 		d.isLifted=false;
 	}
 	
-	//Az ezredes felvett egy ZPM-et, a zpmcount növelése.
+	//Az ezredes felvett egy ZPM-et, a zpmcount novelese.
 	void collectZPM(){
 		zpmcount++;
 	}
 	
-	//Töltény váltása
+	//Visszaadha a ZPMCOUNT erteket
+	/**NEM BIZTOS HOGY KELL, de lehet szebb lesz a kod tole -WM*/
+	int getZPMcount(){
+		return zpmcount;
+	}
+	
+	//Tolteny valtasa
 	void changeTolteny(){
 		if (tolteny_kek)
 			tolteny_kek = false;
@@ -56,6 +67,7 @@ public class Ezredes extends Ososztaly{
 			tolteny_kek = true;
 	}
 	
-	//Ezredes teleportálása a másik csillagkapuhoz
+	//Ezredes teleportalasa a masik csillagkapuhoz
+	//!TODO
 	void teleport(SpecFal s){}
 }

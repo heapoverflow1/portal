@@ -1,42 +1,46 @@
 package portal;
 
+
+//!TODO
+// Ez nem kell leszármazzon az Ososztalybol?  -WM
 public class Csillagkapu {
 	SpecFal blue;
 	SpecFal yellow;
-	// mikor lesz false-ra állítva?
+	//!TODO
+	// mikor lesz false-ra allitva?
 	boolean feregjarat;
 	
 	
 	/* Konstruktor
-	 * beállítja a féregjáratot false-ra. Alapértelmezés.
+	 * beallitja a feregjaratot false-ra. Alapertelmezes.
 	 */
-	public Csillagkapu() {
+	public Csillagkapu(int x, int y) {
 		
 		feregjarat = false;
 	}
 	
-	// Beállítja a kék privát SpecFal értékét a kapottra
+	// Beallitja a kek privat SpecFal erteket a kapottra
 	void setBlue(SpecFal s){
 		System.out.println(">Csillagkapu::setBlue");
 		blue = s;
 		System.out.println("<Csillagkapu::setBlue");
 	}
 	
-	// Beállítja a sárga privát SpecFal értékét a kapottra
+	// Beallitja a sarga privat SpecFal erteket a kapottra
 	void setYellow(SpecFal s){
 		System.out.println(">Csillagkapu::setYellow");
 		yellow = s;
 		System.out.println("<Csillagkapu::setYellow");
 	}
 	
-	//Keletkezik egy féregjárat, azaz a féregjárat értékét igazra állítjuk
+	//Keletkezik egy feregjarat, azaz a feregjarat erteket igazra allitjuk
 	void makeFeregjarat(){
 		System.out.println(">Csillagkapu::makeFeregjarat");
 		feregjarat = true;
 		System.out.println("<Csillagkapu::makeFeregjarat");
 	}
 	
-	// ez visszaadhatna true/false értéket és akkor azt nézzük, hogy mit adott vissza
+	// ez visszaadhatna true/false erteket es akkor azt nezzük, hogy mit adott vissza
 	void entered(){
 		
 	}
