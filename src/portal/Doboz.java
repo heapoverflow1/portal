@@ -9,7 +9,7 @@ public class Doboz extends Ososztaly{
 		isLifted = false;
 		
 		//kezdőhely beállítása
-		this.position.add(new Pont(x,y));
+		this.position = new Pont(x,y);
 		
 		System.out.println("<Doboz::konstruktor");
 	}
