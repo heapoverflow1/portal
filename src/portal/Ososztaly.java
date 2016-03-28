@@ -9,9 +9,8 @@ public abstract class Ososztaly {
 	public Pont position;
 	
 	
-	
 	//Konstruktor
-	/**Szerintem ide nem kell konstruktor*/
+	/**Szerintem ide nem kell konstruktor  -WM*/
 //	public Ososztaly() {
 //		System.out.println(">Ososztaly::konstruktor");		
 //		position = new Pont();
@@ -29,6 +28,6 @@ public abstract class Ososztaly {
 	
 	
 	
-	//Ide pedig szerintem kéne egy notify fv, hogy mindegyiknek legyen, és azt lehessen hívni
+	//Ide pedig szerintem kéne egy notify fv, hogy mindegyiknek legyen, és azt lehessen hívni  -WM
 
 }
