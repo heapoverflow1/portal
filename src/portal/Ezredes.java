@@ -5,19 +5,21 @@ public class Ezredes extends Ososztaly{
 	boolean tolteny_kek;	
 	int zpmcount;
 	enum Irany{fel, le, jobbra, balra};
-	Irany irany;
-	
+	Irany irany;	
 	
 	//Konstruktor
 	public Ezredes() {
 		tolteny_kek = true;
 		zpmcount = 0;
-		/*Merre inicializáljuk ezredes urat?*/
-		//irany =    ;
+		irany = Irany.jobbra;
+		doboz = null;
+		/*Az Ezredes a játék elején jobbra áll és kék tölténye van.*/
 	}
 	
 	//Ezredes mozgatása
-	void move(Irany irany){	}
+	void move(Irany irany){	
+		
+	}
 	
 	//Ezredes leesik, ezáltal meghal, vége a játéknak
 	void fallAndDie(){}
