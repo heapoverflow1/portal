@@ -33,6 +33,7 @@ public class Ezredes extends Ososztaly{
 		Pont ujhely = position;
 		ujhely.move(irany);
 		position = main.palya.checkfield(position, ujhely);		//!TODO Ez jó igy? Pls check
+		if (doboz!=null) doboz.setPosition(position);
 		System.out.println("<Ezredes::move");
 	}
 	
@@ -47,12 +48,15 @@ public class Ezredes extends Ososztaly{
 	
 	//Doboz felemelese, kapott doboz isLifted ertekenek beallitasa igazra	
 	/***HIBA: atadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemasoljuk, referenciat kene adni*/
-	void lift(Doboz d){
-		d.isLifted=true;
+	void lift(){
+		if (doboz!=null) return;
+		doboz = main.palya.getDoboz(position);
+		if (doboz!=null) doboz.Lift();
 	}	
 	
-	void drop(Doboz d){
-		d.isLifted=false;
+	void drop(){
+		doboz.Drop();
+		doboz = null;
 	}
 	
 	//Az ezredes felvett egy ZPM-et, a zpmcount novelese.
