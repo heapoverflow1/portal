@@ -1,8 +1,9 @@
 package portal;
 
 public class main {
+	static Jatekter palya;
 	
 	public static void main(String[] args){
-		System.out.println("Ez a gergõ");
+		palya = new Jatekter();
 	}
 }
