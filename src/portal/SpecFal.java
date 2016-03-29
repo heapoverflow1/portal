@@ -12,11 +12,13 @@ public class SpecFal extends Fal {
 
 	//!TODO
 	//Letrehozzuk a csillagkaput kb
-	void createCSK(Tolteny t){
+	void createCSK(Tolteny t, Csillagkapu cs){
 		if(t.type_kek == true /*es meg nem letezik csillagkapu*/){
 			//beallítjuk a kek erteket
+			cs.setBlue(this);
 		}else{
 			//beallítjuk a sarga erteket
+			cs.setYellow(this);
 		}
 	}
 	
