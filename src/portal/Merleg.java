@@ -16,15 +16,18 @@ public class Merleg extends Ososztaly{
 	
 	public Pont ertesit(Pont regi){
 		
-		System.out.println(">Merleg::ertesit");
+		System.out.println(">Merleg::ertesit(Pont)");
+		
 		if(position.compareTo(regi)){
+			
 			//ha lelepnek rola, vagy dobozt tesznek ra - TG
 			weighted(false);
 		}
-		else
+		else			
 			//ha ralepnek, vagy dobozt vesznek le rola - TG
 			weighted(true);
-		System.out.println("<Merleg::ertesit");
+		
+		System.out.println("<Merleg::ertesit(Pont)");
 		return position;
 	}
 	
@@ -32,17 +35,18 @@ public class Merleg extends Ososztaly{
 	//Azt vizsgalja, van-e sulya a merlegen
 	//csak parameterrel tudtam megoldani, a fuggvenynek valahogy tudnia kell, hogy epp lenyomjak, vagy nem - TG
 	void weighted(boolean incoming){
-		System.out.println(">Merleg::weighted");
-		if(incoming){			
-			
-		isPressed = true;
-		nyitando.open();
-		System.out.println("<Merleg::weighted");
+		
+		System.out.println(">Merleg::weighted(boolean)");
+		
+		if(incoming){
+			isPressed = true;
+			nyitando.open();		
 		}
 		else{
 			isPressed = false;
 			nyitando.close();
-			System.out.println("<Merleg::weighted");
 		}
+		
+		System.out.println("<Merleg::weighted(boolean)");
 	}
 }
