@@ -60,13 +60,13 @@ public class Ezredes extends Ososztaly{
 	//!TODO - picit OUT OF DATE COMMENT
 	//Doboz felemelese, kapott doboz isLifted ertekenek beallitasa igazra	
 	/***HIBA: atadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemasoljuk, referenciat kene adni*/
-<<<<<<< HEAD
-	void lift(Doboz d){
-		d.isLifted=true;
-		doboz=d;
+	void lift(){
+		if (doboz!=null) return;
+		doboz = main.palya.getDoboz(position);
+		if (doboz!=null) doboz.Lift();
 	}
 	
-	
+	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa	
 	void drop(Doboz d){
 		int x=d.position.getX();
 		int y=d.position.getY();
@@ -84,7 +84,7 @@ public class Ezredes extends Ososztaly{
 		else if(irany==Irany.fel){
 			d.position.setX(x-1);
 		}		
-		d.isLifted=false;
+		d.Drop();
 		//megkeresem az adott mezo poziciojat, es ertesitest kuldok oda - TG
 		for(Ososztaly i:main.palya.objects){
 			//HIBA: mi van ha nem a mezot talalom meg, hanem a dobozt amit odatettem? - TG
@@ -94,21 +94,8 @@ public class Ezredes extends Ososztaly{
 				i.ertesit(d.position);
 			}
 		}
-=======
-	void lift(){
-		if (doboz!=null) return;
-		doboz = main.palya.getDoboz(position);
-		if (doboz!=null) doboz.Lift();
-	}	
-	
-	//!TODO - JOBB KOMMENT
-	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
-	void drop(){
-		doboz.Drop();
 		doboz = null;
->>>>>>> refs/remotes/origin/wBranch
 	}
-	
 	
 	//Az ezredes felvett egy ZPM-et, a zpmcount novelese.
 	void collectZPM(){
