@@ -6,12 +6,6 @@ import java.util.List;
 public class Jatekter {
 	List<Ososztaly> objects;
 	
-	/* !TODO
-	 * Ha ez benne marad, akkor konstruktorban valahogy meg kene kapnia
-	 * ATgondolni
-	 * -WM
-	 */
-	
 	/* Konstruktor
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
 	 */
@@ -21,6 +15,7 @@ public class Jatekter {
 		System.out.println("<Jatekter::konstruktor");
 	}
 	
+	//!TODO - KOMMENT
 	public Doboz getDoboz(Pont innen){
 		for (Ososztaly i : objects){
 			if (i instanceof Doboz && i.position.compareTo(innen)){
@@ -35,7 +30,7 @@ public class Jatekter {
 		uj.Add(objects);	//Ezt biztos igy akarjuk? Nekem jo, de olyan fura.
 		//Mert hogy objects.add(uj); nekem logikusabb lenne.
 		//Az inicializalashoz tartozik, ezert szerintem kiiras nem szükgseges
-		
+		//!TODO
 		/** Szerintem ez igy jo:
 		 *  objects.add(uj);
 		 *  mashogy en sem ertem, szoval akkor az OSOSZTALY beli Add-ot sem ertem
@@ -43,6 +38,7 @@ public class Jatekter {
 		 */
 	}
 	
+	//!TODO - out of date lett a kommentje
 	//Irany iranyban levo mezo ellenorzese
 	public Pont checkfield(Pont regihely, Pont ujhely){
 		System.out.println(">Jatekter::checkfield");
