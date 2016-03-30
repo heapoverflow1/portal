@@ -17,19 +17,23 @@ public class Merleg extends Ososztaly{
 	public Pont ertesit(Pont regi){
 		
 		System.out.println(">Merleg::ertesit");
-		//TODO!!!
-		//NINCS KEZELVE A SÚLY ÉS AZ AJTÓNYITÁS!!
+		if(position.compareTo(regi)){
+			//ha lelepnek rola, vagy dobozt tesznek ra - TG
+			weighted(false);
+		}
+		else
+			//ha ralepnek, vagy dobozt vesznek le rola - TG
+			weighted(true);
 		System.out.println("<Merleg::ertesit");
 		return position;
 	}
 	
-	
 	//!TODO
 	//Azt vizsgalja, van-e sulya a merlegen
-	void weighted(){
+	//csak parameterrel tudtam megoldani, a fuggvenynek valahogy tudnia kell, hogy epp lenyomjak, vagy nem - TG
+	void weighted(boolean incoming){
 		System.out.println(">Merleg::weighted");
-		if(true/*van e ugyanazon a koordinatan valami?*/){			
-		//kene, hogy melyik ajtot nyissuk, melyik tartozik hozza
+		if(incoming){			
 			
 		isPressed = true;
 		nyitando.open();
@@ -37,6 +41,7 @@ public class Merleg extends Ososztaly{
 		}
 		else{
 			isPressed = false;
+			nyitando.close();
 			System.out.println("<Merleg::weighted");
 		}
 	}

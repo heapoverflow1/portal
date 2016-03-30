@@ -40,16 +40,22 @@ public class Jatekter {
 	//Irany iranyban levo mezo ellenorzese
 	public Pont checkfield(Pont regihely, Pont ujhely){
 		System.out.println(">Jatekter::checkfield");
-		
-		boolean falvolt = false;
-		
+				
 		for (Ososztaly i : objects){
+			//ez most csak a merleg miatt van benn, a baj vele az, hogy minden mezore meghivodik, 
+			//amirol az ezredes elmozdul, ami a kiiraskor bezavarhat - TG
+			if (i.position.compareTo(regihely)){
+				i.ertesit(regihely);
+			}
 			if (i.position.compareTo(ujhely)){
 				ujhely = i.ertesit(regihely);
 			}				
-		}		
-		//Elmozgatjuk az Ezredest, ha nem falba akart menni:
-		if (!falvolt) foszereplo.position = ujhely;
+		}	
+		//ez se kell, ezredes position-jere hivjuk a checkfieldet, 
+		//az ujhellyel terunk vissza - TG
+		
+		//if (!falvolt) foszereplo.position = ujhely; 
+
 		
 		System.out.println("<Jatekter::checkfield");
 		
