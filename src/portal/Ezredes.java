@@ -21,53 +21,46 @@ public class Ezredes extends Ososztaly{
 		
 	}
 	
+	//!TODO - KOMMENT
 	public Pont ertesit(Pont regi){
 		System.out.println(">Ezredes::ertesit");
 		System.out.println("<Ezredes::ertesit");
 		return position;
 	}
 	
-	//Ezredes mozgatasa
+	//!TODO - jobban leirni a mukodeset
+	/* Ezredes mozgatasa irany iranyba
+	 * Megprobal lepni az ezredes egyet az adott iranyba,
+	 * majd megkeri a JATEKTER-et, hogy hivja meg az adott
+	 * pozicion levo dolognak az ertesit fuggvenyet, ami visszater egy
+	 * adott pozicioval a targytol fuggoen ( ha fal, akkor az a pozicio amit kapott)
+	 */
 	void move(Irany irany){	
 		System.out.println(">Ezredes::move");
 		Pont ujhely = position;
 		ujhely.move(irany);
-		/*switch (irany)
-		{
-			case jobbra:
-				ujhely.moveY(1);
-			break;
-			
-			case balra:
-				ujhely.moveY(-1);
-			break;
-			
-			case fel:
-				ujhely.moveX(-1);
-			break;
-			
-			case le:
-				ujhely.moveX(1);
-			break;
-			
-			default:
-			break;
-		}*/
-		position = main.palya.checkfield(position, ujhely);		//!TODO Ez jó igy? Pls check
+		position = main.palya.checkfield(position, ujhely);
+		if (doboz!=null) doboz.setPosition(position);
 		System.out.println("<Ezredes::move");
 	}
 	
+	//!TODO - ezredes.finalize(), meg valahogy a jatek vege
 	//Ezredes leesik, ezaltal meghal, vege a jateknak
 	void fallAndDie(){}
 	
+	
+	//!TODO
 	//Tolteny lovese
 	/**HIBA: IDE SZERINTEM NEM KELL TOLTENY PARAMETERBEN, mert itt hozzuk letre*/
 	void shoot(/*Tolteny t*/){
+		//ENNEK igy meg semmi ertelme, letrehozzuk majd el is tunik -WM
 		Tolteny t1 = new Tolteny(tolteny_kek);
 	}
 	
+	//!TODO - picit OUT OF DATE COMMENT
 	//Doboz felemelese, kapott doboz isLifted ertekenek beallitasa igazra	
 	/***HIBA: atadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemasoljuk, referenciat kene adni*/
+<<<<<<< HEAD
 	void lift(Doboz d){
 		d.isLifted=true;
 		doboz=d;
@@ -101,7 +94,21 @@ public class Ezredes extends Ososztaly{
 				i.ertesit(d.position);
 			}
 		}
+=======
+	void lift(){
+		if (doboz!=null) return;
+		doboz = main.palya.getDoboz(position);
+		if (doboz!=null) doboz.Lift();
+	}	
+	
+	//!TODO - JOBB KOMMENT
+	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
+	void drop(){
+		doboz.Drop();
+		doboz = null;
+>>>>>>> refs/remotes/origin/wBranch
 	}
+	
 	
 	//Az ezredes felvett egy ZPM-et, a zpmcount novelese.
 	void collectZPM(){
@@ -122,7 +129,7 @@ public class Ezredes extends Ososztaly{
 			tolteny_kek = true;
 	}
 	
-	//Ezredes teleportalasa a masik csillagkapuhoz
 	//!TODO
+	//Ezredes teleportalasa a masik csillagkapuhoz
 	void teleport(SpecFal s){}
 }

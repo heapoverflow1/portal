@@ -27,8 +27,5 @@ public abstract class Ososztaly {
 	
 	public abstract Pont ertesit(Pont innenlep);
 	
-	
-	
-	//Ide pedig szerintem kene egy notify fv, hogy mindegyiknek legyen, es azt lehessen hivni  -WM
 
 }

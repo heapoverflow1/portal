@@ -12,13 +12,25 @@ public class Doboz extends Ososztaly{
 		position = new Pont(x,y);
 		
 	}
-/*
+	
+	/*
   	public void setLifted(boolean b){ 
 		System.out.println(">Doboz::setLifted");
 		isLifted = b;
 		System.out.println("<Doboz::setLifted");
 	}
-*/
+	 */
+	
+	public void Lift(){
+		isLifted = true;
+	}
+	public void Drop(){
+		isLifted = false;
+	}	
+	public void setPosition(Pont uj){
+		if (isLifted) position = uj;
+	}
+	
 	public Pont ertesit(Pont regi){
 		System.out.println(">Doboz::ertesit");
 		System.out.println("<Doboz::ertesit");
