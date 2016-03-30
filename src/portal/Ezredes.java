@@ -64,15 +64,38 @@ public class Ezredes extends Ososztaly{
 		if (doboz!=null) return;
 		doboz = main.palya.getDoboz(position);
 		if (doboz!=null) doboz.Lift();
-	}	
-	
-	//!TODO - JOBB KOMMENT
-	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
-	void drop(){
-		doboz.Drop();
-		doboz = null;
 	}
 	
+	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa	
+	void drop(Doboz d){
+		int x=d.position.getX();
+		int y=d.position.getY();
+		
+		//doboz poziciojanak beallitasa, nem tul szep, de mukodik - TG
+		if(irany==Irany.jobbra){
+			d.position.setY(y+1);
+		}
+		else if(irany==Irany.balra){
+			d.position.setY(y-1);
+		}
+		else if(irany==Irany.le){
+			d.position.setX(x+1);
+		}
+		else if(irany==Irany.fel){
+			d.position.setX(x-1);
+		}		
+		d.Drop();
+		//megkeresem az adott mezo poziciojat, es ertesitest kuldok oda - TG
+		for(Ososztaly i:main.palya.objects){
+			//HIBA: mi van ha nem a mezot talalom meg, hanem a dobozt amit odatettem? - TG
+			if(i.position.compareTo(d.position)){
+				//ez jelenleg csak akkor mukodik ha a doboz felemelesekor a doboz pozicioja megvaltozik
+				//pl. ezredes doboz elott all es felveszi a dobozt - TG
+				i.ertesit(d.position);
+			}
+		}
+		doboz = null;
+	}
 	
 	//Az ezredes felvett egy ZPM-et, a zpmcount novelese.
 	void collectZPM(){
