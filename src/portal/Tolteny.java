@@ -12,18 +12,32 @@ public class Tolteny extends Ososztaly{
 		type_kek = blueType;
 	}
 	
+	//!TODO - KOMMENT
 	public Pont ertesit(Pont regi){
 		
-		System.out.println(">Tolteny::ertesit");
-		System.out.println("<Tolteny::ertesit");
+		System.out.println(">Tolteny::ertesit(Pont)");
+		System.out.println("<Tolteny::ertesit(Pont)");
 		return position;
 	}
 	
 	
 	//!TODO
-	void shoot(){}
+	void shoot(){
+		System.out.println(">Tolteny::shoot()");
+		
+		//!TODO
+		
+		System.out.println("<Tolteny::shoot()");
+	}
 	
 	//!TODO
-	void destroy(){}
+	void destroy(){
+		System.out.println(">Tolteny::destroy()");
+		
+		//!TODO
+		
+		System.out.println("<Tolteny::destroy()");
+		
+	}
 
 }
