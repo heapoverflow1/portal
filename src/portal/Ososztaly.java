@@ -3,7 +3,7 @@ package portal;
 
 import java.util.List;
 
-public abstract class Ososztaly {
+public abstract class Ososztaly implements Ertesit{
 	
 	//ArrayList<Integer> position; Helyett sajat osztalyt, a Pontot hasznaljuk.
 	public Pont position;
@@ -24,9 +24,5 @@ public abstract class Ososztaly {
 		ososzt.add(this);
 		System.out.println("<Ososztaly::Add(List<Ososztaly>)");
 	}
-	
-	//Absztrakt metodus, leszarmazottak implementaljak
-	public abstract Pont ertesit(Pont innenlep);
-	
 
 }

@@ -71,4 +71,21 @@ public class Jatekter {
 		
 		return ujhely;
 	}
+	
+	/*
+	 * KENE valahonnan csillagkapu a createCSK-nak 
+	 */
+	
+//	public void checkBullet(Tolteny t){
+//		
+//		for (Ososztaly i : objects){
+//			if(i instanceof Fal){
+//				t.destroy();
+//			}else if(i instanceof SpecFal){
+//				((SpecFal) i).createCSK(t, cs);
+//			}
+//			
+//		}
+//		
+//	}
 }

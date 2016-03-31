@@ -1,9 +1,7 @@
 package portal;
 
 
-//!TODO
-// Ez nem kell leszármazzon az Ososztalybol?  -WM
-public class Csillagkapu {
+public class Csillagkapu implements Ertesit{
 	SpecFal blue;
 	SpecFal yellow;
 	
@@ -65,5 +63,29 @@ public class Csillagkapu {
 		
 		System.out.println(">Csillagkapu::entered()");
 		
+	}
+	
+	/* Ha az EZREDES a sarga kapuba lep bele, akkor a kek kapuban jelenik meg,
+	 * ha a kek kapuba lep, akkor a sarga kapuban jelenik meg
+	 * Azaz az adott Pontot adjuk vissza neki. 
+	 */
+	public Pont ertesit(Pont innenlep) {		
+		System.out.println(">Csillagkapu::ertesit(Pont)");		
+		
+		if(yellow.position.compareTo(innenlep)){
+			
+			System.out.println("<Csillagkapu::ertesit(Pont)");
+			return blue.position;
+		}
+		else if(blue.position.compareTo(innenlep)){
+			
+			System.out.println("<Csillagkapu::ertesit(Pont)");
+			return yellow.position;
+		}else{
+			
+			System.out.println("<Csillagkapu::ertesit(Pont)");
+			return null;
+		}
+
 	}
 }
