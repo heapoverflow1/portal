@@ -104,6 +104,7 @@ public class Ezredes extends Ososztaly{
 		
 		//doboz poziciojanak beallitasa, nem tul szep, de mukodik - TG
 		if(irany == Irany.jobbra){
+<<<<<<< HEAD
 			doboz.position.setY(y + 1);
 		}
 		else if(irany == Irany.balra){
@@ -114,6 +115,18 @@ public class Ezredes extends Ososztaly{
 		}
 		else if(irany == Irany.fel){
 			doboz.position.setX(x - 1);
+=======
+			d.position.setY(x + 1);
+		}
+		else if(irany == Irany.balra){
+			d.position.setY(x - 1);
+		}
+		else if(irany == Irany.le){
+			d.position.setX(y - 1);
+		}
+		else if(irany == Irany.fel){
+			d.position.setX(y + 1);
+>>>>>>> refs/remotes/origin/master
 		}		
 		doboz.Drop();
 		
