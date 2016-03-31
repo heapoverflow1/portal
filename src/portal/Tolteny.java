@@ -31,6 +31,11 @@ public class Tolteny extends Ososztaly{
 		System.out.println(">Tolteny::shoot()");
 		
 		//!TODO
+		position.move(irany);
+		
+		//MEG AT KELL GONDOLNI
+		//Jatek.palya.checkBullet(this);
+		
 		
 		System.out.println("<Tolteny::shoot()");
 	}
