@@ -1,7 +1,5 @@
 package portal;
 
-import javax.swing.text.Position;
-
 
 public class Csillagkapu implements Ertesit{
 	SpecFal blue;
