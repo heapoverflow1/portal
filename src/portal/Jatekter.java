@@ -57,9 +57,8 @@ public class Jatekter {
 		System.out.println(">Jatekter::checkfield(Pont, Pont)");
 		
 		for (Ososztaly i : objects){
-			//ez most csak a merleg miatt van benn, a baj vele az, hogy minden mezore meghivodik, 
-			//amirol az ezredes elmozdul, ami a kiiraskor bezavarhat - TG
-			if (i.position.compareTo(regihely)){
+			//javitva, csak merlegnel hivja meg - TG
+			if (i.position.compareTo(regihely) && (i instanceof Merleg)){
 				i.ertesit(regihely);
 			}
 			if (i.position.compareTo(ujhely)){

@@ -81,7 +81,7 @@ public class Ezredes extends Ososztaly{
 		
 		System.out.println(">Ezredes::lift()");
 		
-		if (doboz != null){
+		if (doboz == null){
 			System.out.println("<Ezredes::lift()");
 			return;		
 		}			
@@ -93,38 +93,40 @@ public class Ezredes extends Ososztaly{
 		System.out.println("<Ezredes::lift()");	
 	}
 	
-	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa	
-	void drop(Doboz d){
+	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
+	// parameter nem kell - TG
+	void drop(/*Doboz d*/){
 		
 		System.out.println(">Ezredes::drop(Doboz)");
 		
-		int x = d.position.getX();
-		int y = d.position.getY();
+		int x = doboz.position.getX();
+		int y = doboz.position.getY();
 		
 		//doboz poziciojanak beallitasa, nem tul szep, de mukodik - TG
 		if(irany == Irany.jobbra){
-			d.position.setY(y + 1);
+			doboz.position.setY(y + 1);
 		}
 		else if(irany == Irany.balra){
-			d.position.setY(y - 1);
+			doboz.position.setY(y - 1);
 		}
 		else if(irany == Irany.le){
-			d.position.setX(x + 1);
+			doboz.position.setX(x + 1);
 		}
 		else if(irany == Irany.fel){
-			d.position.setX(x - 1);
+			doboz.position.setX(x - 1);
 		}		
-		d.Drop();
+		doboz.Drop();
 		
 		//megkeresem az adott mezo poziciojat, es ertesitest kuldok oda - TG
+		//HIBA - csak az elso talalatig kene keresni - TG
 		for(Ososztaly i:main.palya.objects){
 			
 			//HIBA: mi van ha nem a mezot talalom meg, hanem a dobozt amit odatettem? - TG
-			if(i.position.compareTo(d.position)){
+			//SOLUTION: ha jo a pozicio ÉS i-edik ososztaly nem doboz - TG 
+			//HIBA: mi tortenik ha zpm-et talal? - TG
+			if(i.position.compareTo(doboz.position) && !(i instanceof Doboz)){
 				
-				//ez jelenleg csak akkor mukodik ha a doboz felemelesekor a doboz pozicioja megvaltozik
-				//pl. ezredes doboz elott all es felveszi a dobozt - TG
-				i.ertesit(d.position);
+				i.ertesit(doboz.position);
 			}
 		}
 		doboz = null;

@@ -13,14 +13,6 @@ public class Doboz extends Ososztaly{
 		
 	}
 	
-	/*
-  	public void setLifted(boolean b){ 
-		System.out.println(">Doboz::setLifted");
-		isLifted = b;
-		System.out.println("<Doboz::setLifted");
-	}
-	 */
-	
 	//Doboz felemelese
 	public void Lift(){
 		
