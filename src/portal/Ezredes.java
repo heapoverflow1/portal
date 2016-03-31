@@ -103,16 +103,16 @@ public class Ezredes extends Ososztaly{
 		
 		//doboz poziciojanak beallitasa, nem tul szep, de mukodik - TG
 		if(irany == Irany.jobbra){
-			d.position.setY(y + 1);
+			d.position.setY(x + 1);
 		}
 		else if(irany == Irany.balra){
-			d.position.setY(y - 1);
+			d.position.setY(x - 1);
 		}
 		else if(irany == Irany.le){
-			d.position.setX(x + 1);
+			d.position.setX(y - 1);
 		}
 		else if(irany == Irany.fel){
-			d.position.setX(x - 1);
+			d.position.setX(y + 1);
 		}		
 		d.Drop();
 		
