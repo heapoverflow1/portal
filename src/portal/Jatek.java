@@ -32,12 +32,20 @@ public class Jatek {
     
 		while (true){
 			
+<<<<<<< HEAD
       System.out.println("0 - kilépés");
+=======
+			System.out.println("0 - kilépés");
+>>>>>>> refs/remotes/origin/wBranch
 			System.out.println("1 - mozgás");
 			System.out.println("2 - mérlegre lépés / ajtó nyitás");
 			System.out.println("3 - mérlegrõl lelépés / ajtó csukás");
 			System.out.println("4 - Doboz felemelése");
+<<<<<<< HEAD
       System.out.println("5 - Doboz letevése");
+=======
+			System.out.println("5 - Doboz letevése");
+>>>>>>> refs/remotes/origin/wBranch
 			System.out.println("6 - doboz mérlegre rakás / ajtó nyitás");
 			System.out.println("7 - doboz mérlegrõl levétel / ajtó csukás");
 			System.out.println("8 - töltény váltás");
@@ -58,6 +66,7 @@ public class Jatek {
       
       	//kilepes
       	case 0:
+<<<<<<< HEAD
         	return;  
         
         //mozgas
@@ -86,6 +95,36 @@ public class Jatek {
 				e.printStackTrace();
 			}
 			break;
+=======
+        	return; 
+        
+        //mozgas
+				case 1:
+          try {
+            ezredes.move();
+            } catch (IOException e) {
+              e.printStackTrace();
+            }
+					break;
+          
+        //mérlegre lépés / ajtó nyitás
+				case 2:
+					try {
+						merleg.ezredesStepsOn();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						break;
+        
+        //mérlegrõl lelépés / ajtó csukás
+				case 3:
+					try {
+						merleg.ezredesStepsOff();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						break;
+>>>>>>> refs/remotes/origin/wBranch
           
         //Doboz felemelése
 				case 4:
@@ -94,6 +133,7 @@ public class Jatek {
 				
         //Doboz letevése
        case 5:
+<<<<<<< HEAD
 			try {
 				ezredes.drop();
 			} catch (Throwable e1) {
@@ -111,6 +151,25 @@ public class Jatek {
 				e.printStackTrace();
 			}
 			break;
+=======
+					try {
+						ezredes.drop();
+					} catch (Throwable e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					break;
+          
+        //doboz mérlegre rakás / ajtó nyitás
+      	case 6:
+					doboz.Lift();
+					try {
+						ezredes.move();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					break;
+>>>>>>> refs/remotes/origin/wBranch
         
        //doboz mérlegrõl levétel / ajtó csukás
         case 7:
@@ -122,11 +181,21 @@ public class Jatek {
          
          //töltény váltás
         case 8:
+<<<<<<< HEAD
 			ezredes.changeTolteny();
 			break;
         
         //lövés
         case 9:
+=======
+					ezredes.changeTolteny();
+					break;
+        
+        //lövés
+        case 9:
+					ezredes.shoot();
+					break;
+>>>>>>> refs/remotes/origin/wBranch
           
       	default:
           break;
