@@ -92,18 +92,15 @@ public class Ezredes extends Ososztaly{
 			return;		
 		}			
 		
-<<<<<<< HEAD
 		//ha merlegen all, akkor a merleg stackjebol szedje le a legfelsot, egyebkent csak vegye fel a dobozt
-		Merleg m = main.palya.getMerleg(position);
+		Merleg m = Jatek.palya.getMerleg(position);
 		if(m != null){
 			doboz=m.removeTopDoboz();
 		}
 		else{
-			doboz = main.palya.getDoboz(position);
+			doboz = Jatek.palya.getDoboz(position);
 		}
-=======
 		doboz = Jatek.palya.getDoboz(position);
->>>>>>> refs/remotes/origin/master
 		
 		if (doboz!=null)
 			doboz.Lift();
@@ -115,22 +112,19 @@ public class Ezredes extends Ososztaly{
 	void drop(/*Doboz d*/){
 		
 		System.out.println(">Ezredes::drop(Doboz)");
-		
 
-		
-<<<<<<< HEAD
 		Pont newPosition=doboz.position;
 		
 		//a dobozt arra szeretnem elmozditani, amerre az ezredes nez
 		newPosition.move(irany);
 		
 		//megnezem hogy merlegre teszi-e a dobozt
-		Merleg m = main.palya.getMerleg(newPosition);
+		Merleg m = Jatek.palya.getMerleg(newPosition);
 		
 		//ha falba akarnank tenni a dobozt, visszater
 		//ha van mar doboz az uj pozicioban, es az nem merlegen all, akkor visszater
 		//zpm-re se tegyuk
-		for (Ososztaly i : main.palya.objects){
+		for (Ososztaly i : Jatek.palya.objects){
 			if (i.position.compareTo(newPosition) && (i instanceof Fal)){
 				return;
 			}
@@ -139,32 +133,6 @@ public class Ezredes extends Ososztaly{
 			}
 			else if(i.position.compareTo(newPosition) && (i instanceof ZPM)){
 				return;
-=======
-		//doboz poziciojanak beallitasa, nem tul szep, de mukodik - TG
-		if(irany == Irany.jobbra){
-			d.position.setY(x + 1);
-		}
-		else if(irany == Irany.balra){
-			d.position.setY(x - 1);
-		}
-		else if(irany == Irany.le){
-			d.position.setX(y - 1);
-		}
-		else if(irany == Irany.fel){
-			d.position.setX(y + 1);
-		}		
-		d.Drop();
-		
-		//megkeresem az adott mezo poziciojat, es ertesitest kuldok oda - TG
-		for(Ososztaly i:Jatek.palya.objects){
-			
-			//HIBA: mi van ha nem a mezot talalom meg, hanem a dobozt amit odatettem? - TG
-			if(i.position.compareTo(d.position)){
-				
-				//ez jelenleg csak akkor mukodik ha a doboz felemelesekor a doboz pozicioja megvaltozik
-				//pl. ezredes doboz elott all es felveszi a dobozt - TG
-				i.ertesit(d.position);
->>>>>>> refs/remotes/origin/master
 			}
 		}
 		
