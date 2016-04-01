@@ -2,8 +2,6 @@ package portal;
 
 import java.io.IOException;
 
-import portal.Ezredes.Irany;
-
 public class Tolteny extends Ososztaly{
 	boolean type_kek;
 	SpecFal fal;
