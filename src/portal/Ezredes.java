@@ -37,6 +37,8 @@ public class Ezredes extends Ososztaly{
 	 */
 	void move() throws IOException{	
 		
+		System.out.println(">Ezredes::move()");
+		
 		
 		System.out.println("Merre fele mozogjon az ezredes ? (F/L/J/B)");
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -90,11 +92,7 @@ public class Ezredes extends Ososztaly{
 	    }
 	    }
 	    
-	    
-	    
-		
-		
-		
+	    System.out.println("<Ezredes::move()");
 		
 	}
 	
@@ -103,6 +101,7 @@ public class Ezredes extends Ososztaly{
 	void fallAndDie(){
 		
 		System.out.println(">Ezredes::fallAndDie()");
+		System.out.println("<Ezredes::fallAndDie()");
 		
 		}
 	
@@ -119,6 +118,7 @@ public class Ezredes extends Ososztaly{
 		
 		this.t1.shoot();
 		
+		System.out.println("<Ezredes::shoot()");
 		
 	}
 	
