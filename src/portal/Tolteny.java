@@ -1,5 +1,7 @@
 package portal;
 
+import java.io.IOException;
+
 import portal.Ezredes.Irany;
 
 public class Tolteny extends Ososztaly{
@@ -21,10 +23,19 @@ public class Tolteny extends Ososztaly{
 	
 	void shoot(Irany irany){
 		System.out.println(">Tolteny::shoot()");
-		Jatek.palya.checkBullet(this);
+		Jatek.palya.checkBullet();
 		System.out.println("Specialis falra lottunk?");
-        char valasz = (char) System.in.read();
-        if (valasz=='I') fal.createCSK(this, new Csillagkapu(0,0));
+        char valasz = 'N';
+		try {
+			valasz = (char) System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        if (valasz=='I'){
+        	try {fal.createCSK();}
+        	catch (IOException e){}
+        	
+        }
         	//Ha nem speciális falra lõttünk, nem jön létre csillagkpau
 		System.out.println("<Tolteny::shoot()");
 	}
