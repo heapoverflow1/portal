@@ -17,34 +17,25 @@ public class Ajto extends Fal{
 	}
 	
 	//Ajtonyitas
-	void open(){
-		
+	void open(){		
 		System.out.println(">Ajto::open()");
 		isOpen = true;
 		System.out.println("<Ajto::open()");
 	}
 	
 	//Ajtocsukas
-	void close(){
-		
+	void close(){		
 		System.out.println(">Ajto::close()");
 		isOpen = false;
 		System.out.println("<Ajto::close()");
 	}
 	
 	//fal ertesitjenek felulirasa, ha nyitva, ezredes tud arra lepni, egyebkent falkent viselkedik - TG
-	public Pont ertesit(Pont regi){
-		
+	public Pont ertesit(Pont regi){		
 		System.out.println(">Ajto::ertesit(Pont)");
-		if(isOpen){
-			System.out.println("<Ajto::ertesit(Pont)");
-			return position;
-			
-		}
-		else{
-			System.out.println("<Ajto::ertesit(Pont)");
-			return regi;
-		}
+		//Ajtó állapota nem szükséges, mintkét esetben ugyanúgy tér vissza
+		System.out.println("<Ajto::ertesit(Pont)");
+		return regi;
 	}
 
 }
