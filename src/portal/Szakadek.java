@@ -26,16 +26,8 @@ public class Szakadek extends Ososztaly {
 	}
 	
 	
-	//!TODO - leírás + lentebbi !TODO
+	
 	public Pont ertesit(Pont regi){
-		
-		System.out.println(">Szakadek::ertesit(Pont)");
-		
-		//TODO!!!
-		//NINCS KEZELVE AZ EZREDES KINYÍRÁS!
-		//this.kill(Ezredes);
-		
-		System.out.println("<Szakadek::ertesit(Pont)");
-		return position;
+		return null;
 	}
 }
