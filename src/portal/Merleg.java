@@ -1,80 +1,85 @@
 package portal;
 
+import java.io.IOException;
 import java.util.Stack;
 
 public class Merleg extends Ososztaly{
-	Ajto nyitando;
-	Stack<Doboz> dobozok=new Stack<Doboz>();
-	int currentWeight=0;
-	int openWeight;
-	
-	/* Konstruktor
-	 * A MERLEG inicializalasa x, y koordinatakkal
-	 */
-	public Merleg(int x, int y, Ajto nyitando, int openWeight) {
-			
-		position = new Pont(x, y);
-		this.nyitando = nyitando;
-		this.openWeight=openWeight;
-	}
+	private Ajto nyitando;
+	//Stack<Doboz> dobozok=new Stack<Doboz>();
+	//int currentWeight=0;
+	//int openWeight;
+	private Doboz doboz;
 	
 	//rarak egy dobozt a merlegre, sulyaval noveli
-	public void addDoboz(Doboz d){
-		dobozok.push(d);
-		currentWeight+=Doboz.weight;
+	public void addDoboz(Doboz d) throws IOException{
+		System.out.println(">Merleg::addDoboz(Doboz)");
+		System.out.println("betesszuk a dobozt a Merleg stackjebe");
+		System.out.println("noveljuk a merlegen levo jelenlegi sulyt");
 		weighted();
-		
+		System.out.println("<Merleg::addDoboz(Doboz)");
 	}
 
 	//leveszi a legfolso dobozt a merlegrol, csokken a suly
-	public Doboz removeTopDoboz(){
-		if(!dobozok.empty()){
+	public Doboz removeTopDoboz() throws IOException{
+		/*if(!dobozok.empty()){
 			currentWeight-=Doboz.weight;
 			weighted();
 			return dobozok.pop();
+		}*/
+		System.out.println(">Merleg::removeTopDoboz()");
+		System.out.println("Legyen ures a stack?(i/n)");
+		char valasz= (char) System.in.read();
+		if(valasz=='i'){
+			System.out.println("<Merleg::removeTopDoboz()");
+			return null;
 		}
-		return null;
+		else if(valasz=='n'){
+			System.out.println("csokkentem a merlegen levo jelenlegi sulyt");
+			weighted();
+			System.out.println("<Merleg::removeTopDoboz()");
+			return doboz;
+		}
+		else
+			return null;
+
 	}
 	
 	//ezredes raall a merlegre
-	public void ezredesStepsOn(){
-		currentWeight+=Ezredes.weight;
+	public void ezredesStepsOn() throws IOException{
+		System.out.println(">Merleg::ezredesStepsOn()");
+		System.out.println("novelem a merlegen levo jelenlegi sulyt");
 		weighted();
+		System.out.println("<Merleg::ezredesStepsOn()");
 	}
 	
 	//ezredes leszall a merlegrol
-	public void ezredesStepsOff(){
-			currentWeight-=Ezredes.weight;
-			weighted();
+	public void ezredesStepsOff() throws IOException{
+		System.out.println(">Merleg::ezredesStepsOff()");
+		System.out.println("csokkentem a merlegen levo jelenlegi sulyt");
+		weighted();
+		System.out.println("<Merleg::ezredesStepsOff()");
 	}
 	
 	public Pont ertesit(Pont regi){
 		
 		System.out.println(">Merleg::ertesit(Pont)");
-		if(position.compareTo(regi)){
-			//ha lelepnek rola
-			ezredesStepsOff();
-		}
-		else			
-			//ha ralepnek
-			ezredesStepsOn();
-		
 		System.out.println("<Merleg::ertesit(Pont)");
-		return position;
+		return null;
 	}
 	
 	//megnezi, van-e eleg suly a merlegen az ajto kinyitasahoz
-	void weighted(){
+	void weighted() throws IOException{
 		
-		System.out.println(">Merleg::weighted(boolean)");
-		
-		if(currentWeight>=openWeight){
-			nyitando.open();		
+		System.out.println(">Merleg::weighted()");
+		System.out.println("A merlegen levo suly nagyobb a sulyhatarnal?(i/n)");
+		char valasz= (char) System.in.read();
+		if(valasz=='i'){
+			nyitando.open();
+			System.out.println("<Merleg::weighted()");
 		}
-		else{
+		else if(valasz=='n'){
 			nyitando.close();
+			System.out.println("<Merleg::weighted()");
 		}
-		
-		System.out.println("<Merleg::weighted(boolean)");
 	}
 }
