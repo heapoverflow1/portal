@@ -17,6 +17,10 @@ public class SpecFal extends Fal {
 	//Letrehozzuk a csillagkaput kb
 	void createCSK() throws IOException{
 		
+		cs.feregjarat = false;
+		cs.blue = null;
+		cs.yellow = null;
+		
 		System.out.println(">SpecFal::createCSK(Tolteny, Csillagkapu)");
 		System.out.println("Milyen szinu csillagkaput lottunk?(kek/sarga) k/s");
 		char cs_szin = (char) System.in.read();
