@@ -1,5 +1,7 @@
 package portal;
 
+import java.io.IOException;
+
 public class Ezredes extends Ososztaly{
 	Doboz doboz;
 	boolean tolteny_kek;	
@@ -81,8 +83,9 @@ public class Ezredes extends Ososztaly{
 	
 	//!TODO - picit OUT OF DATE COMMENT
 	//Doboz felemelese, kapott doboz isLifted ertekenek beallitasa igazra	
-	/***HIBA: atadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemasoljuk, referenciat kene adni*/
-	void lift(){
+	/***HIBA: atadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemasoljuk, referenciat kene adni
+	 * @throws IOException */
+	void lift() throws IOException{
 		
 		System.out.println(">Ezredes::lift()");
 		
@@ -109,7 +112,7 @@ public class Ezredes extends Ososztaly{
 	
 	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
 	// parameter nem kell, ez a doboz az ezredes kezeben van - TG
-	void drop(/*Doboz d*/){
+	void drop(/*Doboz d*/) throws IOException{
 		
 		System.out.println(">Ezredes::drop(Doboz)");
 
