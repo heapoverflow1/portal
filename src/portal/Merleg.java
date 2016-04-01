@@ -3,11 +3,11 @@ package portal;
 import java.io.IOException;
 
 public class Merleg extends Ososztaly{
-	private Ajto nyitando;
+	Ajto nyitando = new Ajto(1,1);
 	//Stack<Doboz> dobozok=new Stack<Doboz>();
 	//int currentWeight=0;
 	//int openWeight;
-	private Doboz doboz;
+	Doboz doboz=new Doboz(1,1);
 	
 	//rarak egy dobozt a merlegre, sulyaval noveli
 	public void addDoboz(Doboz d) throws IOException{

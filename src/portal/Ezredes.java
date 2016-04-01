@@ -36,11 +36,8 @@ public class Ezredes extends Ososztaly{
 	 * adott pozicioval a targytol fuggoen ( ha fal, akkor az a pozicio amit kapott)
 	 */
 	void move() throws IOException{	
-<<<<<<< HEAD
-=======
 		
 		System.out.println(">Ezredes::move()");
->>>>>>> refs/remotes/origin/wBranch
 		
 		
 		System.out.println("Merre fele mozogjon az ezredes ? (F/L/J/B)");
