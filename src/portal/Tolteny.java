@@ -21,7 +21,7 @@ public class Tolteny extends Ososztaly{
 		return position;
 	}
 	
-	void shoot(Irany irany){
+	void shoot(){
 		System.out.println(">Tolteny::shoot()");
 		Jatek.palya.checkBullet();
 		System.out.println("Specialis falra lottunk?");
