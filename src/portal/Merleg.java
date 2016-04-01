@@ -1,49 +1,77 @@
 package portal;
 
+import java.util.Stack;
+
 public class Merleg extends Ososztaly{
-	boolean isPressed;
 	Ajto nyitando;
+	Stack<Doboz> dobozok=new Stack<Doboz>();
+	int currentWeight=0;
+	int openWeight;
 	
 	/* Konstruktor
 	 * A MERLEG inicializalasa x, y koordinatakkal
 	 */
-	public Merleg(int x, int y, Ajto nyitando) {
-		
-		isPressed = false;
+	public Merleg(int x, int y, Ajto nyitando, int openWeight) {
+			
 		position = new Pont(x, y);
 		this.nyitando = nyitando;
+		this.openWeight=openWeight;
+	}
+	
+	//rarak egy dobozt a merlegre, sulyaval noveli
+	public void addDoboz(Doboz d){
+		dobozok.push(d);
+		currentWeight+=Doboz.weight;
+		weighted();
+		
+	}
+
+	//leveszi a legfolso dobozt a merlegrol, csokken a suly
+	public Doboz removeTopDoboz(){
+		if(!dobozok.empty()){
+			currentWeight-=Doboz.weight;
+			weighted();
+			return dobozok.pop();
+		}
+		return null;
+	}
+	
+	//ezredes raall a merlegre
+	public void ezredesStepsOn(){
+		currentWeight+=Ezredes.weight;
+		weighted();
+	}
+	
+	//ezredes leszall a merlegrol
+	public void ezredesStepsOff(){
+			currentWeight-=Ezredes.weight;
+			weighted();
 	}
 	
 	public Pont ertesit(Pont regi){
 		
 		System.out.println(">Merleg::ertesit(Pont)");
-		
 		if(position.compareTo(regi)){
-			
-			//ha lelepnek rola, vagy dobozt vesznek le rola - TG
-			weighted(false);
+			//ha lelepnek rola
+			ezredesStepsOff();
 		}
 		else			
-			//ha ralepnek, vagy dobozt tesznek ra - TG
-			weighted(true);
+			//ha ralepnek
+			ezredesStepsOn();
 		
 		System.out.println("<Merleg::ertesit(Pont)");
 		return position;
 	}
 	
-	//Azt vizsgalja, van-e sulya a merlegen
-	//csak parameterrel tudtam megoldani, a fuggvenynek valahogy tudnia kell, hogy epp lenyomjak, vagy nem - TG
-	//!TODO valaki adjon ennek a parameternek egy szebb nevet, nekem nem jut eszembe jobb - TG
-	void weighted(boolean incoming){
+	//megnezi, van-e eleg suly a merlegen az ajto kinyitasahoz
+	void weighted(){
 		
 		System.out.println(">Merleg::weighted(boolean)");
 		
-		if(incoming){
-			isPressed = true;
+		if(currentWeight>=openWeight){
 			nyitando.open();		
 		}
 		else{
-			isPressed = false;
 			nyitando.close();
 		}
 		

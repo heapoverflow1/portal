@@ -5,7 +5,8 @@ public class Ezredes extends Ososztaly{
 	boolean tolteny_kek;	
 	int zpmcount;
 	enum Irany{fel, le, jobbra, balra};
-	Irany irany;	
+	Irany irany;
+	static int weight=1;
 	
 	/* Konstruktor
 	 * Az Ezredes a jatek elejen jobbra all es kek toltenye van.
@@ -20,7 +21,7 @@ public class Ezredes extends Ososztaly{
 		doboz = null;
 		
 	}
-	
+		
 	//!TODO - KOMMENT
 	public Pont ertesit(Pont regi){
 		
@@ -81,12 +82,20 @@ public class Ezredes extends Ososztaly{
 		
 		System.out.println(">Ezredes::lift()");
 		
-		if (doboz == null){
+		//ha mar van a kezeben doboz akkor visszater
+		if (doboz != null){
 			System.out.println("<Ezredes::lift()");
 			return;		
 		}			
 		
-		doboz = main.palya.getDoboz(position);
+		//ha merlegen all, akkor a merleg stackjebol szedje le a legfelsot, egyebkent csak vegye fel a dobozt
+		Merleg m = main.palya.getMerleg(position);
+		if(m != null){
+			doboz=m.removeTopDoboz();
+		}
+		else{
+			doboz = main.palya.getDoboz(position);
+		}
 		
 		if (doboz!=null)
 			doboz.Lift();
@@ -94,54 +103,45 @@ public class Ezredes extends Ososztaly{
 	}
 	
 	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
-	// parameter nem kell - TG
+	// parameter nem kell, ez a doboz az ezredes kezeben van - TG
 	void drop(/*Doboz d*/){
 		
 		System.out.println(">Ezredes::drop(Doboz)");
 		
-		int x = doboz.position.getX();
-		int y = doboz.position.getY();
+
 		
-		//doboz poziciojanak beallitasa, nem tul szep, de mukodik - TG
-		if(irany == Irany.jobbra){
-<<<<<<< HEAD
-			doboz.position.setY(y + 1);
-		}
-		else if(irany == Irany.balra){
-			doboz.position.setY(y - 1);
-		}
-		else if(irany == Irany.le){
-			doboz.position.setX(x + 1);
-		}
-		else if(irany == Irany.fel){
-			doboz.position.setX(x - 1);
-=======
-			d.position.setY(x + 1);
-		}
-		else if(irany == Irany.balra){
-			d.position.setY(x - 1);
-		}
-		else if(irany == Irany.le){
-			d.position.setX(y - 1);
-		}
-		else if(irany == Irany.fel){
-			d.position.setX(y + 1);
->>>>>>> refs/remotes/origin/master
-		}		
-		doboz.Drop();
+		Pont newPosition=doboz.position;
 		
-		//megkeresem az adott mezo poziciojat, es ertesitest kuldok oda - TG
-		//HIBA - csak az elso talalatig kene keresni - TG
-		for(Ososztaly i:main.palya.objects){
-			
-			//HIBA: mi van ha nem a mezot talalom meg, hanem a dobozt amit odatettem? - TG
-			//SOLUTION: ha jo a pozicio ÉS i-edik ososztaly nem doboz - TG 
-			//HIBA: mi tortenik ha zpm-et talal? - TG
-			if(i.position.compareTo(doboz.position) && !(i instanceof Doboz)){
-				
-				i.ertesit(doboz.position);
+		//a dobozt arra szeretnem elmozditani, amerre az ezredes nez
+		newPosition.move(irany);
+		
+		//megnezem hogy merlegre teszi-e a dobozt
+		Merleg m = main.palya.getMerleg(newPosition);
+		
+		//ha falba akarnank tenni a dobozt, visszater
+		//ha van mar doboz az uj pozicioban, es az nem merlegen all, akkor visszater
+		//zpm-re se tegyuk
+		for (Ososztaly i : main.palya.objects){
+			if (i.position.compareTo(newPosition) && (i instanceof Fal)){
+				return;
+			}
+			else if(i.position.compareTo(newPosition) && (i instanceof Doboz) && (m == null)){
+				return;
+			}
+			else if(i.position.compareTo(newPosition) && (i instanceof ZPM)){
+				return;
 			}
 		}
+		
+		//ha eljutott idaig akkor mar biztos az uj pozicioba fog kerulni
+		doboz.position=newPosition;
+		
+		//ha merlegre tesszuk, akkor hozzaadjuk a merleg stackjehez
+		if(m != null){
+			m.addDoboz(doboz);
+		}
+		
+		doboz.Drop();
 		doboz = null;
 		
 		System.out.println("<Ezredes::drop(Doboz)");
