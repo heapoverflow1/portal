@@ -76,11 +76,11 @@ public class Pont {
 				break;
 			
 			case fel:
-				this.y += 1;
+				this.y -= 1;
 				break;
 			
 			case le:
-				this.y -= 1;
+				this.y += 1;
 				break;
 			
 			default:
