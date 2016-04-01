@@ -32,6 +32,7 @@ public class Ezredes extends Ososztaly{
 	
 	//!TODO - jobban leirni a mukodeset
 	/* Ezredes mozgatasa irany iranyba
+	 * irany valtozoja beallitasa
 	 * Megprobal lepni az ezredes egyet az adott iranyba,
 	 * majd megkeri a JATEKTER-et, hogy hivja meg az adott
 	 * pozicion levo dolognak az ertesit fuggvenyet, ami visszater egy
@@ -41,9 +42,11 @@ public class Ezredes extends Ososztaly{
 		
 		System.out.println(">Ezredes::move(Irany)");
 		
+		this.irany=irany;
+		
 		Pont ujhely = position;
 		ujhely.move(irany);
-		position = main.palya.checkfield(position, ujhely);
+		position = Jatek.palya.checkfield(position, ujhely);
 		if (doboz != null) doboz.setPosition(position);
 		
 		System.out.println("<Ezredes::move(Irany)");
@@ -70,7 +73,8 @@ public class Ezredes extends Ososztaly{
 		
 		//ENNEK igy meg semmi ertelme, letrehozzuk majd el is tunik -WM
 		//valahogy hasznalni kene
-		Tolteny t1 = new Tolteny(tolteny_kek);
+		Tolteny t1 = new Tolteny(tolteny_kek, position);
+		t1.shoot(irany);
 		
 		System.out.println("<Ezredes::shoot()");
 	}
@@ -155,7 +159,7 @@ public class Ezredes extends Ososztaly{
 		System.out.println("<Ezredes::collectZPM()");
 	}
 	
-	//Visszaadha a ZPMCOUNT erteket
+	//Visszaadja a ZPMCOUNT erteket
 	/**NEM BIZTOS HOGY KELL, de lehet szebb lesz a kod tole -WM*/
 	int getZPMcount(){
 		
