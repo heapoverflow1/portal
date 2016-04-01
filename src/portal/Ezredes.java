@@ -1,12 +1,10 @@
 package portal;
 
-<<<<<<< HEAD
-import java.io.IOException;
-=======
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
->>>>>>> refs/remotes/origin/szkeleton
+
 
 public class Ezredes extends Ososztaly{
 	Doboz doboz;
@@ -132,11 +130,9 @@ public class Ezredes extends Ososztaly{
 	
 	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
 	// parameter nem kell, ez a doboz az ezredes kezeben van - TG
-<<<<<<< HEAD
-	void drop(/*Doboz d*/) throws IOException{
-=======
+
 	void drop() throws Throwable{
->>>>>>> refs/remotes/origin/szkeleton
+
 		
 		System.out.println(">Ezredes::drop(Doboz)");
 		
