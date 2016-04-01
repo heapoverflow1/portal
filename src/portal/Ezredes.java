@@ -1,6 +1,12 @@
 package portal;
 
+<<<<<<< HEAD
 import java.io.IOException;
+=======
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+>>>>>>> refs/remotes/origin/szkeleton
 
 public class Ezredes extends Ososztaly{
 	Doboz doboz;
@@ -9,27 +15,18 @@ public class Ezredes extends Ososztaly{
 	enum Irany{fel, le, jobbra, balra};
 	Irany irany;
 	static int weight=1;
+	private Tolteny t1 = new Tolteny(tolteny_kek, position);
+	Merleg m;
+	Ajto a;
 	
-	/* Konstruktor
-	 * Az Ezredes a jatek elejen jobbra all es kek toltenye van.
-	 * Az EZREDES inicializalasa x, y koordinatakkal
-	 */
-	public Ezredes(int x, int y) {
-		
-		position = new Pont(x, y);
-		tolteny_kek = true;
-		zpmcount = 0;
-		irany = Irany.jobbra;
-		doboz = null;
-		
-	}
+
 		
 	//!TODO - KOMMENT
 	public Pont ertesit(Pont regi){
 		
 		System.out.println(">Ezredes::ertesit(Pont)");
 		System.out.println("<Ezredes::ertesit(Pont)");
-		return position;
+		return null;
 	}
 	
 	//!TODO - jobban leirni a mukodeset
@@ -40,18 +37,35 @@ public class Ezredes extends Ososztaly{
 	 * pozicion levo dolognak az ertesit fuggvenyet, ami visszater egy
 	 * adott pozicioval a targytol fuggoen ( ha fal, akkor az a pozicio amit kapott)
 	 */
-	void move(Irany irany){	
+	void move(Irany irany) throws IOException{	
 		
-		System.out.println(">Ezredes::move(Irany)");
 		
-		this.irany=irany;
+		System.out.println("Merre fele mozogjon az ezredes ? (F/L/J/B)");
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	    String s;
+	    s=in.readLine();
+	    
+	    switch(s){	
+	    
+	    case "f" : System.out.println("Felfele mozdult az ezredes!");
+	    			break;
+	    			
+	    case "l" : System.out.println("Lefele mozdult az ezredes!");
+	    			break;
+	    
+	    case "j" : System.out.println("Jobbra mozdult az ezredes!");
+	    			break;
+	    			
+	    case "b" : System.out.println("Balra mozdult az ezredes!");
+					break;
+	    
+	    
+	    
+	    }
 		
-		Pont ujhely = position;
-		ujhely.move(irany);
-		position = Jatek.palya.checkfield(position, ujhely);
-		if (doboz != null) doboz.setPosition(position);
 		
-		System.out.println("<Ezredes::move(Irany)");
+		
+		
 	}
 	
 	//!TODO - ezredes.finalize(), meg valahogy a jatek vege
@@ -60,25 +74,22 @@ public class Ezredes extends Ososztaly{
 		
 		System.out.println(">Ezredes::fallAndDie()");
 		
-		//!TODO
-		
-		System.out.println("<Ezredes::fallAndDie()");		
-	}
+		}
 	
 	
 	//!TODO
 	//Tolteny lovese
 	/**HIBA: IDE SZERINTEM NEM KELL TOLTENY PARAMETERBEN, mert itt hozzuk letre*/
-	void shoot(/*Tolteny t*/){
+	void shoot(){
 		
 		System.out.println(">Ezredes::shoot()");
 		
 		//ENNEK igy meg semmi ertelme, letrehozzuk majd el is tunik -WM
 		//valahogy hasznalni kene
-		Tolteny t1 = new Tolteny(tolteny_kek, position);
-		t1.shoot(irany);
 		
-		System.out.println("<Ezredes::shoot()");
+		this.t1.shoot();
+		
+		
 	}
 	
 	//!TODO - picit OUT OF DATE COMMENT
@@ -90,65 +101,78 @@ public class Ezredes extends Ososztaly{
 		System.out.println(">Ezredes::lift()");
 		
 		//ha mar van a kezeben doboz akkor visszater
-		if (doboz != null){
-			System.out.println("<Ezredes::lift()");
-			return;		
-		}			
+
+		System.out.println("Van a kezünkben már doboz?(I/N)");
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	    String s;
+	    s=in.readLine();
+	    if (s=="i")
+	    	System.out.println("Nem tudjuk felvenni, már van a kezünkben doboz!");
+	    else if (s=="n"){
+	    	System.out.println("Mérlegen volt a doboz!");
+		
 		
 		//ha merlegen all, akkor a merleg stackjebol szedje le a legfelsot, egyebkent csak vegye fel a dobozt
-		Merleg m = Jatek.palya.getMerleg(position);
-		if(m != null){
-			doboz=m.removeTopDoboz();
+		
+	    	s=in.readLine();
+		if(s == "i"){
+			doboz=this.m.removeTopDoboz();
 		}
-		else{
+		else if (s=="n"){
 			doboz = Jatek.palya.getDoboz(position);
 		}
 		doboz = Jatek.palya.getDoboz(position);
 		
-		if (doboz!=null)
-			doboz.Lift();
+		
+			this.doboz.Lift();
 		System.out.println("<Ezredes::lift()");	
+	}
 	}
 	
 	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
 	// parameter nem kell, ez a doboz az ezredes kezeben van - TG
+<<<<<<< HEAD
 	void drop(/*Doboz d*/) throws IOException{
+=======
+	void drop() throws Throwable{
+>>>>>>> refs/remotes/origin/szkeleton
 		
 		System.out.println(">Ezredes::drop(Doboz)");
-
-		Pont newPosition=doboz.position;
 		
-		//a dobozt arra szeretnem elmozditani, amerre az ezredes nez
-		newPosition.move(irany);
+		System.out.println("Letehetem ide a dobozt ?");
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	    String s;
+	    s=in.readLine();
+	    if (s=="i"){
+	    	System.out.println("Van-e itt valami ? Szakadék? Mérleg? Üres?(s/m/u)");
+	    	String s1;	
+	    	s1=in.readLine();
+	    		switch(s1)
+	    		{
+	    			
+	    		case "s": doboz.destroy();	
+	    					break;
+	    		case "m" : System.out.println("Mérleg lenyomódott, ajtó kinyílt!");
+	    					a.open();
+	    				break;
+	    		case "u" : doboz.Drop();
+	    				break;
+	    		}
+	    	
+	    	
+	    	
+	    	
+	    }
+	    
+	    else if( s=="n")
+	    	System.out.println("Ide nem tudjuk letenni a dobozt!");
+	    	
+	    	
+	    	
+	    	
+	    	
 		
-		//megnezem hogy merlegre teszi-e a dobozt
-		Merleg m = Jatek.palya.getMerleg(newPosition);
-		
-		//ha falba akarnank tenni a dobozt, visszater
-		//ha van mar doboz az uj pozicioban, es az nem merlegen all, akkor visszater
-		//zpm-re se tegyuk
-		for (Ososztaly i : Jatek.palya.objects){
-			if (i.position.compareTo(newPosition) && (i instanceof Fal)){
-				return;
-			}
-			else if(i.position.compareTo(newPosition) && (i instanceof Doboz) && (m == null)){
-				return;
-			}
-			else if(i.position.compareTo(newPosition) && (i instanceof ZPM)){
-				return;
-			}
-		}
-		
-		//ha eljutott idaig akkor mar biztos az uj pozicioba fog kerulni
-		doboz.position=newPosition;
-		
-		//ha merlegre tesszuk, akkor hozzaadjuk a merleg stackjehez
-		if(m != null){
-			m.addDoboz(doboz);
-		}
-		
-		doboz.Drop();
-		doboz = null;
 		
 		System.out.println("<Ezredes::drop(Doboz)");
 	}
@@ -158,6 +182,7 @@ public class Ezredes extends Ososztaly{
 		
 		System.out.println(">Ezredes::collectZPM()");		
 		zpmcount++;
+		System.out.println("Növeltük a ZPM számot!");
 		System.out.println("<Ezredes::collectZPM()");
 	}
 	
@@ -185,11 +210,11 @@ public class Ezredes extends Ososztaly{
 	
 	//!TODO
 	//Ezredes teleportalasa a masik csillagkapuhoz
-	void teleport(Csillagkapu cs){
+	void teleport(){
 		
 		System.out.println(">Ezredes::teleport(Csillagkapu)");
 		
-		//!TODO
+		
 		
 		System.out.println("<Ezredes::teleport(Csillagkapu)");
 		
