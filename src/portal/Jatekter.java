@@ -3,6 +3,10 @@ package portal;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//!TODO checkbullet
+
+
 public class Jatekter {
 	List<Ososztaly> objects;
 	
