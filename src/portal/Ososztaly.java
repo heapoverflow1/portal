@@ -3,7 +3,7 @@ package portal;
 
 import java.util.List;
 
-public abstract class Ososztaly {
+public abstract class Ososztaly implements Ertesit{
 	
 	//ArrayList<Integer> position; Helyett sajat osztalyt, a Pontot hasznaljuk.
 	public Pont position;
@@ -20,15 +20,9 @@ public abstract class Ososztaly {
 	//
 	void Add(List<Ososztaly> ososzt){
 		
-		System.out.println(">Ososztaly::Add");
+		System.out.println(">Ososztaly::Add(List<Ososztaly>)");
 		ososzt.add(this);
-		System.out.println("<Ososztaly::Add");
+		System.out.println("<Ososztaly::Add(List<Ososztaly>)");
 	}
-	
-	public abstract Pont ertesit(Pont innenlep);
-	
-	
-	
-	//Ide pedig szerintem kene egy notify fv, hogy mindegyiknek legyen, es azt lehessen hivni  -WM
 
 }

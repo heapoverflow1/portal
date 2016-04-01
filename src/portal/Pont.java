@@ -16,83 +16,90 @@ public class Pont {
 	/* Konstruktor
 	 * A PONT inicializalasa x, y koordinatakkal
 	 */
-	public Pont(int x, int y){
-		System.out.println(">Pont::konstruktor");	
+	public Pont(int x, int y){		
 		this.x = x;
-		this.y = y;
-		System.out.println("<Pont::konstruktor");
+		this.y = y;		
 	}
 	
 	
 	//X beallitasa
 	public void setX(int x){
-		System.out.println(">Pont::setX");
+		
+		System.out.println(">Pont::setX(int)");
+		
 		this.x = x;
-		System.out.println("<Pont::setX");
+		
+		System.out.println("<Pont::setX(int)");
 	}
 	
 	//Y beallitasa
 	public void setY(int y){
-		System.out.println(">Pont::setY");
+		
+		System.out.println(">Pont::setY(int)");
+		
 		this.y = y;
-		System.out.println("<Pont::setY");
+		
+		System.out.println("<Pont::setY(int)");
 	}
 	
 	//X visszaadasa
 	public int getX(){
-		System.out.println(">Pont::getX");
 		
-		System.out.println("<Pont::getX");
+		System.out.println(">Pont::getX()");		
+		System.out.println("<Pont::getX()");
+		
 		return x;
 	}
 	
 	//Y visszaadasa
 	public int getY(){
-		System.out.println(">Pont::getY");
 		
-		System.out.println("<Pont::getY");
+		System.out.println(">Pont::getY()");		
+		System.out.println("<Pont::getY()");
+		
 		return y;
 	}
 	
-	public void move(Irany irany)
-	{
-		switch (irany)
-		{
+	//!TODO - KOMMENT
+	public void move(Irany irany){
+		
+		System.out.println(">Pont::move(Irany)");
+		
+		switch (irany){
+		
 			case jobbra:
-				this.y+=1;
-			break;
+				this.x += 1;
+				break;
 			
 			case balra:
-				this.y-=1;
-			break;
+				this.x -= 1;
+				break;
 			
 			case fel:
-				this.x-=1;
-			break;
+				this.y -= 1;
+				break;
 			
 			case le:
-				this.x+=1;
-			break;
+				this.y += 1;
+				break;
 			
 			default:
-			break;
+				break;
 		}
+		
+		System.out.println("<Pont::move(Irany)");
 	}
-	
-	//Mozgatas Y iranyban
-	public void moveY(int amount){
-		this.y = this.y + amount;
-	}
-	
-	//Mozgatas X iranyban
-	public void moveX(int amount){
-		this.x = this.x + amount;
-	}
-	
 	
 	public boolean compareTo(Pont masik){
-		if (masik.x == this.x && masik.y == this.y) return true;
-		return false;
+		System.out.println(">Pont::compareTo(Pont)");
+		
+		if (masik.x == this.x && masik.y == this.y){			
+			System.out.println("<Pont::compareTo(Pont)");		
+			return true;
+		}else{			
+			System.out.println("<Pont::compareTo(Pont)");
+			return false;
+		}
 	}
 
 	

@@ -16,12 +16,18 @@ public class Fal extends Ososztaly{
 	 * -WM
 	 */
 	void blockTolteny(Tolteny t){
+		System.out.println(">Fal::blockTolteny(Tolteny)");
+		
 		t.destroy();
+		
+		System.out.println("<Fal::blockTolteny(Tolteny)");
 	}
 	
+	//!TODO - KOMMENT
 	public Pont ertesit(Pont regi){
-		System.out.println(">Pont::ertesit");
-		System.out.println("<Pont::ertesit");
+		
+		System.out.println(">Fal::ertesit(Pont)");
+		System.out.println("<Fal::ertesit(Pont)");
 		return regi;
 	}
 }

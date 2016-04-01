@@ -9,11 +9,17 @@ public class ZPM extends Ososztaly{
 		position = new Pont(x,y);
 	}
 	
+	//!TODO - KOMMENT
 	public Pont ertesit(Pont regi){
 		
-		System.out.println(">ZPM::ertesit");
-		//Mostantól a ZPM fel van véve
-		System.out.println("<ZPM::ertesit");
+		System.out.println(">ZPM::ertesit(Pont)");
+		
+		//Mostantol a ZPM fel van veve
+		/*!TODO - fel is kene venni tenylegesen	
+		 * ezredes.collectZPM()
+		 */
+		
+		System.out.println("<ZPM::ertesit(Pont)");
 		return position;
 	}
 }

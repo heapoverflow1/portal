@@ -1,36 +1,80 @@
 package portal;
 
+import java.util.Stack;
+
 public class Merleg extends Ososztaly{
-	boolean isPressed;
 	Ajto nyitando;
+	Stack<Doboz> dobozok=new Stack<Doboz>();
+	int currentWeight=0;
+	int openWeight;
 	
 	/* Konstruktor
 	 * A MERLEG inicializalasa x, y koordinatakkal
 	 */
-	public Merleg(int x, int y, Ajto nyitando) {
-		
-		isPressed = false;
+	public Merleg(int x, int y, Ajto nyitando, int openWeight) {
+			
 		position = new Pont(x, y);
 		this.nyitando = nyitando;
+		this.openWeight=openWeight;
+	}
+	
+	//rarak egy dobozt a merlegre, sulyaval noveli
+	public void addDoboz(Doboz d){
+		dobozok.push(d);
+		currentWeight+=Doboz.weight;
+		weighted();
+		
+	}
+
+	//leveszi a legfolso dobozt a merlegrol, csokken a suly
+	public Doboz removeTopDoboz(){
+		if(!dobozok.empty()){
+			currentWeight-=Doboz.weight;
+			weighted();
+			return dobozok.pop();
+		}
+		return null;
+	}
+	
+	//ezredes raall a merlegre
+	public void ezredesStepsOn(){
+		currentWeight+=Ezredes.weight;
+		weighted();
+	}
+	
+	//ezredes leszall a merlegrol
+	public void ezredesStepsOff(){
+			currentWeight-=Ezredes.weight;
+			weighted();
 	}
 	
 	public Pont ertesit(Pont regi){
 		
-		System.out.println(">Merleg::ertesit");
-		//TODO!!!
-		//NINCS KEZELVE A SÚLY ÉS AZ AJTÓNYITÁS!!
-		System.out.println("<Merleg::ertesit");
+		System.out.println(">Merleg::ertesit(Pont)");
+		if(position.compareTo(regi)){
+			//ha lelepnek rola
+			ezredesStepsOff();
+		}
+		else			
+			//ha ralepnek
+			ezredesStepsOn();
+		
+		System.out.println("<Merleg::ertesit(Pont)");
 		return position;
 	}
 	
-	
-	//!TODO
-	//Azt vizsgalja, van-e sulya a merlegen
+	//megnezi, van-e eleg suly a merlegen az ajto kinyitasahoz
 	void weighted(){
-		if(true/*van e ugyanazon a koordinatan valami?*/){			
-		//kene, hogy melyik ajtot nyissuk, melyik tartozik hozza
-			
-		isPressed = true;
+		
+		System.out.println(">Merleg::weighted(boolean)");
+		
+		if(currentWeight>=openWeight){
+			nyitando.open();		
 		}
+		else{
+			nyitando.close();
+		}
+		
+		System.out.println("<Merleg::weighted(boolean)");
 	}
 }

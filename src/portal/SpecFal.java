@@ -12,14 +12,40 @@ public class SpecFal extends Fal {
 
 	//!TODO
 	//Letrehozzuk a csillagkaput kb
-	void createCSK(Tolteny t){
+	void createCSK(Tolteny t, Csillagkapu cs){
+		
+		System.out.println(">SpecFal::createCSK(Tolteny, Csillagkapu)");
+		
 		if(t.type_kek == true /*es meg nem letezik csillagkapu*/){
+			
 			//beallítjuk a kek erteket
+			cs.setBlue(this);
 		}else{
+			
 			//beallítjuk a sarga erteket
+			cs.setYellow(this);
 		}
+		
+		System.out.println("<SpecFal::createCSK(Tolteny, Csillagkapu)");
 	}
 	
 	//!TODO
-	void destroyCSK(Tolteny t){}
+	void destroyCSK(Tolteny t){
+		
+		System.out.println(">SpecFal::destroyCSK(Tolteny)");
+		
+		//!TODO
+		
+		System.out.println("<SpecFal::destroyCSK(Tolteny)");
+		
+	}
+		
+	
+	//!TODO - HA TOLTENY VAN?
+	public Pont ertesit(Pont regi){
+		
+		System.out.println(">SpecFal::ertesit(Pont)");
+		System.out.println("<SpecFal::ertesit(Pont)");
+		return regi;
+	}
 }
