@@ -1,6 +1,10 @@
 package portal;
 
+import java.io.IOException;
+
 public class SpecFal extends Fal {
+	
+	private Csillagkapu cs;
 	
 	/* Konstruktor
 	 * Az SPECFAL inicializalasa x, y koordinatakkal
@@ -10,42 +14,58 @@ public class SpecFal extends Fal {
 		super(x,y);
 	}
 
-	//!TODO
 	//Letrehozzuk a csillagkaput kb
-	void createCSK(Tolteny t, Csillagkapu cs){
+	void createCSK() throws IOException{
 		
 		System.out.println(">SpecFal::createCSK(Tolteny, Csillagkapu)");
+		System.out.println("Milyen szinu csillagkaput lottunk?(kek/sarga) k/s");
+		char cs_szin = (char) System.in.read();
 		
-		if(t.type_kek == true /*es meg nem letezik csillagkapu*/){
+		System.out.println("Van mar valamilyen csillagkapu? (nem, sarga, kek) n/s/k");
+		char cs_van_e = (char) System.in.read();
+				
+		
+		if(cs_szin == 'k'){
+			switch (cs_van_e) {
+				case 'n':
+					cs.setBlue(this);
+					break;				
+				case 's':
+					cs.setBlue(this);
+					cs.makeFeregjarat();
+					break;
+				case 'k':
+					cs.setBlue(this);
+					break;
+				default:
+					break;
+			}			
+		}else if(cs_szin == 's'){
 			
-			//beallítjuk a kek erteket
-			cs.setBlue(this);
-		}else{
-			
-			//beallítjuk a sarga erteket
-			cs.setYellow(this);
+			switch (cs_van_e) {
+				case 'n':
+					cs.setYellow(this);
+					break;
+				case 's':
+					cs.setYellow(this);
+					break;
+				case 'k':
+					cs.setYellow(this);
+					cs.makeFeregjarat();
+					break;
+	
+				default:
+					break;
+			}		
 		}
 		
 		System.out.println("<SpecFal::createCSK(Tolteny, Csillagkapu)");
-	}
+	}	
 	
-	//!TODO
-	void destroyCSK(Tolteny t){
-		
-		System.out.println(">SpecFal::destroyCSK(Tolteny)");
-		
-		//!TODO
-		
-		System.out.println("<SpecFal::destroyCSK(Tolteny)");
-		
-	}
 		
 	
 	//!TODO - HA TOLTENY VAN?
 	public Pont ertesit(Pont regi){
-		
-		System.out.println(">SpecFal::ertesit(Pont)");
-		System.out.println("<SpecFal::ertesit(Pont)");
-		return regi;
+		return null;
 	}
 }
