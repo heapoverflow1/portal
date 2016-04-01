@@ -17,95 +17,35 @@ public class Jatekter {
 		objects = new ArrayList<Ososztaly>();		
 	}
 	
-	//!TODO - KOMMENT
+	
 	public Doboz getDoboz(Pont innen){
-		
-		System.out.println(">Jatekter::getDoboz(Pont)");
-		
-		for (Ososztaly i : objects){
-			if (i instanceof Doboz && i.position.compareTo(innen)){
-				
-				System.out.println("<Jatekter::getDoboz(Pont)");
-				return (Doboz) i;
-			}				
-		}
-		
-		System.out.println("<Jatekter::getDoboz(Pont)");
 		return null;
 	}
 	
 	public Merleg getMerleg(Pont innen){
-		
-		System.out.println(">Jatekter::getMerleg(Pont)");
-		
-		for (Ososztaly i : objects){
-			if (i instanceof Merleg && i.position.compareTo(innen)){
-				
-				System.out.println("<Jatekter::getMerleg(Pont)");
-				return (Merleg) i;
-			}				
-		}
-		
-		System.out.println("<Jatekter::getMerleg(Pont)");
 		return null;
 	}
 	
 	//Új objektum hozzaadasa a JATEKTER-hez
 	public void add(Ososztaly uj){
-		
-		System.out.println(">Jatekter::add(Ososztaly)");
-		
-		//Ezt biztos igy akarjuk? Nekem jo, de olyan fura.
-		//Mert hogy objects.add(uj); nekem logikusabb lenne.
-		//Az inicializalashoz tartozik, ezert szerintem kiiras nem szükgseges
-		//!TODO
-		/** Szerintem ez igy jo:
-		 *  objects.add(uj);
-		 *  mashogy en sem ertem, szoval akkor az OSOSZTALY beli Add-ot sem ertem
-		 *  -WM
-		 */
-		uj.Add(objects);
-		
-		System.out.println("<Jatekter::add(Ososztaly)");
-		
+	
 	}
 	
-	//!TODO - out of date lett a kommentje
-	//Irany iranyban levo mezo ellenorzese
-	//nem lenne jobb ha ez static? - TG
+
 	public Pont checkfield(Pont regihely, Pont ujhely){
 		
 		System.out.println(">Jatekter::checkfield(Pont, Pont)");
-		
-		for (Ososztaly i : objects){
-			//javitva, csak merlegnel hivja meg - TG
-			if (i.position.compareTo(regihely) && (i instanceof Merleg)){
-				i.ertesit(regihely);
-			}
-			if (i.position.compareTo(ujhely)){
-				ujhely = i.ertesit(regihely);
-			}				
-		}		
 		
 		System.out.println("<Jatekter::checkfield(Pont, Pont)");
 		
 		return ujhely;
 	}
 	
-	/*
-	 * KENE valahonnan csillagkapu a createCSK-nak 
-	 */
-	
-//	public void checkBullet(Tolteny t){
-//		
-//		for (Ososztaly i : objects){
-//			if(i instanceof Fal){
-//				t.destroy();
-//			}else if(i instanceof SpecFal){
-//				((SpecFal) i).createCSK(t, cs);
-//			}
-//			
-//		}
-//		
-//	}
+	public void checkBullet(){
+		
+		System.out.println(">Jatekter::checkBullet()");
+		
+		
+		System.out.println("<Jatekter::checkBullet()");
+	}
 }
