@@ -1,7 +1,6 @@
 package portal;
 
 import java.io.IOException;
-import java.util.Stack;
 
 public class Merleg extends Ososztaly{
 	private Ajto nyitando;
