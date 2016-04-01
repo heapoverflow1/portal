@@ -5,7 +5,8 @@ public class Ezredes extends Ososztaly{
 	boolean tolteny_kek;	
 	int zpmcount;
 	enum Irany{fel, le, jobbra, balra};
-	Irany irany;	
+	Irany irany;
+	static int weight=1;
 	
 	/* Konstruktor
 	 * Az Ezredes a jatek elejen jobbra all es kek toltenye van.
@@ -20,7 +21,7 @@ public class Ezredes extends Ososztaly{
 		doboz = null;
 		
 	}
-	
+		
 	//!TODO - KOMMENT
 	public Pont ertesit(Pont regi){
 		
@@ -85,11 +86,20 @@ public class Ezredes extends Ososztaly{
 		
 		System.out.println(">Ezredes::lift()");
 		
+		//ha mar van a kezeben doboz akkor visszater
 		if (doboz != null){
 			System.out.println("<Ezredes::lift()");
 			return;		
 		}			
 		
+		//ha merlegen all, akkor a merleg stackjebol szedje le a legfelsot, egyebkent csak vegye fel a dobozt
+		Merleg m = Jatek.palya.getMerleg(position);
+		if(m != null){
+			doboz=m.removeTopDoboz();
+		}
+		else{
+			doboz = Jatek.palya.getDoboz(position);
+		}
 		doboz = Jatek.palya.getDoboz(position);
 		
 		if (doboz!=null)
@@ -97,40 +107,44 @@ public class Ezredes extends Ososztaly{
 		System.out.println("<Ezredes::lift()");	
 	}
 	
-	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa	
-	void drop(Doboz d){
+	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
+	// parameter nem kell, ez a doboz az ezredes kezeben van - TG
+	void drop(/*Doboz d*/){
 		
 		System.out.println(">Ezredes::drop(Doboz)");
+
+		Pont newPosition=doboz.position;
 		
-		int x = d.position.getX();
-		int y = d.position.getY();
+		//a dobozt arra szeretnem elmozditani, amerre az ezredes nez
+		newPosition.move(irany);
 		
-		//doboz poziciojanak beallitasa, nem tul szep, de mukodik - TG
-		if(irany == Irany.jobbra){
-			d.position.setY(x + 1);
-		}
-		else if(irany == Irany.balra){
-			d.position.setY(x - 1);
-		}
-		else if(irany == Irany.le){
-			d.position.setX(y - 1);
-		}
-		else if(irany == Irany.fel){
-			d.position.setX(y + 1);
-		}		
-		d.Drop();
+		//megnezem hogy merlegre teszi-e a dobozt
+		Merleg m = Jatek.palya.getMerleg(newPosition);
 		
-		//megkeresem az adott mezo poziciojat, es ertesitest kuldok oda - TG
-		for(Ososztaly i:Jatek.palya.objects){
-			
-			//HIBA: mi van ha nem a mezot talalom meg, hanem a dobozt amit odatettem? - TG
-			if(i.position.compareTo(d.position)){
-				
-				//ez jelenleg csak akkor mukodik ha a doboz felemelesekor a doboz pozicioja megvaltozik
-				//pl. ezredes doboz elott all es felveszi a dobozt - TG
-				i.ertesit(d.position);
+		//ha falba akarnank tenni a dobozt, visszater
+		//ha van mar doboz az uj pozicioban, es az nem merlegen all, akkor visszater
+		//zpm-re se tegyuk
+		for (Ososztaly i : Jatek.palya.objects){
+			if (i.position.compareTo(newPosition) && (i instanceof Fal)){
+				return;
+			}
+			else if(i.position.compareTo(newPosition) && (i instanceof Doboz) && (m == null)){
+				return;
+			}
+			else if(i.position.compareTo(newPosition) && (i instanceof ZPM)){
+				return;
 			}
 		}
+		
+		//ha eljutott idaig akkor mar biztos az uj pozicioba fog kerulni
+		doboz.position=newPosition;
+		
+		//ha merlegre tesszuk, akkor hozzaadjuk a merleg stackjehez
+		if(m != null){
+			m.addDoboz(doboz);
+		}
+		
+		doboz.Drop();
 		doboz = null;
 		
 		System.out.println("<Ezredes::drop(Doboz)");
