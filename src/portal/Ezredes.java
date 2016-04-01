@@ -35,7 +35,7 @@ public class Ezredes extends Ososztaly{
 	 * pozicion levo dolognak az ertesit fuggvenyet, ami visszater egy
 	 * adott pozicioval a targytol fuggoen ( ha fal, akkor az a pozicio amit kapott)
 	 */
-	void move(Irany irany) throws IOException{	
+	void move() throws IOException{	
 		
 		
 		System.out.println("Merre fele mozogjon az ezredes ? (F/L/J/B)");
