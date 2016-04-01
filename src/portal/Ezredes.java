@@ -60,6 +60,32 @@ public class Ezredes extends Ososztaly{
 	    
 	    
 	    }
+	    
+	    System.out.println("Szakadékbe Léptél ?");
+	    s=in.readLine();
+	    if( s=="i")
+	    	this.fallAndDie();
+	    else if ( s=="n")
+	    	System.out.println("Az válaszott irányba léptél!");
+	    
+	    System.out.println("Csillagkapuba léptél ?");
+	    s=in.readLine();
+	    if(s=="i")
+	    	this.teleport();
+	    else if (s=="n"){	
+	    	System.out.println("Mérlegre léptél ?");
+	    	s=in.readLine();
+	    	if(s=="i")
+	    		m.weighted();
+	    	else if (s=="n")
+	    		System.out.println("Nem történt semmi különleges akció");
+	    		
+	    
+	    
+	    }
+	    
+	    
+	    
 		
 		
 		
