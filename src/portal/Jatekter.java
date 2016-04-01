@@ -30,6 +30,22 @@ public class Jatekter {
 		return null;
 	}
 	
+	public Merleg getMerleg(Pont innen){
+		
+		System.out.println(">Jatekter::getMerleg(Pont)");
+		
+		for (Ososztaly i : objects){
+			if (i instanceof Merleg && i.position.compareTo(innen)){
+				
+				System.out.println("<Jatekter::getMerleg(Pont)");
+				return (Merleg) i;
+			}				
+		}
+		
+		System.out.println("<Jatekter::getMerleg(Pont)");
+		return null;
+	}
+	
 	//Új objektum hozzaadasa a JATEKTER-hez
 	public void add(Ososztaly uj){
 		
@@ -52,14 +68,14 @@ public class Jatekter {
 	
 	//!TODO - out of date lett a kommentje
 	//Irany iranyban levo mezo ellenorzese
+	//nem lenne jobb ha ez static? - TG
 	public Pont checkfield(Pont regihely, Pont ujhely){
 		
 		System.out.println(">Jatekter::checkfield(Pont, Pont)");
 		
 		for (Ososztaly i : objects){
-			//ez most csak a merleg miatt van benn, a baj vele az, hogy minden mezore meghivodik, 
-			//amirol az ezredes elmozdul, ami a kiiraskor bezavarhat - TG
-			if (i.position.compareTo(regihely)){
+			//javitva, csak merlegnel hivja meg - TG
+			if (i.position.compareTo(regihely) && (i instanceof Merleg)){
 				i.ertesit(regihely);
 			}
 			if (i.position.compareTo(ujhely)){
