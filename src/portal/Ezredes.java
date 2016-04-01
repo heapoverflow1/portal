@@ -61,6 +61,12 @@ public class Ezredes extends Ososztaly{
 	    
 	    }
 	    
+	    System.out.println("Falba ütköztél?");
+	    s=in.readLine();
+	    if (s=="i")
+	    	System.out.println("Nem jutottál elõbbre fal miatt!");
+	    else if (s=="n"){	
+	    
 	    System.out.println("Szakadékbe Léptél ?");
 	    s=in.readLine();
 	    if( s=="i")
@@ -81,7 +87,7 @@ public class Ezredes extends Ososztaly{
 	    		System.out.println("Nem történt semmi különleges akció");
 	    		
 	    
-	    
+	    }
 	    }
 	    
 	    
