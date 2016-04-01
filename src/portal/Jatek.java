@@ -127,8 +127,6 @@ public class Jatek {
         
         //lövés
         case 9:
-			ezredes.shoot();
-			break;
           
       	default:
           break;
