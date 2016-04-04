@@ -1,6 +1,6 @@
 package portal;
 
-public class main {
+public class Jatek {
 	static Jatekter palya;
 	
 	public static void main(String[] args){

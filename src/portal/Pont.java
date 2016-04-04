@@ -56,6 +56,7 @@ public class Pont {
 		
 		System.out.println(">Pont::getY()");		
 		System.out.println("<Pont::getY()");
+		
 		return y;
 	}
 	
@@ -67,19 +68,19 @@ public class Pont {
 		switch (irany){
 		
 			case jobbra:
-				this.y += 1;
+				this.x += 1;
 				break;
 			
 			case balra:
-				this.y -= 1;
-				break;
-			
-			case fel:
 				this.x -= 1;
 				break;
 			
+			case fel:
+				this.y += 1;
+				break;
+			
 			case le:
-				this.x += 1;
+				this.y -= 1;
 				break;
 			
 			default:

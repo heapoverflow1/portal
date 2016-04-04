@@ -14,8 +14,8 @@ public class ZPM extends Ososztaly{
 		
 		System.out.println(">ZPM::ertesit(Pont)");
 		
-		//Mostantól a ZPM fel van véve
-		/*!TODO - fel is kéne venni ténylegesen		 * 
+		//Mostantol a ZPM fel van veve
+		/*!TODO - fel is kene venni tenylegesen	
 		 * ezredes.collectZPM()
 		 */
 		

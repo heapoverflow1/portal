@@ -1,15 +1,20 @@
 package portal;
 
+import portal.Ezredes.Irany;
+
 public class Tolteny extends Ososztaly{
 	boolean type_kek;
 	
 	/* Konstruktor
 	 * A TOLTENY inicializalasa blueType-ra
 	 * !TODO 
-	 * ez kell? x, y koordinatakkal
+	 * ez kell? x, y koordinatakkal -WM
+	 * Beletettem, így van kezdopozicioja -WM
 	 */
-	public Tolteny(boolean blueType) {
+	public Tolteny(boolean blueType, Pont pos) {
+		
 		type_kek = blueType;
+		position = pos;
 	}
 	
 	//!TODO - KOMMENT
@@ -22,10 +27,15 @@ public class Tolteny extends Ososztaly{
 	
 	
 	//!TODO
-	void shoot(){
+	void shoot(Irany irany){
 		System.out.println(">Tolteny::shoot()");
 		
 		//!TODO
+		position.move(irany);
+		
+		//MEG AT KELL GONDOLNI
+		//Jatek.palya.checkBullet(this);
+		
 		
 		System.out.println("<Tolteny::shoot()");
 	}

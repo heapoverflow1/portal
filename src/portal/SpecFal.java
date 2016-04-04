@@ -39,4 +39,13 @@ public class SpecFal extends Fal {
 		System.out.println("<SpecFal::destroyCSK(Tolteny)");
 		
 	}
+		
+	
+	//!TODO - HA TOLTENY VAN?
+	public Pont ertesit(Pont regi){
+		
+		System.out.println(">SpecFal::ertesit(Pont)");
+		System.out.println("<SpecFal::ertesit(Pont)");
+		return regi;
+	}
 }
