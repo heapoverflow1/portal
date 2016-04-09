@@ -120,7 +120,7 @@ public class Jatek {
           } catch (IOException e) {
             e.printStackTrace();
           }
-         
+         break;
          //töltény váltás
         case 8:
 			ezredes.changeTolteny();
