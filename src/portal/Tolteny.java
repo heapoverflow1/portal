@@ -12,9 +12,9 @@ public class Tolteny extends Ososztaly{
 	 * ez kell? x, y koordinatakkal -WM
 	 * Beletettem, így van kezdopozicioja -WM
 	 */
-	public Tolteny(boolean blueType, Pont pos) {
+	public Tolteny(Szin sz, Pont pos) {
 		
-		type_kek = blueType;
+		szin = sz;
 		position = pos;
 	}
 	
