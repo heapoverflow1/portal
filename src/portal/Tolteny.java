@@ -1,7 +1,5 @@
 package portal;
 
-import portal.Jatekos.Irany;
-
 public class Tolteny extends Ososztaly{
 	Szin szin;
 	boolean alive = true;
@@ -36,22 +34,22 @@ public class Tolteny extends Ososztaly{
 			int y =0;
 			 switch (irany) {
 			 
-			 case fel: 
+			 case FEL: 
 				 y = p.getY()+1;
 				 p.setY(y); 
 				 break;
 				 
-			 case le:
+			 case LE:
 				 y = p.getY()-1;
 				 p.setY(y); 
 				 break;
 				 
-			 case jobbra:
+			 case JOBBRA:
 				 y = p.getX()+1;
 				 p.setX(y); 
 				 break;
 				 
-			 case balra:
+			 case BALRA:
 				 y = p.getX()-1;
 				 p.setX(y); 
 				 break;
