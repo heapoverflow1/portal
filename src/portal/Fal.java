@@ -30,4 +30,16 @@ public class Fal extends Ososztaly{
 		System.out.println("<Fal::ertesit(Pont)");
 		return regi;
 	}
+
+	@Override
+	public Pont ertesit(Pont innenlep, Szereplo sz) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		// TODO Auto-generated method stub
+		
+	}
 }

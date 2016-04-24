@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Jatekter {
 	List<Ososztaly> objects;
+	Szereplo sz;
 	
 	/* Konstruktor
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
@@ -76,16 +77,30 @@ public class Jatekter {
 		for (Ososztaly i : objects){
 			//javitva, csak merlegnel hivja meg - TG
 			if (i.position.compareTo(regihely) && (i instanceof Merleg)){
-				i.ertesit(regihely);
+				i.ertesit(regihely,sz);
 			}
 			if (i.position.compareTo(ujhely)){
-				ujhely = i.ertesit(regihely);
+				ujhely = i.ertesit(regihely,sz);
 			}				
 		}		
 		
 		System.out.println("<Jatekter::checkfield(Pont, Pont)");
 		
 		return ujhely;
+	}
+	
+	public Ososztaly checkfield_shoot (Pont p){
+		Ososztaly vissza = null;
+		
+		for (Ososztaly  i : objects){
+			
+			if (i.position.compareTo(p))
+				vissza = i;
+			
+			
+		}
+		return vissza;
+		
 	}
 	
 	/*

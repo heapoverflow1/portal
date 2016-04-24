@@ -2,7 +2,7 @@ package portal;
 
 import java.util.Stack;
 
-public class Merleg extends Ososztaly{
+public class Merleg extends Ososztaly implements Ertesit{
 	Ajto nyitando;
 	Stack<Doboz> dobozok=new Stack<Doboz>();
 	int currentWeight=0;
@@ -38,17 +38,17 @@ public class Merleg extends Ososztaly{
 	
 	//ezredes raall a merlegre
 	public void ezredesStepsOn(){
-		currentWeight+=Ezredes.weight;
+		currentWeight+=Jatekos.weight;
 		weighted();
 	}
 	
 	//ezredes leszall a merlegrol
 	public void ezredesStepsOff(){
-			currentWeight-=Ezredes.weight;
+			currentWeight-=Jatekos.weight;
 			weighted();
 	}
 	
-	public Pont ertesit(Pont regi){
+	public Pont ertesit(Pont regi, Szereplo sz){
 		
 		System.out.println(">Merleg::ertesit(Pont)");
 		if(position.compareTo(regi)){
@@ -76,5 +76,12 @@ public class Merleg extends Ososztaly{
 		}
 		
 		System.out.println("<Merleg::weighted(boolean)");
+	}
+
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		// TODO Auto-generated method stub
+		
 	}
 }

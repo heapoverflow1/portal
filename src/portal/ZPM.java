@@ -10,16 +10,23 @@ public class ZPM extends Ososztaly{
 	}
 	
 	//!TODO - KOMMENT
-	public Pont ertesit(Pont regi){
-		
-		System.out.println(">ZPM::ertesit(Pont)");
-		
+	public Pont ertesit(Pont regi, Szereplo sz){
+				
 		//Mostantol a ZPM fel van veve
 		/*!TODO - fel is kene venni tenylegesen	
 		 * ezredes.collectZPM()
 		 */
+		 
+		//meg kéne semmisíteni magát, illetve növelni a ZMPCOUNT-ot. Probléma :
+			// a replilátor is egy szereplo, ergo õ is fel tudja venni a ZPM-et ilyen módon,
+		// meg kéne oldani hogy ne tudja ezt megtenni.
 		
-		System.out.println("<ZPM::ertesit(Pont)");
 		return position;
+	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		//  simán tovább engedi nem csinál vele semmit
+		
 	}
 }
