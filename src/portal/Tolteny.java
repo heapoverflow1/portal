@@ -25,7 +25,6 @@ public class Tolteny extends Ososztaly{
 		return position;
 	}
 	
-	
 	//!TODO
 	void shoot(Irany irany){
 		System.out.println(">Tolteny::shoot()");
