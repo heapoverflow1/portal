@@ -3,7 +3,7 @@ package portal;
 import portal.Jatekos.Irany;
 
 public class Tolteny extends Ososztaly{
-	boolean type_kek;
+	Szin szin;
 	boolean alive = true;
 	
 	/* Konstruktor
@@ -93,6 +93,9 @@ public class Tolteny extends Ososztaly{
 		
 	}
 	
-	
+	Szin getColour(){
+		
+		return szin;
+	}
 
 }
