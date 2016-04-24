@@ -18,33 +18,24 @@ public class Ajto extends Fal implements Ertesit{
 	
 	//Ajtonyitas
 	void open(){
-		
-		System.out.println(">Ajto::open()");
 		isOpen = true;
-		System.out.println("<Ajto::open()");
 	}
 	
 	//Ajtocsukas
 	void close(){
-		
-		System.out.println(">Ajto::close()");
 		isOpen = false;
-		System.out.println("<Ajto::close()");
 	}
 	
 	//fal ertesitjenek felulirasa, ha nyitva, ezredes tud arra lepni, egyebkent falkent viselkedik - TG
-	public Pont ertesit(Pont regi){
-		
-		System.out.println(">Ajto::ertesit(Pont)");
+	public Pont ertesit(Pont regi, Szereplo sz){		
 		if(isOpen){
-			System.out.println("<Ajto::ertesit(Pont)");
-			return position;
-			
+			return position;			
 		}
 		else{
-			System.out.println("<Ajto::ertesit(Pont)");
 			return regi;
 		}
 	}
-
+	public void ertesit_shoot(Tolteny t){
+		t.destroy();
+	}
 }
