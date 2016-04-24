@@ -26,7 +26,6 @@ public class Tolteny extends Ososztaly{
 		return position;
 	}
 	
-	
 	//!TODO
 	void shoot(Irany irany) throws Throwable{
 		
