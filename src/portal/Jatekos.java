@@ -1,10 +1,9 @@
 package portal;
 
-public class Jatekos extends Ososztaly{
+public class Jatekos extends Szereplo{
 	Doboz doboz;
 	Szin tolteny_szin;	
-	int zpmcount;	
-	Irany irany;
+	int zpmcount = 0;	
 	static int weight = 1;
 	
 	/* Konstruktor
@@ -12,19 +11,16 @@ public class Jatekos extends Ososztaly{
 	 * Az EZREDES inicializalasa x, y koordinatakkal
 	 */
 	public Jatekos(int x, int y) {
-		
-		position = new Pont(x, y);
+		super(x,y);
 		tolteny_szin = Szin.KEK;
 		zpmcount = 0;
-		irany = Irany.JOBBRA;
 		doboz = null;
 		
 	}
 		
-	//!TODO - KOMMENT
+	//!TODO - Visszaadja a JATEKOS
 	public Pont ertesit(Pont regi){
-		
-		
+				
 		return position;
 	}
 	
@@ -36,7 +32,7 @@ public class Jatekos extends Ososztaly{
 	 * pozicion levo dolognak az ertesit fuggvenyet, ami visszater egy
 	 * adott pozicioval a targytol fuggoen ( ha fal, akkor az a pozicio amit kapott)
 	 */
-	void move(Irany irany){	
+	public void move(Irany irany){	
 		
 		this.irany = irany;
 		
@@ -44,29 +40,26 @@ public class Jatekos extends Ososztaly{
 		ujhely.move(irany);
 		position = Jatek.palya.checkfield(position, ujhely);
 		if (doboz != null) doboz.setPosition(position);
-		
-		
+				
 	}
 	
 	//!TODO - ezredes.finalize(), meg valahogy a jatek vege
 	//Ezredes leesik, ezaltal meghal, vege a jateknak
-	void fallAndDie(){
+	public void fallAndDie(){
 		
-		
-		
-		//!TODO
-		
+		try {
+			this.finalize();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 			
 	}
 	
 	
 	//!TODO
-	//Tolteny lovese
-	/**HIBA: IDE SZERINTEM NEM KELL TOLTENY PARAMETERBEN, mert itt hozzuk letre
-	 * @throws Throwable */
+	//Tolteny lovese	 
 	void shoot(/*Tolteny t*/) throws Throwable{
-		
-		
 		
 		//ENNEK igy meg semmi ertelme, letrehozzuk majd el is tunik -WM
 		//valahogy hasznalni kene
