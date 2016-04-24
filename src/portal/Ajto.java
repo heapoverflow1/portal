@@ -1,8 +1,5 @@
 package portal;
 
-//!TODO LIST
-//toltenykezeles: nyitva atengedi, zarva blokkolja
-
 public class Ajto extends Fal implements Ertesit{
 	boolean isOpen;
 	
@@ -10,10 +7,9 @@ public class Ajto extends Fal implements Ertesit{
 	 * Az AJTO inicializalasa x, y koordinatakkal
 	 * Meghivja az os (FAL) konstruktorat
 	 */
-	public Ajto(int x, int y){
-		
+	public Ajto(int x, int y){		
 		super(x,y);		
-		isOpen = false;		
+		isOpen = false;
 	}
 	
 	//Ajtonyitas
@@ -36,6 +32,8 @@ public class Ajto extends Fal implements Ertesit{
 		}
 	}
 	public void ertesit_shoot(Tolteny t){
-		t.destroy();
+		//Ha töltényt lõttek ránk, megsemmisítjük,
+		//hiszen ez nem egy speciális fal
+		if (!isOpen) t.destroy();
 	}
 }
