@@ -3,35 +3,30 @@ package portal;
 public class Jatekos extends Szereplo{
 	Doboz doboz;
 	Szin tolteny_szin;	
-	int zpmcount = 0;	
-	static int weight = 1;
+	private int zpmcount;	
+	static int weight;
 	
 	/* Konstruktor
-	 * Az Ezredes a jatek elejen jobbra all es kek toltenye van.
-	 * Az EZREDES inicializalasa x, y koordinatakkal
+	 * A JATEKOS a konstruktorban kapott SZINu toltenye van.
+	 * Meghivja az ososztalyanak a konstruktorat (beallitja a poziciot es kezdoiranyt)
 	 */
-	public Jatekos(int x, int y) {
+	public Jatekos(int x, int y, Szin sz) {
 		super(x,y);
-		tolteny_szin = Szin.KEK;
 		zpmcount = 0;
+		weight = 1;		
+		tolteny_szin = sz;		
 		doboz = null;
 		
 	}
-		
-	//!TODO - Visszaadja a JATEKOS
-	public Pont ertesit(Pont regi){
-				
-		return position;
-	}
 	
-	//!TODO - jobban leirni a mukodeset
-	/* Ezredes mozgatasa irany iranyba
+	/* JATEKOS mozgatasa irany iranyba
 	 * irany valtozoja beallitasa
-	 * Megprobal lepni az ezredes egyet az adott iranyba,
+	 * Megprobal lepni a JATEKOS egyet az adott iranyba,
 	 * majd megkeri a JATEKTER-et, hogy hivja meg az adott
-	 * pozicion levo dolognak az ertesit fuggvenyet, ami visszater egy
-	 * adott pozicioval a targytol fuggoen ( ha fal, akkor az a pozicio amit kapott)
-	 */
+	 * pozicion levo dolognak az ERTESIT fuggvenyet, ami visszater egy
+	 * adott pozicioval a targytol fuggoen ( ha FAL, akkor a regi pozicio, azaz nem leptunk,
+	 * ha MERLEG, akkor az uj pozicio, tehat leptunk)
+	 */	
 	public void move(Irany irany){	
 		
 		this.irany = irany;
@@ -43,38 +38,27 @@ public class Jatekos extends Szereplo{
 				
 	}
 	
-	//!TODO - ezredes.finalize(), meg valahogy a jatek vege
-	//Ezredes leesik, ezaltal meghal, vege a jateknak
+	//!TODO - JATEKOS meghalasa utan VEGE a jateknak
 	public void fallAndDie(){
-		
-		try {
-			this.finalize();
-		} catch (Throwable e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-			
+							
 	}
 	
 	
-	//!TODO
-	//Tolteny lovese	 
-	void shoot(/*Tolteny t*/) throws Throwable{
+	/*  Letrehoz egy uj toltenyt a beallitott szinnel
+	 * 	Majd kilovi, azaz meghivja a TOLTENY SHOOT metodusat 
+	 */
+	void shoot() throws Throwable{
 		
-		//ENNEK igy meg semmi ertelme, letrehozzuk majd el is tunik -WM
-		//valahogy hasznalni kene
 		Tolteny t1 = new Tolteny(tolteny_szin, position);
 		t1.shoot(irany);
 		
-		
 	}
 	
-	//!TODO - picit OUT OF DATE COMMENT
-	//Doboz felemelese, kapott doboz isLifted ertekenek beallitasa igazra	
-	/***HIBA: atadjuk a dobozt akkor melyik mozog? Mert akkor ugye lemasoljuk, referenciat kene adni*/
-	void lift(){
-		
-		
+	/*  Ugyanazon pozicion levo DOBOZ kerese a JATEKTERTOL,
+	 *  majd felemeles attol fuggoen, hogy MERLEGen volt a DOBOZ vagy nem
+	 *  
+	 */
+	void lift(){			
 		
 		//ha mar van a kezeben doboz akkor visszater
 		if (doboz != null){
@@ -85,11 +69,13 @@ public class Jatekos extends Szereplo{
 		//ha merlegen all, akkor a merleg stackjebol szedje le a legfelsot, egyebkent csak vegye fel a dobozt
 		Merleg m = Jatek.palya.getMerleg(position);
 		if(m != null){
+			
 			doboz=m.removeTopDoboz();
-		}
-		else{
+		}else{
+			
 			doboz = Jatek.palya.getDoboz(position);
 		}
+		
 		doboz = Jatek.palya.getDoboz(position);
 		
 		if (doboz!=null)
@@ -97,11 +83,10 @@ public class Jatekos extends Szereplo{
 		
 	}
 	
-	// Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
-	// parameter nem kell, ez a doboz az ezredes kezeben van - TG
-	void drop(/*Doboz d*/){
-		
-		
+	/*  Doboz letevese, ezaltal az ezredes DOBOZ valtozojanak NULL-ra allitasa
+	 *  
+	 */
+	void drop(){		
 
 		Pont newPosition=doboz.position;
 		
@@ -136,30 +121,23 @@ public class Jatekos extends Szereplo{
 		
 		doboz.Drop();
 		doboz = null;
-		
-		
+				
 	}
 	
-	//Az ezredes felvett egy ZPM-et, a zpmcount novelese.
+	//A JATEKOS felvett egy ZPM-et, a zpmcount novelese.
 	void collectZPM(){
-		
-			
-		zpmcount++;
-		
+					
+		zpmcount++;		
 	}
 	
 	//Visszaadja a ZPMCOUNT erteket
-	/**NEM BIZTOS HOGY KELL, de lehet szebb lesz a kod tole -WM*/
 	int getZPMcount(){
-		
-		
+				
 		return zpmcount;
 	}
 	
 	//Tolteny valtasa
-	void changeTolteny(){
-		
-		
+	void changeTolteny(){		
 		
 		if (tolteny_szin ==  Szin.KEK)
 			tolteny_szin = Szin.SARGA;
@@ -174,34 +152,8 @@ public class Jatekos extends Szereplo{
 		
 
 		if (tolteny_szin ==  Szin.ZOLD)
-			tolteny_szin = Szin.PIROS;
-		
-		
-		
+			tolteny_szin = Szin.PIROS;		
 	
 	}
 	
-	//!TODO
-	//Ezredes teleportalasa a masik csillagkapuhoz
-	void teleport(Csillagkapu cs){
-		
-		
-		
-		//!TODO
-		
-		
-		
-	}
-
-	@Override
-	public Pont ertesit(Pont innenlep, Szereplo sz) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void ertesit_shoot(Tolteny t) {
-		// TODO Auto-generated method stub
-		
-	}
 }
