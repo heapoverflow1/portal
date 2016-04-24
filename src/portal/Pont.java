@@ -1,7 +1,5 @@
 package portal;
 
-import portal.Jatekos.Irany;
-
 public class Pont {
 	private int x, y;
 	
@@ -67,19 +65,19 @@ public class Pont {
 		
 		switch (irany){
 		
-			case jobbra:
+			case JOBBRA:
 				this.x += 1;
 				break;
 			
-			case balra:
+			case BALRA:
 				this.x -= 1;
 				break;
 			
-			case fel:
+			case FEL:
 				this.y -= 1;
 				break;
 			
-			case le:
+			case LE:
 				this.y += 1;
 				break;
 			
