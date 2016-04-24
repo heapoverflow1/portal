@@ -89,6 +89,20 @@ public class Jatekter {
 		return ujhely;
 	}
 	
+	public Ososztaly checkfield_shoot (Pont p){
+		Ososztaly vissza = null;
+		
+		for (Ososztaly  i : objects){
+			
+			if (i.position.compareTo(p))
+				vissza = i;
+			
+			
+		}
+		return vissza;
+		
+	}
+	
 	/*
 	 * KENE valahonnan csillagkapu a createCSK-nak 
 	 */

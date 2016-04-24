@@ -4,6 +4,7 @@ import portal.Jatekos.Irany;
 
 public class Tolteny extends Ososztaly{
 	boolean type_kek;
+	boolean alive = true;
 	
 	/* Konstruktor
 	 * A TOLTENY inicializalasa blueType-ra
@@ -27,17 +28,47 @@ public class Tolteny extends Ososztaly{
 	
 	
 	//!TODO
-	void shoot(Irany irany){
-		System.out.println(">Tolteny::shoot()");
+	void shoot(Irany irany) throws Throwable{
+		
 		
 		//!TODO
-		position.move(irany);
+		while (alive){
+			Pont p= this.position;
+			int y =0;
+			 switch (irany) {
+			 
+			 case fel: 
+				 y = p.getY()+1;
+				 p.setY(y); 
+				 break;
+				 
+			 case le:
+				 y = p.getY()-1;
+				 p.setY(y); 
+				 break;
+				 
+			 case jobbra:
+				 y = p.getX()+1;
+				 p.setX(y); 
+				 break;
+				 
+			 case balra:
+				 y = p.getX()-1;
+				 p.setX(y); 
+				 break;
+			 }
+			
+			Ososztaly elem=Jatek.palya.checkfield_shoot(p);
+			elem.ertesit_shoot(this);
+			
+			if (alive)
+			 position.move(irany);
+			
 		
-		//MEG AT KELL GONDOLNI
-		//Jatek.palya.checkBullet(this);
 		
+		}
+		this.finalize();
 		
-		System.out.println("<Tolteny::shoot()");
 	}
 	
 	//!TODO
@@ -61,5 +92,7 @@ public class Tolteny extends Ososztaly{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 }
