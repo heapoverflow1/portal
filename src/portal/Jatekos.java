@@ -153,9 +153,9 @@ public class Jatekos extends Ososztaly{
 	//Az ezredes felvett egy ZPM-et, a zpmcount novelese.
 	void collectZPM(){
 		
-		System.out.println(">Ezredes::collectZPM()");		
+			
 		zpmcount++;
-		System.out.println("<Ezredes::collectZPM()");
+		
 	}
 	
 	//Visszaadja a ZPMCOUNT erteket
