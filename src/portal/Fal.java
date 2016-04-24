@@ -15,14 +15,7 @@ public class Fal extends Ososztaly{
 	 * bar ez nem szep
 	 * -WM
 	 */
-	void blockTolteny(Tolteny t){
-		
-		
-		t.destroy();
-		
-		
-	}
-	
+
 	
 
 	@Override
