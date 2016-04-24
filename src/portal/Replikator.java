@@ -7,4 +7,12 @@ public class Replikator extends Szereplo {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void fallAndDie() {
+		try {
+			this.finalize();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
