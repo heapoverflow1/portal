@@ -34,6 +34,6 @@ public class Ajto extends Fal implements Ertesit{
 	public void ertesit_shoot(Tolteny t){
 		//Ha töltényt lõttek ránk, megsemmisítjük,
 		//hiszen ez nem egy speciális fal
-		if (!isOpen) t.destroy();
+		if (!isOpen) t.alive=false;
 	}
 }
