@@ -19,7 +19,6 @@ public class Doboz extends Ososztaly{
 	//Doboz letevese
 	public void Drop(){
 		isLifted = false;
-
 	}
 	
 	//Doboz helyenek allitasa
