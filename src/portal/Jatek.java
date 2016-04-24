@@ -21,7 +21,7 @@ public class Jatek {
 		 */
 		palya.add(new Replikator(3, 3));
 		
-		//!TODO - JATEKTER VÉGTELEN CIKLUSAT MEGIRNI
+		//!TODO - JATEKTER VEGTELEN CIKLUSAT MEGIRNI
 		
 	}
 }
