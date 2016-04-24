@@ -26,7 +26,6 @@ public class Tolteny extends Ososztaly{
 		return position;
 	}
 	
-	
 	//!TODO
 	void shoot(Irany irany) throws Throwable{
 		
@@ -93,7 +92,7 @@ public class Tolteny extends Ososztaly{
 		
 	}
 	
-	Szin getColour(){
+	Szin getColor(){
 		
 		return szin;
 	}

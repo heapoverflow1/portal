@@ -53,8 +53,8 @@ public class Csillagkapu{
 	Pont checkCsk(SpecFal fal, Pont innenjon){
 		for (int i=0;i<4;i++){
 			if (fal==falak[i]){
-				if (i%2==0 && falak[i+1]!=null) return falak[i+1].position;
-				if (i%2==1 && falak[i-1]!=null) return falak[i-1].position;
+				if (i%2==0 && falak[i+1]!=null) return falak[i+1].getTeleportPos();
+				if (i%2==1 && falak[i-1]!=null) return falak[i-1].getTeleportPos();
 				return innenjon;
 			}
 		}
