@@ -7,62 +7,39 @@ public class Doboz extends Ososztaly{
 	/* Konstruktor
 	 * A DOBOZ inicializalasa x, y koordinatakkal
 	 */
-	public Doboz(int x, int y) {
-		
-		position = new Pont(x,y);
-		
+	public Doboz(int x, int y) {		
+		position = new Pont(x,y);		
 	}
-		
+	
 	//Doboz felemelese
 	public void Lift(){
-		
-		System.out.println(">Doboz::Lift()");
 		isLifted = true;
-		System.out.println("<Doboz::Lift()");
 	}
 	
 	//Doboz letevese
 	public void Drop(){
-		
-		System.out.println(">Doboz::Drop()");
 		isLifted = false;
-		System.out.println("<Doboz::Drop()");
 	}
 	
 	//Doboz helyenek allitasa
 	public void setPosition(Pont uj){
-		
-		System.out.println(">Doboz::setPosition(Pont)");
 		if (isLifted)
 			position = uj;
-		System.out.println("<Doboz::setPosition(Pont)");
 	}
-	
-	//!TODO - KOMMENT
-	public Pont ertesit(Pont regi){
-		
-		System.out.println(">Doboz::ertesit(Pont)");
-		System.out.println("<Doboz::ertesit(Pont)");
+
+	//Az ertesit interfesz megvalositasa miatt szukseges, hogy fel lehessen venni a jatekter objektumai koze. A doboz sajat poziciojaval ter vissza.
+	//Egy kesobbi bovites alkalmaval kaphat a metodus nagyobb szerepet, ha pl. be szeretnenk allitani, hogy legyenek olyan dobozok, amikkel nem lehet egy mezore lepni.
+
+	public Pont ertesit(Pont regi, Szereplo sz){
 		return position;
 	}
 	
 	//Doboz megszunik
-	void destroy() throws Throwable{
-		
-		System.out.println(">Doboz::destroy()");
+	void destroy() throws Throwable{		
 		this.finalize();
-		System.out.println("<Doboz::destroy()");
 	}
 
-	@Override
-	public Pont ertesit(Pont innenlep, Szereplo sz) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void ertesit_shoot(Tolteny t) {
-		// TODO Auto-generated method stub
-		
+		//A doboz nem akadályozza meg a töltény útját	
 	}
 }
