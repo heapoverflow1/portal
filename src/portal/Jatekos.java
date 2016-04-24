@@ -3,10 +3,9 @@ package portal;
 public class Jatekos extends Ososztaly{
 	Doboz doboz;
 	Szin tolteny_szin;	
-	int zpmcount;
-	enum Irany{fel, le, jobbra, balra};
+	int zpmcount;	
 	Irany irany;
-	static int weight=1;
+	static int weight = 1;
 	
 	/* Konstruktor
 	 * Az Ezredes a jatek elejen jobbra all es kek toltenye van.
@@ -17,7 +16,7 @@ public class Jatekos extends Ososztaly{
 		position = new Pont(x, y);
 		tolteny_szin = Szin.KEK;
 		zpmcount = 0;
-		irany = Irany.jobbra;
+		irany = Irany.JOBBRA;
 		doboz = null;
 		
 	}
@@ -39,9 +38,7 @@ public class Jatekos extends Ososztaly{
 	 */
 	void move(Irany irany){	
 		
-		
-		
-		this.irany=irany;
+		this.irany = irany;
 		
 		Pont ujhely = position;
 		ujhely.move(irany);
