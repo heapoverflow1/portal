@@ -70,11 +70,8 @@ public class Tolteny extends Ososztaly{
 	
 	//!TODO
 	void destroy(){
-		System.out.println(">Tolteny::destroy()");
 		
-		//!TODO
-		
-		System.out.println("<Tolteny::destroy()");
+		this.alive=false;
 		
 	}
 
