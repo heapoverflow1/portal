@@ -92,7 +92,7 @@ public class Tolteny extends Ososztaly{
 		
 	}
 	
-	Szin getColour(){
+	Szin getColor(){
 		
 		return szin;
 	}

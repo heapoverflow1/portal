@@ -2,7 +2,7 @@ package portal;
 
 public class Jatekos extends Ososztaly{
 	Doboz doboz;
-	boolean tolteny_kek;	
+	Szin tolteny_szin;	
 	int zpmcount;
 	enum Irany{fel, le, jobbra, balra};
 	Irany irany;
@@ -15,7 +15,7 @@ public class Jatekos extends Ososztaly{
 	public Jatekos(int x, int y) {
 		
 		position = new Pont(x, y);
-		tolteny_kek = true;
+		tolteny_szin = Szin.KEK;
 		zpmcount = 0;
 		irany = Irany.jobbra;
 		doboz = null;
@@ -66,14 +66,15 @@ public class Jatekos extends Ososztaly{
 	
 	//!TODO
 	//Tolteny lovese
-	/**HIBA: IDE SZERINTEM NEM KELL TOLTENY PARAMETERBEN, mert itt hozzuk letre*/
-	void shoot(/*Tolteny t*/){
+	/**HIBA: IDE SZERINTEM NEM KELL TOLTENY PARAMETERBEN, mert itt hozzuk letre
+	 * @throws Throwable */
+	void shoot(/*Tolteny t*/) throws Throwable{
 		
 		System.out.println(">Ezredes::shoot()");
 		
 		//ENNEK igy meg semmi ertelme, letrehozzuk majd el is tunik -WM
 		//valahogy hasznalni kene
-		Tolteny t1 = new Tolteny(tolteny_kek, position);
+		Tolteny t1 = new Tolteny(tolteny_szin, position);
 		t1.shoot(irany);
 		
 		System.out.println("<Ezredes::shoot()");
@@ -170,14 +171,26 @@ public class Jatekos extends Ososztaly{
 	//Tolteny valtasa
 	void changeTolteny(){
 		
-		System.out.println(">Ezredes::changeTolteny()");
 		
-		if (tolteny_kek)
-			tolteny_kek = false;
-		else
-			tolteny_kek = true;
 		
-		System.out.println("<Ezredes::changeTolteny()");
+		if (tolteny_szin ==  Szin.KEK)
+			tolteny_szin = Szin.SARGA;
+		
+
+		if (tolteny_szin ==  Szin.SARGA)
+			tolteny_szin = Szin.KEK;
+		
+
+		if (tolteny_szin ==  Szin.PIROS)
+			tolteny_szin = Szin.ZOLD;
+		
+
+		if (tolteny_szin ==  Szin.ZOLD)
+			tolteny_szin = Szin.PIROS;
+		
+		
+		
+	
 	}
 	
 	//!TODO
