@@ -66,7 +66,7 @@ public class Merleg extends Ososztaly implements Ertesit{
 	//megnezi, van-e eleg suly a merlegen az ajto kinyitasahoz
 	void weighted(){
 		
-		System.out.println(">Merleg::weighted(boolean)");
+		
 		
 		if(currentWeight>=openWeight){
 			nyitando.open();		
@@ -75,7 +75,7 @@ public class Merleg extends Ososztaly implements Ertesit{
 			nyitando.close();
 		}
 		
-		System.out.println("<Merleg::weighted(boolean)");
+		
 	}
 
 
