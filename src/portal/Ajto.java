@@ -3,7 +3,7 @@ package portal;
 //!TODO LIST
 //toltenykezeles: nyitva atengedi, zarva blokkolja
 
-public class Ajto extends Fal{
+public class Ajto extends Fal implements Ertesit{
 	boolean isOpen;
 	
 	/* Konstruktor

@@ -53,4 +53,16 @@ public class Doboz extends Ososztaly{
 		this.finalize();
 		System.out.println("<Doboz::destroy()");
 	}
+
+	@Override
+	public Pont ertesit(Pont innenlep, Szereplo sz) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		// TODO Auto-generated method stub
+		
+	}
 }

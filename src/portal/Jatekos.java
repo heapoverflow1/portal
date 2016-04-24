@@ -1,6 +1,6 @@
 package portal;
 
-public class Ezredes extends Ososztaly{
+public class Jatekos extends Ososztaly{
 	Doboz doboz;
 	boolean tolteny_kek;	
 	int zpmcount;
@@ -12,7 +12,7 @@ public class Ezredes extends Ososztaly{
 	 * Az Ezredes a jatek elejen jobbra all es kek toltenye van.
 	 * Az EZREDES inicializalasa x, y koordinatakkal
 	 */
-	public Ezredes(int x, int y) {
+	public Jatekos(int x, int y) {
 		
 		position = new Pont(x, y);
 		tolteny_kek = true;
@@ -189,6 +189,18 @@ public class Ezredes extends Ososztaly{
 		//!TODO
 		
 		System.out.println("<Ezredes::teleport(Csillagkapu)");
+		
+	}
+
+	@Override
+	public Pont ertesit(Pont innenlep, Szereplo sz) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		// TODO Auto-generated method stub
 		
 	}
 }

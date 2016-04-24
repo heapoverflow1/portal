@@ -69,7 +69,7 @@ public class Csillagkapu implements Ertesit{
 	 * ha a kek kapuba lep, akkor a sarga kapuban jelenik meg
 	 * Azaz az adott Pontot adjuk vissza neki. 
 	 */
-	public Pont ertesit(Pont innenlep) {		
+	public Pont ertesit(Pont innenlep, Szereplo sz) {		
 		System.out.println(">Csillagkapu::ertesit(Pont)");		
 		
 		if(yellow.position.compareTo(innenlep)){
@@ -87,5 +87,11 @@ public class Csillagkapu implements Ertesit{
 			return null;
 		}
 
+	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		// TODO Auto-generated method stub
+		
 	}
 }

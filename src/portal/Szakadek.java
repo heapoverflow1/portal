@@ -18,7 +18,7 @@ public class Szakadek extends Ososztaly {
 	}
 	
 	//Ezredes megsemmisitése, ha beleesett
-	void kill(Ezredes e) throws Throwable{
+	void kill(Jatekos e) throws Throwable{
 		
 		System.out.println(">Szakadek::kill(Ezredes)");
 		e.fallAndDie();
@@ -27,7 +27,7 @@ public class Szakadek extends Ososztaly {
 	
 	
 	//!TODO - leírás + lentebbi !TODO
-	public Pont ertesit(Pont regi){
+	public Pont ertesit(Pont regi, Szereplo sz){
 		
 		System.out.println(">Szakadek::ertesit(Pont)");
 		
@@ -37,5 +37,11 @@ public class Szakadek extends Ososztaly {
 		
 		System.out.println("<Szakadek::ertesit(Pont)");
 		return position;
+	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		// TODO Auto-generated method stub
+		
 	}
 }

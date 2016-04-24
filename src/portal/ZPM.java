@@ -10,7 +10,7 @@ public class ZPM extends Ososztaly{
 	}
 	
 	//!TODO - KOMMENT
-	public Pont ertesit(Pont regi){
+	public Pont ertesit(Pont regi, Szereplo sz){
 		
 		System.out.println(">ZPM::ertesit(Pont)");
 		
@@ -21,5 +21,11 @@ public class ZPM extends Ososztaly{
 		
 		System.out.println("<ZPM::ertesit(Pont)");
 		return position;
+	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		// TODO Auto-generated method stub
+		
 	}
 }

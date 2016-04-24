@@ -1,6 +1,6 @@
 package portal;
 
-import portal.Ezredes.Irany;
+import portal.Jatekos.Irany;
 
 public class Tolteny extends Ososztaly{
 	boolean type_kek;
@@ -47,6 +47,18 @@ public class Tolteny extends Ososztaly{
 		//!TODO
 		
 		System.out.println("<Tolteny::destroy()");
+		
+	}
+
+	@Override
+	public Pont ertesit(Pont innenlep, Szereplo sz) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+		// TODO Auto-generated method stub
 		
 	}
 
