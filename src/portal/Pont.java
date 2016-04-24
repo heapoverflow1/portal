@@ -1,6 +1,6 @@
 package portal;
 
-import portal.Ezredes.Irany;
+import portal.Jatekos.Irany;
 
 public class Pont {
 	private int x, y;

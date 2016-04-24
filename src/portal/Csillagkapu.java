@@ -1,12 +1,9 @@
 package portal;
 
 
-public class Csillagkapu implements Ertesit{
-	SpecFal blue;
-	SpecFal yellow;
-	
-	//!TODO - mikor lesz false-ra allitva?
-	boolean feregjarat;
+public class Csillagkapu{
+	SpecFal[] falak;	
+	boolean[] Feregjarat;
 	
 	
 	/* Konstruktor
@@ -14,78 +11,53 @@ public class Csillagkapu implements Ertesit{
 	 */
 	public Csillagkapu(int x, int y) {
 		
-		feregjarat = false;
-		blue = null;
-		yellow = null;
+		Feregjarat = new boolean[2];
+		falak = new SpecFal[4];
+		for (int i=0;i<4;i++){
+			falak[i]=null;
+		}
 	}
 	
 	// Beallitja a kek privat SpecFal erteket a kapottra
-	void setBlue(SpecFal s){
-		
-		System.out.println(">Csillagkapu::setBlue(SpecFal)");
-		
-		blue = s;
-		if(yellow != null){
-			this.makeFeregjarat();
+	boolean SetCsk(SpecFal pos, Szin color){
+		falak[color.getValue()] = pos;
+		//a megfelelõ színhez tároljuk, hogy melyik fal tartozik
+		Szin masik = null;
+		//megszerezzük, hogy milyen színû a párja
+		switch(color){
+			case SARGA:
+				masik = Szin.KEK;
+				break;
+			case KEK:
+				masik = Szin.SARGA;
+				break;
+			//a sárgának a kék,
+			case ZOLD:
+				masik = Szin.PIROS;
+				break;
+			case PIROS:
+				masik = Szin.ZOLD;
+				break;
+			//a zöldnek a piros
+			default:
+				break;
 		}
-		
-		System.out.println("<Csillagkapu::setBlue(SpecFal)");
-	}
-	
-	// Beallitja a sarga privat SpecFal erteket a kapottra
-	void setYellow(SpecFal s){
-		
-		System.out.println(">Csillagkapu::setYellow(SpecFal)");
-		
-		yellow = s;
-		if(blue != null){
-			this.makeFeregjarat();
+		//elkerüljük a nullpointerexceptiont az ellenõrzéssel
+		if (masik!=null && falak[masik.getValue()]==null){
+			Feregjarat[color.getValue()/2]=true;
+			return true;
 		}
-		
-		System.out.println("<Csillagkapu::setYellow(SpecFal)");
+		return false;
 	}
-	
-	//Keletkezik egy feregjarat, azaz a feregjarat erteket igazra allitjuk
-	void makeFeregjarat(){
-		
-		System.out.println(">Csillagkapu::makeFeregjarat()");
-		feregjarat = true;
-		System.out.println("<Csillagkapu::makeFeregjarat()");
-	}
-	
-	//!TODO
-	// ez visszaadhatna true/false erteket es akkor azt nezzük, hogy mit adott vissza
-	void entered(){
-		
-		System.out.println(">Csillagkapu::entered()");
-		
-		//!TODO
-		
-		System.out.println(">Csillagkapu::entered()");
-		
-	}
-	
-	/* Ha az EZREDES a sarga kapuba lep bele, akkor a kek kapuban jelenik meg,
-	 * ha a kek kapuba lep, akkor a sarga kapuban jelenik meg
-	 * Azaz az adott Pontot adjuk vissza neki. 
-	 */
-	public Pont ertesit(Pont innenlep) {		
-		System.out.println(">Csillagkapu::ertesit(Pont)");		
-		
-		if(yellow.position.compareTo(innenlep)){
-			
-			System.out.println("<Csillagkapu::ertesit(Pont)");
-			return blue.position;
-		}
-		else if(blue.position.compareTo(innenlep)){
-			
-			System.out.println("<Csillagkapu::ertesit(Pont)");
-			return yellow.position;
-		}else{
-			
-			System.out.println("<Csillagkapu::ertesit(Pont)");
-			return null;
-		}
 
+	Pont checkCsk(SpecFal fal, Pont innenjon){
+		for (int i=0;i<4;i++){
+			if (fal==falak[i]){
+				if (i%2==0 && falak[i+1]!=null) return falak[i+1].position;
+				if (i%2==1 && falak[i-1]!=null) return falak[i-1].position;
+				return innenjon;
+			}
+		}
+		return innenjon;
 	}
 }
