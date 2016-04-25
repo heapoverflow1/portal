@@ -15,4 +15,12 @@ public class Replikator extends Szereplo {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void ertesit_shoot(Tolteny t) {
+
+		t.alive = false;
+
+	}
+
 }
