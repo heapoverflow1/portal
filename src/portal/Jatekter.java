@@ -92,6 +92,12 @@ public class Jatekter {
 		
 	}
 	
+	void getObjects(List<Ososztaly> ref){
+		for (Ososztaly i : objects){
+			ref.add(i);
+		}
+	}
+	
 	/*
 	 * KENE valahonnan csillagkapu a createCSK-nak 
 	 */
