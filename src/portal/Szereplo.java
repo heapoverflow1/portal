@@ -24,7 +24,7 @@ public abstract class Szereplo extends Ososztaly {
 		this.irany = i;
 		Pont ujhely = new Pont(position);
 		ujhely.move(irany);
-		position = Jatek.palya.checkfield(position, ujhely);
+		position = Jatek.palya.checkfield(position, ujhely, this);
 	}
 	
 	/*  SZEREPLO leesik, ezaltal meghal, vege a jateknak 

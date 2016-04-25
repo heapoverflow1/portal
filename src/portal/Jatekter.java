@@ -1,18 +1,20 @@
 package portal;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Jatekter {
 	List<Ososztaly> objects;
 	public Csillagkapu kapumgr;
-	Szereplo sz;
+	public List<Ososztaly> removeQueue;
 	
 	/* Konstruktor
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
 	 */
 	public Jatekter() {		
 		objects = new ArrayList<Ososztaly>();
+		removeQueue = new ArrayList<Ososztaly>();
 		kapumgr = new Csillagkapu();
 	}
 	
@@ -21,8 +23,6 @@ public class Jatekter {
 
 		for (Ososztaly i : objects){
 			if (i instanceof Doboz && i.position.compareTo(innen)){
-				
-				System.out.println("<Jatekter::getDoboz(Pont)");
 				return (Doboz) i;
 			}				
 		}
@@ -31,8 +31,6 @@ public class Jatekter {
 	
 	public Merleg getMerleg(Pont innen){
 		
-		System.out.println(">Jatekter::getMerleg(Pont)");
-		
 		for (Ososztaly i : objects){
 			if (i instanceof Merleg && i.position.compareTo(innen)){
 				
@@ -40,8 +38,6 @@ public class Jatekter {
 				return (Merleg) i;
 			}				
 		}
-		
-		System.out.println("<Jatekter::getMerleg(Pont)");
 		return null;
 	}
 	
@@ -53,24 +49,29 @@ public class Jatekter {
 	//Objektum eltavolitasa - ha pl. szakadekba zuhant valami,
 	//vagy osszegyujtottek a ZPM-et	
 	public void remove(Ososztaly ezt){
-		objects.remove(ezt);
+		if (objects.contains(ezt))
+			objects.remove(ezt);
 	}
 	
 	//!TODO - out of date lett a kommentje
 	//Irany iranyban levo mezo ellenorzese
 	//nem lenne jobb ha ez static? - TG
-	public Pont checkfield(Pont regihely, Pont ujhely){
+	public Pont checkfield(Pont regihely, Pont ujhely, Szereplo sz){
 		List<Pont> ellenzok = new ArrayList<Pont>();
-		for (Ososztaly i : objects){
-			//javitva, csak merlegnel hivja meg - TG
+
+		for (Iterator<Ososztaly> it = objects.iterator();it.hasNext(); ){
+			Ososztaly i = it.next();
 			if (i.position.compareTo(regihely) && (i instanceof Merleg)){
 				i.ertesit(regihely,sz);
 			}
 			if (i.position.compareTo(ujhely)){
 				Pont idemutat = i.ertesit(regihely,sz);
 				if (!idemutat.compareTo(ujhely)) ellenzok.add(idemutat);
-			}				
+			}
 		}
+		objects.removeAll(removeQueue);
+		removeQueue = new ArrayList<Ososztaly>();
+		
 		if (ellenzok.isEmpty())
 			return ujhely;
 		

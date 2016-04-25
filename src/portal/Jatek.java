@@ -11,7 +11,7 @@ public class Jatek {
 	
 	private static final Irany JOBBRA = Irany.JOBBRA;
 	static Jatekos E = new Jatekos(1, 2, Szin.KEK);
-	static Jatekos Jaffa = new Jatekos(1, 1, Szin.SARGA);
+	static Jatekos Jaffa = new Jatekos(1, 1, Szin.ZOLD);
 	
 	public static void listSzereplo(){
 		List<Ososztaly> ref = new ArrayList<Ososztaly>();
@@ -43,6 +43,29 @@ public class Jatek {
 			}
 		}			
 	}
+	
+	public static void listDoboz(){
+		List<Ososztaly> ref = new ArrayList<Ososztaly>();
+		ref = palya.getObjects();
+		System.out.println("Dobozok:");
+		for (Ososztaly i : ref){
+			if(i.getClass() == Doboz.class){
+				System.out.println(i.position.toString());
+			}
+		}			
+	}
+	
+	public static void listSzakadek(){
+		List<Ososztaly> ref = new ArrayList<Ososztaly>();
+		ref = palya.getObjects();
+		System.out.println("Szakadekok:");
+		for (Ososztaly i : ref){
+			if(i.getClass() == Szakadek.class){
+				System.out.println(i.position.toString());
+			}
+		}			
+	}
+	
 	public static void listCsillagkapu(){
 		System.out.println("Csillagkapuk:");
 		System.out.println(palya.kapumgr.toString());
@@ -90,21 +113,56 @@ public class Jatek {
 	    			palya.add(new Fal(1, 2));
 	    		}
 	    		else if (params[1].compareTo("shootAndHitTest")==0){
-	    			//System.out.println("MoveTest loaded!");
 	    			E.position=new Pont(1, 1);
 	    			palya.add(E);
 	    			palya.add(new Fal(0, 1));
 	    			palya.add(new SpecFal(1, 3, palya.kapumgr));
 	    			palya.add(new SpecFal(1, 0, palya.kapumgr));
 	    		}
+	    		else if (params[1].compareTo("cratePickUpTest")==0){
+	    			E.position=new Pont(0, 1);
+	    			palya.add(E);
+	    			palya.add(new Doboz(1, 2));	    			
+	    		}
+	    		else if (params[1].compareTo("crateDropDownTest")==0){
+	    			E.position=new Pont(0, 1);
+	    			palya.add(E);
+	    			palya.add(new Doboz(1, 2));
+	    			palya.add(new Fal(1, 4));
+	    		}
+	    		else if (params[1].compareTo("teleportTest")==0){
+	    			E.position=new Pont(1, 3);
+	    			palya.add(E);
+	    			SpecFal egyik = new SpecFal(1, 4, palya.kapumgr);
+	    			SpecFal masik = new SpecFal(1, 0, palya.kapumgr);
+	    			palya.add(egyik);
+	    			palya.add(masik);
+	    			palya.kapumgr.SetCsk(egyik, Szin.KEK);
+	    			palya.kapumgr.SetCsk(masik, Szin.SARGA);
+	    		}
+	    		else if (params[1].compareTo("dieTest")==0){
+	    			E.position=new Pont(1, 1);
+	    			Jaffa.position=new Pont(3,3);
+	    			palya.add(E);
+	    			palya.add(Jaffa);
+	    			palya.add(new Szakadek(1, 2));
+	    		}
 	    	}else if (params[0].compareTo("listSzereplo")==0){
     			listSzereplo();
     		}else if (params[0].compareTo("listFal")==0){
     			listFal();
+    		}else if (params[0].compareTo("listDoboz")==0){
+    			listDoboz();
     		}else if (params[0].compareTo("listSpecfal")==0){
     			listSpecfal();
     		}else if (params[0].compareTo("listCsillagkapu")==0){
     			listCsillagkapu();
+    		}else if (params[0].compareTo("listSzakadek")==0){
+    			listSzakadek();
+    		}else if (params[0].compareTo("liftDoboz")==0){
+    			E.lift();
+    		}else if (params[0].compareTo("dropDoboz")==0){
+    			E.drop();
     		}else if (params[0].compareTo("move")==0){
     			Irany dir = getDirFromString(params[2]);    			
     			if (params[1].compareTo("E")==0){

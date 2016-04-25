@@ -11,16 +11,17 @@ public class Szakadek extends Ososztaly {
 
 	// Doboz megsemmisitése, ha beleesett
 	void destroy(Doboz d) throws Throwable {
-		Jatek.palya.remove(d);
+		Jatek.palya.removeQueue.add(d);
 		d.destroy();
 	}
 
 	// Ezredes megsemmisitése, ha beleesett
 	void kill(Szereplo e) throws Throwable {
-		Jatek.palya.remove(e);
+		Jatek.palya.removeQueue.add(e);//Jatek.palya.remove(e);
 		if (e.getClass().getSimpleName() == "Replikator") {
 			e.fallAndDie();
-			Jatek.palya.remove(this);
+			//Jatek.palya.remove(this);
+			Jatek.palya.removeQueue.add(this);
 			this.finalize();
 			//Replikator eseten megsemmisulunk
 		} else {

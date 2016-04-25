@@ -32,7 +32,7 @@ public class Jatekos extends Szereplo{
 		
 		Pont ujhely = new Pont(position);
 		ujhely.move(irany);
-		position = Jatek.palya.checkfield(position, ujhely);
+		position = Jatek.palya.checkfield(position, ujhely, this);
 		if (doboz != null) doboz.setPosition(position);
 				
 	}
@@ -86,8 +86,8 @@ public class Jatekos extends Szereplo{
 	 *  
 	 */
 	void drop(){		
-
-		Pont newPosition=doboz.position;
+		if (doboz==null) return;
+		Pont newPosition=new Pont(doboz.position);
 		
 		//a dobozt arra szeretnem elmozditani, amerre az ezredes nez
 		newPosition.move(irany);
