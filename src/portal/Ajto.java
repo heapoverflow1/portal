@@ -36,4 +36,9 @@ public class Ajto extends Fal implements Ertesit{
 		//hiszen ez nem egy speciális fal
 		if (!isOpen) t.alive=false;
 	}
+	
+	public String toString(){
+		if (isOpen) return position.toString()+" Ny";
+		else return position.toString()+" Z";
+	}
 }

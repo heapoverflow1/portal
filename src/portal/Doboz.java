@@ -10,6 +10,10 @@ public class Doboz extends Ososztaly{
 	public Doboz(int x, int y) {		
 		position = new Pont(x,y);		
 	}
+	public Doboz(int x, int y, int w) {		
+		position = new Pont(x,y);
+		weight=w;
+	}
 	
 	//Doboz felemelese
 	public void Lift(){

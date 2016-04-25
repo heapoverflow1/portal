@@ -33,8 +33,6 @@ public class Jatekter {
 		
 		for (Ososztaly i : objects){
 			if (i instanceof Merleg && i.position.compareTo(innen)){
-				
-				System.out.println("<Jatekter::getMerleg(Pont)");
 				return (Merleg) i;
 			}				
 		}

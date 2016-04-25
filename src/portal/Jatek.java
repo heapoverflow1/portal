@@ -66,6 +66,28 @@ public class Jatek {
 		}			
 	}
 	
+	public static void listMerlegek(){
+		List<Ososztaly> ref = new ArrayList<Ososztaly>();
+		ref = palya.getObjects();
+		System.out.println("Meglegek:");
+		for (Ososztaly i : ref){
+			if(i.getClass() == Merleg.class){
+				System.out.println(i.position.toString());
+			}
+		}			
+	}
+	
+	public static void listAjto(){
+		List<Ososztaly> ref = new ArrayList<Ososztaly>();
+		ref = palya.getObjects();
+		System.out.println("Ajtok:");
+		for (Ososztaly i : ref){
+			if(i.getClass() == Ajto.class){
+				System.out.println(i.toString());
+			}
+		}			
+	}
+	
 	public static void listCsillagkapu(){
 		System.out.println("Csillagkapuk:");
 		System.out.println(palya.kapumgr.toString());
@@ -153,6 +175,14 @@ public class Jatek {
 	    			palya.add(new Szakadek(1, 3));
 	    			palya.add(new Doboz(1, 2));
 	    			palya.add(new Doboz(3, 3));
+	    		}else if (params[1].compareTo("scalePushDoorOpenTest")==0){
+	    			E.position=new Pont(1, 1);
+	    			palya.add(E);
+	    			Ajto door = new Ajto(1, 7);
+	    			Merleg scale = new Merleg(1,3,door,1);
+	    			palya.add(door);
+	    			palya.add(scale);
+	    			palya.add(new Doboz(1,2,5));
 	    		}
 	    	}else if (params[0].compareTo("listSzereplo")==0){
     			listSzereplo();
@@ -166,6 +196,10 @@ public class Jatek {
     			listCsillagkapu();
     		}else if (params[0].compareTo("listSzakadek")==0){
     			listSzakadek();
+    		}else if (params[0].compareTo("listMerleg")==0){
+    			listMerlegek();
+    		}else if (params[0].compareTo("listAjto")==0){
+    			listAjto();
     		}else if (params[0].compareTo("liftDoboz")==0){
     			E.lift();
     		}else if (params[0].compareTo("dropDoboz")==0){
