@@ -22,29 +22,20 @@ public class Pont {
 	
 	//X beallitasa
 	public void setX(int x){
-		
-		System.out.println(">Pont::setX(int)");
+
 		
 		this.x = x;
-		
-		System.out.println("<Pont::setX(int)");
+
 	}
 	
 	//Y beallitasa
 	public void setY(int y){
 		
-		System.out.println(">Pont::setY(int)");
-		
 		this.y = y;
-		
-		System.out.println("<Pont::setY(int)");
 	}
 	
 	//X visszaadasa
 	public int getX(){
-		
-		System.out.println(">Pont::getX()");		
-		System.out.println("<Pont::getX()");
 		
 		return x;
 	}
@@ -52,16 +43,12 @@ public class Pont {
 	//Y visszaadasa
 	public int getY(){
 		
-		System.out.println(">Pont::getY()");		
-		System.out.println("<Pont::getY()");
-		
 		return y;
 	}
 	
 	//!TODO - KOMMENT
 	public void move(Irany irany){
-		
-		System.out.println(">Pont::move(Irany)");
+	
 		
 		switch (irany){
 		
@@ -84,18 +71,13 @@ public class Pont {
 			default:
 				break;
 		}
-		
-		System.out.println("<Pont::move(Irany)");
 	}
 	
 	public boolean compareTo(Pont masik){
-		System.out.println(">Pont::compareTo(Pont)");
 		
 		if (masik.x == this.x && masik.y == this.y){			
-			System.out.println("<Pont::compareTo(Pont)");		
 			return true;
 		}else{			
-			System.out.println("<Pont::compareTo(Pont)");
 			return false;
 		}
 	}
