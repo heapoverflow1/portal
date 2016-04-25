@@ -16,14 +16,6 @@ public class Tolteny extends Ososztaly{
 		position = pos;
 	}
 	
-	//!TODO - KOMMENT
-	public Pont ertesit(Pont regi){
-		
-		System.out.println(">Tolteny::ertesit(Pont)");
-		System.out.println("<Tolteny::ertesit(Pont)");
-		return position;
-	}
-	
 	//!TODO
 	void shoot(Irany irany) throws Throwable{
 		
@@ -59,36 +51,31 @@ public class Tolteny extends Ososztaly{
 			elem.ertesit_shoot(this);
 			
 			if (alive)
-			 position.move(irany);
-			
-		
-		
+			 position.move(irany);		
 		}
 		this.finalize();
 		
 	}
 	
-	//!TODO
+	//Ha vegunk, akkor az aktualis kor meg vegigmegy, utana a shoot
+	//fv-ben hivodik a finalize
 	void destroy(){
-		
 		this.alive=false;
 		
 	}
 
 	@Override
 	public Pont ertesit(Pont innenlep, Szereplo sz) {
-		// TODO Auto-generated method stub
-		return null;
+		return position;
+		//A lepest nem akadalyozza meg, ha valaki rajtunk halad keresztul
 	}
 
 	@Override
 	public void ertesit_shoot(Tolteny t) {
-		// TODO Auto-generated method stub
-		
+		//Nem utkozhetunk ossze masik toltennyel
 	}
 	
-	Szin getColor(){
-		
+	Szin getColor(){		
 		return szin;
 	}
 

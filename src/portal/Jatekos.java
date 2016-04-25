@@ -109,6 +109,14 @@ public class Jatekos extends Szereplo{
 			else if(i.position.compareTo(newPosition) && (i instanceof ZPM)){
 				return;
 			}
+			else if(i.position.compareTo(newPosition) && (i instanceof Szakadek)){
+				try {
+					doboz.destroy();
+				} catch (Throwable e) {
+					e.printStackTrace();
+				}
+				return;
+			}
 		}
 		
 		//ha eljutott idaig akkor mar biztos az uj pozicioba fog kerulni

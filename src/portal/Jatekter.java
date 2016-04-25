@@ -49,22 +49,13 @@ public class Jatekter {
 	
 	//Új objektum hozzaadasa a JATEKTER-hez
 	public void add(Ososztaly uj){
-		
-		System.out.println(">Jatekter::add(Ososztaly)");
-		
-		//Ezt biztos igy akarjuk? Nekem jo, de olyan fura.
-		//Mert hogy objects.add(uj); nekem logikusabb lenne.
-		//Az inicializalashoz tartozik, ezert szerintem kiiras nem szükgseges
-		//!TODO
-		/** Szerintem ez igy jo:
-		 *  objects.add(uj);
-		 *  mashogy en sem ertem, szoval akkor az OSOSZTALY beli Add-ot sem ertem
-		 *  -WM
-		 */
-		uj.Add(objects);
-		
-		System.out.println("<Jatekter::add(Ososztaly)");
-		
+		objects.add(uj);
+	}
+	
+	//Objektum eltavolitasa - ha pl. szakadekba zuhant valami,
+	//vagy osszegyujtottek a ZPM-et	
+	public void remove(Ososztaly ezt){
+		objects.remove(ezt);
 	}
 	
 	//!TODO - out of date lett a kommentje
@@ -95,9 +86,7 @@ public class Jatekter {
 		for (Ososztaly  i : objects){
 			
 			if (i.position.compareTo(p))
-				vissza = i;
-			
-			
+				vissza = i;			
 		}
 		return vissza;
 		

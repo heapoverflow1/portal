@@ -28,7 +28,7 @@ public class Doboz extends Ososztaly{
 	}
 
 	void destroy() throws Throwable{
-		this.finalize();		
+		this.finalize();
 	}
 
 	//Az ertesit interfesz megvalositasa miatt szukseges, hogy fel lehessen venni a jatekter objektumai koze. A doboz sajat poziciojaval ter vissza.
