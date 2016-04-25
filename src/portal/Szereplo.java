@@ -20,11 +20,9 @@ public abstract class Szereplo extends Ososztaly {
 	 * adott pozicioval a targytol fuggoen ( ha FAL, akkor a regi pozicio, azaz nem leptunk,
 	 * ha MERLEG, akkor az uj pozicio, tehat leptunk)
 	 */
-	public void move (Irany i){
-		
+	public void move (Irany i){	
 		this.irany = i;
-		
-		Pont ujhely = position;
+		Pont ujhely = new Pont(position);
 		ujhely.move(irany);
 		position = Jatek.palya.checkfield(position, ujhely);
 	}

@@ -18,6 +18,10 @@ public class Pont {
 		this.x = x;
 		this.y = y;		
 	}
+	public Pont(Pont masik){
+		this.x = masik.getX();
+		this.y = masik.getY();
+	}
 	
 	
 	//X beallitasa

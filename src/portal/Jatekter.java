@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Jatekter {
 	List<Ososztaly> objects;
+	public Csillagkapu kapumgr;
 	Szereplo sz;
 	
 	/* Konstruktor
@@ -12,13 +13,12 @@ public class Jatekter {
 	 */
 	public Jatekter() {		
 		objects = new ArrayList<Ososztaly>();
+		kapumgr = new Csillagkapu();
 	}
 	
 	//!TODO - KOMMENT
 	public Doboz getDoboz(Pont innen){
-		
-		System.out.println(">Jatekter::getDoboz(Pont)");
-		
+
 		for (Ososztaly i : objects){
 			if (i instanceof Doboz && i.position.compareTo(innen)){
 				
@@ -26,8 +26,6 @@ public class Jatekter {
 				return (Doboz) i;
 			}				
 		}
-		
-		System.out.println("<Jatekter::getDoboz(Pont)");
 		return null;
 	}
 	
@@ -83,16 +81,12 @@ public class Jatekter {
 		
 	}
 	
-	public Ososztaly checkfield_shoot (Pont p){
-		Ososztaly vissza = null;
-		
+	public void checkfield_shoot (Pont p, Tolteny t){
 		for (Ososztaly  i : objects){
 			
 			if (i.position.compareTo(p))
-				vissza = i;			
-		}
-		return vissza;
-		
+				i.ertesit_shoot(t);	
+		}		
 	}
 	
 	public List<Ososztaly> getObjects(){

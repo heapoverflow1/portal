@@ -28,8 +28,9 @@ public class Jatekos extends Szereplo{
 	 * ha MERLEG, akkor az uj pozicio, tehat leptunk)
 	 */	
 	public void move(Irany irany){	
-		this.irany = irany;		
-		Pont ujhely = position;
+		this.irany = irany;
+		
+		Pont ujhely = new Pont(position);
 		ujhely.move(irany);
 		position = Jatek.palya.checkfield(position, ujhely);
 		if (doboz != null) doboz.setPosition(position);
@@ -160,6 +161,17 @@ public class Jatekos extends Szereplo{
 		if (tolteny_szin ==  Szin.ZOLD)
 			tolteny_szin = Szin.PIROS;		
 	
+	}
+	
+	public void setIrany(Irany erre){
+		this.irany=erre;
+	}
+	
+	public void setTolteny(Szin erre){
+		if ((erre==Szin.KEK || erre==Szin.SARGA) && (tolteny_szin==Szin.KEK || tolteny_szin==Szin.SARGA))
+			tolteny_szin=erre;
+		if ((erre==Szin.ZOLD || erre==Szin.PIROS) && (tolteny_szin==Szin.ZOLD || tolteny_szin==Szin.PIROS))
+			tolteny_szin=erre;
 	}
 	
 	public String toString(){
