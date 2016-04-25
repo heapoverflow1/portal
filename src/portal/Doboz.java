@@ -28,6 +28,7 @@ public class Doboz extends Ososztaly{
 	}
 
 	void destroy() throws Throwable{
+		Jatek.palya.objects.remove(this);
 		this.finalize();
 	}
 

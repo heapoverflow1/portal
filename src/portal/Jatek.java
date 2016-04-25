@@ -147,6 +147,13 @@ public class Jatek {
 	    			palya.add(Jaffa);
 	    			palya.add(new Szakadek(1, 2));
 	    		}
+	    		else if (params[1].compareTo("cratedestroyTest")==0){
+	    			E.position=new Pont(1, 0);
+	    			palya.add(E);
+	    			palya.add(new Szakadek(1, 3));
+	    			palya.add(new Doboz(1, 2));
+	    			palya.add(new Doboz(3, 3));
+	    		}
 	    	}else if (params[0].compareTo("listSzereplo")==0){
     			listSzereplo();
     		}else if (params[0].compareTo("listFal")==0){
