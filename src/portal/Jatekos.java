@@ -28,9 +28,7 @@ public class Jatekos extends Szereplo{
 	 * ha MERLEG, akkor az uj pozicio, tehat leptunk)
 	 */	
 	public void move(Irany irany){	
-		
-		this.irany = irany;
-		
+		this.irany = irany;		
 		Pont ujhely = position;
 		ujhely.move(irany);
 		position = Jatek.palya.checkfield(position, ujhely);

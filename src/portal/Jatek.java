@@ -10,34 +10,27 @@ public class Jatek {
 	static Jatekter palya;
 	
 	private static final Irany JOBBRA = Irany.JOBBRA;
-	static Jatekter J = new Jatekter();
 	static Jatekos E = new Jatekos(1, 2, Szin.KEK);
 	static Jatekos Jaffa = new Jatekos(1, 1, Szin.SARGA);
 	
 	public static void listSzereplo(){
 		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		J.getObjects(ref);
+		ref = palya.getObjects();
 		System.out.println("Szereplok:");
 		for (Ososztaly i : ref){
-			if(i.getClass() != Jatekos.class){
-				ref.remove(i);
-			}else{
-				System.out.println(i.toString());
-			}			
+			if(i.getClass() == Jatekos.class)
+				System.out.println(i.toString());		
 		}
 	}
 	public static void listFal(){
 		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		J.getObjects(ref);
+		ref = palya.getObjects();
 		System.out.println("Falak:");
 		for (Ososztaly i : ref){
-			if(i.getClass() != Fal.class){
-				ref.remove(i);
-			}else{
+			if(i.getClass() == Fal.class){
 				System.out.println(i.position.toString());
 			}
-		}
-			
+		}			
 	}
 	
 	public static void main(String[] args) throws IOException{
@@ -48,6 +41,7 @@ public class Jatek {
 	    	String[] params = s.split(" ");
 	    	if (params[0].compareTo("loadMap")==0){
 	    		if (params[1].compareTo("moveTest")==0){
+	    			//System.out.println("MoveTest loaded!");
 	    			E.position=new Pont(1, 1);
 	    			palya.add(E);
 	    			palya.add(new Fal(1, 2));
@@ -76,7 +70,6 @@ public class Jatek {
     				System.out.println(Jaffa.toString());
     			}
     		}
-	    	System.out.println(s);
 	    	// An empty line or Ctrl-Z terminates the program
 	    }
 	}

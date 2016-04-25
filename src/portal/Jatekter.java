@@ -11,7 +11,7 @@ public class Jatekter {
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
 	 */
 	public Jatekter() {		
-		objects = new ArrayList<Ososztaly>();		
+		objects = new ArrayList<Ososztaly>();
 	}
 	
 	//!TODO - KOMMENT
@@ -62,22 +62,25 @@ public class Jatekter {
 	//Irany iranyban levo mezo ellenorzese
 	//nem lenne jobb ha ez static? - TG
 	public Pont checkfield(Pont regihely, Pont ujhely){
-		
-		System.out.println(">Jatekter::checkfield(Pont, Pont)");
-		
+		List<Pont> ellenzok = new ArrayList<Pont>();
 		for (Ososztaly i : objects){
 			//javitva, csak merlegnel hivja meg - TG
 			if (i.position.compareTo(regihely) && (i instanceof Merleg)){
 				i.ertesit(regihely,sz);
 			}
 			if (i.position.compareTo(ujhely)){
-				ujhely = i.ertesit(regihely,sz);
+				Pont idemutat = i.ertesit(regihely,sz);
+				if (!idemutat.compareTo(ujhely)) ellenzok.add(idemutat);
 			}				
-		}		
+		}
+		if (ellenzok.isEmpty())
+			return ujhely;
 		
-		System.out.println("<Jatekter::checkfield(Pont, Pont)");
+		for (Pont i : ellenzok){
+			if (!i.compareTo(regihely)) return i;
+		}
+		return regihely;
 		
-		return ujhely;
 	}
 	
 	public Ososztaly checkfield_shoot (Pont p){
@@ -92,10 +95,12 @@ public class Jatekter {
 		
 	}
 	
-	void getObjects(List<Ososztaly> ref){
+	public List<Ososztaly> getObjects(){
+		List<Ososztaly> ref = new ArrayList<Ososztaly>();
 		for (Ososztaly i : objects){
 			ref.add(i);
 		}
+		return ref;
 	}
 	
 	/*
