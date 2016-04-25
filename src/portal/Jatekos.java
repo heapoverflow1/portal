@@ -164,4 +164,11 @@ public class Jatekos extends Szereplo{
 	
 	}
 	
+	public String toString(){
+		if (tolteny_szin==Szin.KEK || tolteny_szin==Szin.SARGA){
+			return "E "+position.toString();
+		}
+		return "J "+position.toString();
+	}
+	
 }

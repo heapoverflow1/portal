@@ -99,6 +99,10 @@ public class Pont {
 			return false;
 		}
 	}
+	
+	public String toString(){
+		return this.x+","+this.y;
+	}
 
 	
 }
