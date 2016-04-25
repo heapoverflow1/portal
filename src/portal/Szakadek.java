@@ -18,7 +18,9 @@ public class Szakadek extends Ososztaly {
 	// Ezredes megsemmisitése, ha beleesett
 	void kill(Szereplo e) throws Throwable {
 		Jatek.palya.removeQueue.add(e);//Jatek.palya.remove(e);
-		if (e.getClass().getSimpleName() == "Replikator") {
+		System.out.println("Ide jut 1");
+		if (e.getClass() == Replikator.class) {
+			System.out.println("Ide eljut.");
 			e.fallAndDie();
 			//Jatek.palya.remove(this);
 			Jatek.palya.removeQueue.add(this);

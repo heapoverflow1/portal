@@ -16,7 +16,10 @@ public class ZPM extends Ososztaly{
 		/*!TODO - fel is kene venni tenylegesen	
 		 * ezredes.collectZPM()
 		 */
-		 
+		if (sz instanceof Jatekos){
+			((Jatekos) sz).collectZPM();
+		}
+		Jatek.palya.removeQueue.add(this);
 		//meg kéne semmisíteni magát, illetve növelni a ZMPCOUNT-ot. Probléma :
 			// a replilátor is egy szereplo, ergo õ is fel tudja venni a ZPM-et ilyen módon,
 		// meg kéne oldani hogy ne tudja ezt megtenni.

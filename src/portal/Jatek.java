@@ -12,14 +12,24 @@ public class Jatek {
 	private static final Irany JOBBRA = Irany.JOBBRA;
 	static Jatekos E = new Jatekos(1, 2, Szin.KEK);
 	static Jatekos Jaffa = new Jatekos(1, 1, Szin.ZOLD);
+	static Replikator R = new Replikator(3,3);
 	
 	public static void listSzereplo(){
 		List<Ososztaly> ref = new ArrayList<Ososztaly>();
 		ref = palya.getObjects();
 		System.out.println("Szereplok:");
 		for (Ososztaly i : ref){
-			if(i.getClass() == Jatekos.class)
+			if(i.getClass() == Jatekos.class || i.getClass()== Replikator.class)
 				System.out.println(i.toString());		
+		}
+	}
+	public static void listZPM(){
+		List<Ososztaly> ref = new ArrayList<Ososztaly>();
+		ref = palya.getObjects();
+		System.out.println("ZPM-ek:");
+		for (Ososztaly i : ref){
+			if(i.getClass() == ZPM.class)
+				System.out.println(i.position.toString());		
 		}
 	}
 	public static void listFal(){
@@ -183,6 +193,23 @@ public class Jatek {
 	    			palya.add(door);
 	    			palya.add(scale);
 	    			palya.add(new Doboz(1,2,5));
+	    		}else if (params[1].compareTo("zpmTest")==0){
+	    			E.position=new Pont(1, 1);
+	    			palya.add(E);
+	    			palya.add(new ZPM(1,2));
+	    			palya.add(new ZPM(1,9));
+	    		}else if (params[1].compareTo("replicatorShotTest")==0){
+	    			E.position=new Pont(1, 1);
+	    			palya.add(E);
+	    			R.position=new Pont(1,3);
+	    			palya.add(R);
+	    		}else if (params[1].compareTo("replicatorFallTest")==0){
+	    			E.position=new Pont(1, 1);
+	    			palya.add(E);
+	    			R.position=new Pont(3,3);
+	    			palya.add(R);
+	    			palya.add(new Szakadek(1,2));
+	    			palya.add(new Szakadek(3,5));
 	    		}
 	    	}else if (params[0].compareTo("listSzereplo")==0){
     			listSzereplo();
@@ -200,6 +227,8 @@ public class Jatek {
     			listMerlegek();
     		}else if (params[0].compareTo("listAjto")==0){
     			listAjto();
+    		}else if (params[0].compareTo("listZPM")==0){
+    			listZPM();
     		}else if (params[0].compareTo("liftDoboz")==0){
     			E.lift();
     		}else if (params[0].compareTo("dropDoboz")==0){
@@ -212,6 +241,9 @@ public class Jatek {
     			}else if (params[1].compareTo("J")==0){
     				Jaffa.move(dir);
     				System.out.println(Jaffa.toString());
+    			}else if (params[1].compareTo("R")==0){
+    				R.move(dir);
+    				System.out.println(R.toString());
     			}
     		}else if (params[0].compareTo("shoot")==0){
     			Szin color = getColorFromString(params[1]);
