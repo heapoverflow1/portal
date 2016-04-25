@@ -1,106 +1,99 @@
 package portal;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Jatekter {
 	List<Ososztaly> objects;
-	Szereplo sz;
+	public Csillagkapu kapumgr;
+	public List<Ososztaly> removeQueue;
 	
 	/* Konstruktor
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
 	 */
 	public Jatekter() {		
-		objects = new ArrayList<Ososztaly>();		
+		objects = new ArrayList<Ososztaly>();
+		removeQueue = new ArrayList<Ososztaly>();
+		kapumgr = new Csillagkapu();
 	}
 	
 	//!TODO - KOMMENT
 	public Doboz getDoboz(Pont innen){
-		
-		System.out.println(">Jatekter::getDoboz(Pont)");
-		
+
 		for (Ososztaly i : objects){
 			if (i instanceof Doboz && i.position.compareTo(innen)){
-				
-				System.out.println("<Jatekter::getDoboz(Pont)");
 				return (Doboz) i;
 			}				
 		}
-		
-		System.out.println("<Jatekter::getDoboz(Pont)");
 		return null;
 	}
 	
 	public Merleg getMerleg(Pont innen){
 		
-		System.out.println(">Jatekter::getMerleg(Pont)");
-		
 		for (Ososztaly i : objects){
 			if (i instanceof Merleg && i.position.compareTo(innen)){
-				
-				System.out.println("<Jatekter::getMerleg(Pont)");
 				return (Merleg) i;
 			}				
 		}
-		
-		System.out.println("<Jatekter::getMerleg(Pont)");
 		return null;
 	}
 	
 	//Új objektum hozzaadasa a JATEKTER-hez
 	public void add(Ososztaly uj){
-		
-		System.out.println(">Jatekter::add(Ososztaly)");
-		
-		//Ezt biztos igy akarjuk? Nekem jo, de olyan fura.
-		//Mert hogy objects.add(uj); nekem logikusabb lenne.
-		//Az inicializalashoz tartozik, ezert szerintem kiiras nem szükgseges
-		//!TODO
-		/** Szerintem ez igy jo:
-		 *  objects.add(uj);
-		 *  mashogy en sem ertem, szoval akkor az OSOSZTALY beli Add-ot sem ertem
-		 *  -WM
-		 */
-		uj.Add(objects);
-		
-		System.out.println("<Jatekter::add(Ososztaly)");
-		
+		objects.add(uj);
+	}
+	
+	//Objektum eltavolitasa - ha pl. szakadekba zuhant valami,
+	//vagy osszegyujtottek a ZPM-et	
+	public void remove(Ososztaly ezt){
+		if (objects.contains(ezt))
+			objects.remove(ezt);
 	}
 	
 	//!TODO - out of date lett a kommentje
 	//Irany iranyban levo mezo ellenorzese
 	//nem lenne jobb ha ez static? - TG
-	public Pont checkfield(Pont regihely, Pont ujhely){
-		
-		System.out.println(">Jatekter::checkfield(Pont, Pont)");
-		
-		for (Ososztaly i : objects){
-			//javitva, csak merlegnel hivja meg - TG
+	public Pont checkfield(Pont regihely, Pont ujhely, Szereplo sz){
+		List<Pont> ellenzok = new ArrayList<Pont>();
+
+		for (Iterator<Ososztaly> it = objects.iterator();it.hasNext(); ){
+			Ososztaly i = it.next();
 			if (i.position.compareTo(regihely) && (i instanceof Merleg)){
 				i.ertesit(regihely,sz);
 			}
 			if (i.position.compareTo(ujhely)){
-				ujhely = i.ertesit(regihely,sz);
-			}				
-		}		
+				Pont idemutat = i.ertesit(regihely,sz);
+				if (!idemutat.compareTo(ujhely)) ellenzok.add(idemutat);
+			}
+		}
+		objects.removeAll(removeQueue);
+		removeQueue = new ArrayList<Ososztaly>();
 		
-		System.out.println("<Jatekter::checkfield(Pont, Pont)");
+		if (ellenzok.isEmpty())
+			return ujhely;
 		
-		return ujhely;
+		for (Pont i : ellenzok){
+			if (!i.compareTo(regihely)) return i;
+		}
+		return regihely;
+		
 	}
 	
-	public Ososztaly checkfield_shoot (Pont p){
-		Ososztaly vissza = null;
-		
+	public void checkfield_shoot (Pont p, Tolteny t){
 		for (Ososztaly  i : objects){
 			
 			if (i.position.compareTo(p))
-				vissza = i;
-			
-			
+				i.ertesit_shoot(t);	
+		}		
+	}
+	
+	public List<Ososztaly> getObjects(){
+		List<Ososztaly> ref = new ArrayList<Ososztaly>();
+		for (Ososztaly i : objects){
+			ref.add(i);
 		}
-		return vissza;
-		
+		return ref;
 	}
 	
 	/*

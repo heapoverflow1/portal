@@ -9,7 +9,7 @@ public class Csillagkapu{
 	/* Konstruktor
 	 * beallitja a feregjaratot false-ra. Alapertelmezes.
 	 */
-	public Csillagkapu(int x, int y) {
+	public Csillagkapu() {
 		
 		Feregjarat = new boolean[2];
 		falak = new SpecFal[4];
@@ -19,7 +19,7 @@ public class Csillagkapu{
 	}
 	
 	// Beallitja a kek privat SpecFal erteket a kapottra
-	boolean SetCsk(SpecFal pos, Szin color){
+	public boolean SetCsk(SpecFal pos, Szin color){
 		falak[color.getValue()] = pos;
 		//a megfelelõ színhez tároljuk, hogy melyik fal tartozik
 		Szin masik = null;
@@ -50,7 +50,7 @@ public class Csillagkapu{
 		return false;
 	}
 
-	Pont checkCsk(SpecFal fal, Pont innenjon){
+	public Pont checkCsk(SpecFal fal, Pont innenjon){
 		for (int i=0;i<4;i++){
 			if (fal==falak[i]){
 				if (i%2==0 && falak[i+1]!=null) return falak[i+1].getTeleportPos();
@@ -59,5 +59,13 @@ public class Csillagkapu{
 			}
 		}
 		return innenjon;
+	}
+	
+	public String toString(){
+		String visszaEzzel="";
+		for (int i=0;i<4;i++){
+			if (falak[i]!=null) visszaEzzel += falak[i].position.toString() +"\n";
+		}
+		return visszaEzzel;
 	}
 }

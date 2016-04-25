@@ -11,39 +11,38 @@ public class Szakadek extends Ososztaly {
 
 	// Doboz megsemmisitése, ha beleesett
 	void destroy(Doboz d) throws Throwable {
-
-		System.out.println(">Szakadek::destroy(Doboz)");
+		Jatek.palya.removeQueue.add(d);
 		d.destroy();
-		System.out.println("<Szakadek::destroy(Doboz)");
 	}
 
 	// Ezredes megsemmisitése, ha beleesett
 	void kill(Szereplo e) throws Throwable {
-		if (e.getClass().getSimpleName() == "Replikator") {
+		Jatek.palya.removeQueue.add(e);//Jatek.palya.remove(e);
+		System.out.println("Ide jut 1");
+		if (e.getClass() == Replikator.class) {
+			System.out.println("Ide eljut.");
 			e.fallAndDie();
+			//Jatek.palya.remove(this);
+			Jatek.palya.removeQueue.add(this);
 			this.finalize();
+			//Replikator eseten megsemmisulunk
 		} else {
 			e.fallAndDie();
 		}
-		System.out.println("<Szakadek::kill(Szereplo)");
 	}
 
-	// !TODO - leírás + lentebbi !TODO
+	//Ha rank kiserlne meg lepni egy szereplo, eltavolitjuk a jatekbol
 	public Pont ertesit(Pont regi, Szereplo sz) {
-
-		System.out.println(">Szakadek::ertesit(Pont)");
-
-		// TODO!!!
-		// NINCS KEZELVE AZ EZREDES KINYÍRÁS!
-		// this.kill(Ezredes);
-
-		System.out.println("<Szakadek::ertesit(Pont)");
+		try {
+			kill(sz);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
 		return position;
 	}
 
 	@Override
 	public void ertesit_shoot(Tolteny t) {
-		// TODO Auto-generated method stub
-
+		//A toltenyt nem semmisitjuk meg
 	}
 }

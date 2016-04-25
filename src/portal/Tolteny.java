@@ -13,23 +13,15 @@ public class Tolteny extends Ososztaly{
 	public Tolteny(Szin sz, Pont pos) {
 		
 		szin = sz;
-		position = pos;
-	}
-	
-	//!TODO - KOMMENT
-	public Pont ertesit(Pont regi){
-		
-		System.out.println(">Tolteny::ertesit(Pont)");
-		System.out.println("<Tolteny::ertesit(Pont)");
-		return position;
+		position = new Pont(pos);
 	}
 	
 	//!TODO
 	void shoot(Irany irany) throws Throwable{
 		
-		
+		int TTL = 100;
 		//!TODO
-		while (alive){
+		while (alive && TTL>0){
 			Pont p= this.position;
 			int y =0;
 			 switch (irany) {
@@ -54,41 +46,35 @@ public class Tolteny extends Ososztaly{
 				 p.setX(y); 
 				 break;
 			 }
-			
-			Ososztaly elem=Jatek.palya.checkfield_shoot(p);
-			elem.ertesit_shoot(this);
-			
+			System.out.println("Tolteny mozog: "+p.toString());
+			Jatek.palya.checkfield_shoot(p, this);
+			TTL--;
 			if (alive)
-			 position.move(irany);
-			
-		
-		
+			 position=p;		
 		}
 		this.finalize();
 		
 	}
 	
-	//!TODO
+	//Ha vegunk, akkor az aktualis kor meg vegigmegy, utana a shoot
+	//fv-ben hivodik a finalize
 	void destroy(){
-		
 		this.alive=false;
 		
 	}
 
 	@Override
 	public Pont ertesit(Pont innenlep, Szereplo sz) {
-		// TODO Auto-generated method stub
-		return null;
+		return position;
+		//A lepest nem akadalyozza meg, ha valaki rajtunk halad keresztul
 	}
 
 	@Override
 	public void ertesit_shoot(Tolteny t) {
-		// TODO Auto-generated method stub
-		
+		//Nem utkozhetunk ossze masik toltennyel
 	}
 	
-	Szin getColor(){
-		
+	Szin getColor(){		
 		return szin;
 	}
 

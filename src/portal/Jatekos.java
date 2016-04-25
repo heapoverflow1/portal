@@ -28,12 +28,11 @@ public class Jatekos extends Szereplo{
 	 * ha MERLEG, akkor az uj pozicio, tehat leptunk)
 	 */	
 	public void move(Irany irany){	
-		
 		this.irany = irany;
 		
-		Pont ujhely = position;
+		Pont ujhely = new Pont(position);
 		ujhely.move(irany);
-		position = Jatek.palya.checkfield(position, ujhely);
+		position = Jatek.palya.checkfield(position, ujhely, this);
 		if (doboz != null) doboz.setPosition(position);
 				
 	}
@@ -87,8 +86,8 @@ public class Jatekos extends Szereplo{
 	 *  
 	 */
 	void drop(){		
-
-		Pont newPosition=doboz.position;
+		if (doboz==null) return;
+		Pont newPosition=new Pont(doboz.position);
 		
 		//a dobozt arra szeretnem elmozditani, amerre az ezredes nez
 		newPosition.move(irany);
@@ -107,6 +106,14 @@ public class Jatekos extends Szereplo{
 				return;
 			}
 			else if(i.position.compareTo(newPosition) && (i instanceof ZPM)){
+				return;
+			}
+			else if(i.position.compareTo(newPosition) && (i instanceof Szakadek)){
+				try {
+					doboz.destroy();
+				} catch (Throwable e) {
+					e.printStackTrace();
+				}
 				return;
 			}
 		}
@@ -154,6 +161,24 @@ public class Jatekos extends Szereplo{
 		if (tolteny_szin ==  Szin.ZOLD)
 			tolteny_szin = Szin.PIROS;		
 	
+	}
+	
+	public void setIrany(Irany erre){
+		this.irany=erre;
+	}
+	
+	public void setTolteny(Szin erre){
+		if ((erre==Szin.KEK || erre==Szin.SARGA) && (tolteny_szin==Szin.KEK || tolteny_szin==Szin.SARGA))
+			tolteny_szin=erre;
+		if ((erre==Szin.ZOLD || erre==Szin.PIROS) && (tolteny_szin==Szin.ZOLD || tolteny_szin==Szin.PIROS))
+			tolteny_szin=erre;
+	}
+	
+	public String toString(){
+		if (tolteny_szin==Szin.KEK || tolteny_szin==Szin.SARGA){
+			return "E "+position.toString();
+		}
+		return "J "+position.toString();
 	}
 	
 }

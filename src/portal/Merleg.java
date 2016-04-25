@@ -49,8 +49,6 @@ public class Merleg extends Ososztaly implements Ertesit{
 	}
 	
 	public Pont ertesit(Pont regi, Szereplo sz){
-		
-		System.out.println(">Merleg::ertesit(Pont)");
 		if(position.compareTo(regi)){
 			//ha lelepnek rola
 			ezredesStepsOff();
@@ -58,8 +56,6 @@ public class Merleg extends Ososztaly implements Ertesit{
 		else			
 			//ha ralepnek
 			ezredesStepsOn();
-		
-		System.out.println("<Merleg::ertesit(Pont)");
 		return position;
 	}
 	
