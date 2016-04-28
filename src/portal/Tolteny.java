@@ -46,7 +46,7 @@ public class Tolteny extends Ososztaly{
 				 p.setX(y); 
 				 break;
 			 }
-			System.out.println("Tolteny mozog: "+p.toString());
+			//System.out.println("Tolteny mozog: "+p.toString());
 			Jatek.palya.checkfield_shoot(p, this);
 			TTL--;
 			if (alive)

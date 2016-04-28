@@ -64,7 +64,7 @@ public class Csillagkapu{
 	public String toString(){
 		String visszaEzzel="";
 		for (int i=0;i<4;i++){
-			if (falak[i]!=null) visszaEzzel += falak[i].position.toString() +"\n";
+			if (falak[i]!=null) visszaEzzel += falak[i].position.toString() +"\r\n";
 		}
 		return visszaEzzel;
 	}

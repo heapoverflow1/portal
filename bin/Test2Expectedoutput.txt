@@ -1,0 +1,12 @@
+Szereplok:
+E 1,1
+Falak:
+0,1
+Specfalak:
+1,3
+1,0
+Csillagkapuk:
+Csillagkapuk:
+1,3
+1,0
+
