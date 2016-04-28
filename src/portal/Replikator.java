@@ -9,10 +9,23 @@ public class Replikator extends Szereplo {
 
 	public void fallAndDie() {
 		try {
+			Jatek.palya.removeQueue.add(this);
+			//Jatek.palya.objects.remove(this);
 			this.finalize();
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void ertesit_shoot(Tolteny t) {		
+		t.destroy();
+		//Jatek.palya.removeQueue.add(this);
+		fallAndDie();
+	}
+	
+	public String toString(){
+		return "R "+position.toString();
 	}
 }

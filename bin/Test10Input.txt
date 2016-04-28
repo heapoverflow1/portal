@@ -1,0 +1,5 @@
+loadMap replicatorShotTest
+listSzereplo
+shoot S E f
+move E f
+listSzereplo

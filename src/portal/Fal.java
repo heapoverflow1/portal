@@ -20,7 +20,6 @@ public class Fal extends Ososztaly{
 
 	@Override
 	public Pont ertesit(Pont innenlep, Szereplo sz) {
-		// TODO Auto-generated method stub
 		return innenlep;
 	}
 
