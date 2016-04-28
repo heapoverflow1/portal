@@ -1,0 +1,6 @@
+Szereplok:
+E 1,1
+Falak:
+1,2
+E 1,1
+E 2,1

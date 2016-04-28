@@ -1,0 +1,8 @@
+loadMap shootAndHitTest
+listSzereplo
+listFal
+listSpecfal
+listCsillagkapu
+shoot S E f
+shoot K E l
+listCsillagkapu

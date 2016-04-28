@@ -1,0 +1,15 @@
+loadMap crateDropDownTest
+listFal
+listDoboz
+move E j
+move E l
+liftDoboz
+move E l
+liftDoboz
+move E l
+dropDoboz
+listDoboz
+liftDoboz
+move E j
+dropDoboz
+listDoboz
