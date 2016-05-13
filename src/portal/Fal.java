@@ -1,6 +1,8 @@
 package portal;
 
-public class Fal extends Ososztaly{
+import java.awt.Graphics;
+
+public class Fal extends Ososztaly implements Drawable{
 	
 	/* Konstruktor
 	 * A FAL inicializalasa x, y koordinatakkal
@@ -28,5 +30,9 @@ public class Fal extends Ososztaly{
 		
 		t.alive=false;
 		
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

@@ -1,7 +1,8 @@
 package portal;
 
+import java.awt.Graphics;
 
-public class Csillagkapu{
+public class Csillagkapu implements Drawable{
 	SpecFal[] falak;	
 	boolean[] Feregjarat;
 	
@@ -67,5 +68,9 @@ public class Csillagkapu{
 			if (falak[i]!=null) visszaEzzel += falak[i].position.toString() +"\r\n";
 		}
 		return visszaEzzel;
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

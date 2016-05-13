@@ -1,6 +1,8 @@
 package portal;
 
-public class Jatekos extends Szereplo{
+import java.awt.Graphics;
+
+public class Jatekos extends Szereplo implements Drawable{
 	Doboz doboz;
 	Szin tolteny_szin;	
 	private int zpmcount;	
@@ -179,6 +181,10 @@ public class Jatekos extends Szereplo{
 			return "E "+position.toString();
 		}
 		return "J "+position.toString();
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 	
 }

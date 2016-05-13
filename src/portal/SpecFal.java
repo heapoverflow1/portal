@@ -1,5 +1,7 @@
 package portal;
 
+import java.awt.Graphics;
+
 public class SpecFal extends Fal {
     
     /* Konstruktor
@@ -27,4 +29,9 @@ public class SpecFal extends Fal {
     public Pont ertesit(Pont regi, Szereplo sz){
         return kapuKezelo.checkCsk(this, regi);
     }
+    
+    @Override
+    public void draw(Graphics g){
+		//TODO!!!
+	}
 }

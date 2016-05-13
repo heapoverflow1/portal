@@ -1,6 +1,8 @@
 package portal;
 
-public class Szakadek extends Ososztaly {
+import java.awt.Graphics;
+
+public class Szakadek extends Ososztaly implements Drawable {
 
 	/*
 	 * Konstruktor A SZAKADEK inicializalasa x, y koordinatakkal
@@ -42,5 +44,9 @@ public class Szakadek extends Ososztaly {
 	@Override
 	public void ertesit_shoot(Tolteny t) {
 		//A toltenyt nem semmisitjuk meg
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

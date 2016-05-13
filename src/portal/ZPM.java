@@ -1,6 +1,8 @@
 package portal;
 
-public class ZPM extends Ososztaly{
+import java.awt.Graphics;
+
+public class ZPM extends Ososztaly implements Drawable{
 	
 	/* Konstruktor
 	 * A ZPM inicializalasa x, y koordinatakkal
@@ -31,5 +33,9 @@ public class ZPM extends Ososztaly{
 	public void ertesit_shoot(Tolteny t) {
 		//  simán tovább engedi nem csinál vele semmit
 		
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }
