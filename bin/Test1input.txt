@@ -1,0 +1,5 @@
+loadMap moveTest
+listSzereplo
+listFal
+move E l
+move E j

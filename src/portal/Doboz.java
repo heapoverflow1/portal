@@ -7,46 +7,37 @@ public class Doboz extends Ososztaly{
 	/* Konstruktor
 	 * A DOBOZ inicializalasa x, y koordinatakkal
 	 */
-	public Doboz(int x, int y) {
-		
-		position = new Pont(x,y);
-		
+	public Doboz(int x, int y) {		
+		position = new Pont(x,y);		
 	}
-		
+	public Doboz(int x, int y, int w) {		
+		position = new Pont(x,y);
+		weight=w;
+	}
+	
 	//Doboz felemelese
 	public void Lift(){
-		
-		
 		isLifted = true;
-		
 	}
 	
 	//Doboz letevese
 	public void Drop(){
-		
-		
 		isLifted = false;
-		
 	}
 	
 	//Doboz helyenek allitasa
 	public void setPosition(Pont uj){
-		
-		
 		if (isLifted)
 			position = uj;
-		
 	}
-	
 
-	
-	//Doboz megszunik
 	void destroy() throws Throwable{
-		
-		
+		Jatek.palya.objects.remove(this);
 		this.finalize();
-		
 	}
+
+	//Az ertesit interfesz megvalositasa miatt szukseges, hogy fel lehessen venni a jatekter objektumai koze. A doboz sajat poziciojaval ter vissza.
+	//Egy kesobbi bovites alkalmaval kaphat a metodus nagyobb szerepet, ha pl. be szeretnenk allitani, hogy legyenek olyan dobozok, amikkel nem lehet egy mezore lepni.
 
 	@Override
 	public Pont ertesit(Pont innenlep, Szereplo sz) {
@@ -54,9 +45,7 @@ public class Doboz extends Ososztaly{
 		return position;
 	}
 
-	@Override
 	public void ertesit_shoot(Tolteny t) {
-		// TODO Auto-generated method stub
-		
+		//A doboz nem akadályozza meg a töltény útját	
 	}
 }

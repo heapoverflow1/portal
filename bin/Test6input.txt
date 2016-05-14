@@ -1,0 +1,5 @@
+loadMap dieTest
+listSzereplo
+listSzakadek
+move E l
+listSzereplo

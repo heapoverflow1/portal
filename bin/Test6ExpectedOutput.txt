@@ -1,0 +1,8 @@
+Szereplok:
+E 1,1
+J 3,3
+Szakadekok:
+1,2
+E 1,2
+Szereplok:
+J 3,3
