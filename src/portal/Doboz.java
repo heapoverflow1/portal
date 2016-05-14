@@ -1,6 +1,8 @@
 package portal;
 
-public class Doboz extends Ososztaly{
+import java.awt.Graphics;
+
+public class Doboz extends Ososztaly implements Drawable{
 	boolean isLifted = false;
 	static int weight=1;
 	
@@ -47,5 +49,9 @@ public class Doboz extends Ososztaly{
 
 	public void ertesit_shoot(Tolteny t) {
 		//A doboz nem akadályozza meg a töltény útját	
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

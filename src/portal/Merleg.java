@@ -1,8 +1,9 @@
 package portal;
 
+import java.awt.Graphics;
 import java.util.Stack;
 
-public class Merleg extends Ososztaly implements Ertesit{
+public class Merleg extends Ososztaly implements Ertesit, Drawable{
 	Ajto nyitando;
 	Stack<Doboz> dobozok=new Stack<Doboz>();
 	int currentWeight=0;
@@ -79,5 +80,9 @@ public class Merleg extends Ososztaly implements Ertesit{
 	public void ertesit_shoot(Tolteny t) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

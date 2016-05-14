@@ -1,5 +1,7 @@
 package portal;
 
+import java.awt.Graphics;
+
 public class Replikator extends Szereplo {
 
 	public Replikator(int x, int y) {
@@ -27,5 +29,9 @@ public class Replikator extends Szereplo {
 	
 	public String toString(){
 		return "R "+position.toString();
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

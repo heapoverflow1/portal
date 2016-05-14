@@ -1,6 +1,8 @@
 package portal;
 
-public class Ajto extends Fal implements Ertesit{
+import java.awt.Graphics;
+
+public class Ajto extends Fal implements Ertesit, Drawable{
 	boolean isOpen;
 	
 	/* Konstruktor
@@ -40,5 +42,9 @@ public class Ajto extends Fal implements Ertesit{
 	public String toString(){
 		if (isOpen) return position.toString()+" Ny";
 		else return position.toString()+" Z";
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }
