@@ -1,8 +1,0 @@
-loadMap cratedestroyTest
-move E l
-listSzakadek
-listDoboz
-move E l
-liftDoboz
-dropDoboz
-listDoboz
