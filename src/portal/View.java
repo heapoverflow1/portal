@@ -1,7 +1,23 @@
 package portal;
 
-public class View {
+import java.awt.GridLayout;
+import java.awt.Image;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class View extends JFrame {
 	Jatekter jatekter;
+	
+	GridLayout experimentLayout = new GridLayout(0,2);
+	public void init(){
+		this.setLayout(experimentLayout);
+		JLabel jl = new JLabel();
+		JLabel j2 = new JLabel();
+
+		
+		
+	}
 	public View(Jatekter jatek){
 		jatekter=jatek;
 	}
