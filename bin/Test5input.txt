@@ -1,4 +1,0 @@
-loadMap teleportTest
-listSzereplo
-listCsillagkapu
-move E l

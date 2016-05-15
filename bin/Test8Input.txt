@@ -1,9 +1,0 @@
-loadMap scalePushDoorOpenTest
-listSzereplo
-listMerleg
-listDoboz
-listAjto
-move E l
-liftDoboz
-dropDoboz
-listAjto
