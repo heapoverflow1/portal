@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Dimension;
@@ -28,7 +29,7 @@ import javax.swing.event.MenuListener;
 public class View {
 	protected Jatekter jatekter;
 	protected JFrame 	frame;
-	protected JPanel panel=new JPanel(new BorderLayout(5,5));;
+	protected JPanel panel=new JPanel();;
 	
 	//Menusav es elemei
 	protected JMenuBar menuBar;
@@ -180,7 +181,11 @@ public class View {
 		}
 		
 		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
 		label.setIcon(icon);
+		
+	
 		
 		Ajto a = new Ajto(3,2);
 		Szakadek sz = new Szakadek(1,3);
@@ -199,7 +204,7 @@ public class View {
 		Container content = new JPanel(new GridBagLayout());
 		frame = new JFrame("Csillagkapu");
 		frame.setPreferredSize(new Dimension(600, 600));
-		frame.setLayout(new FlowLayout());
+		//frame.setLayout(new FlowLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(600, 600));
 		frame.setResizable(false);
@@ -209,10 +214,10 @@ public class View {
 		UpdateFrame();
 		
 		GridBagConstraints c = new GridBagConstraints();
+		/*
 		c.gridx=0;
 		c.gridy=0;
 		c.fill = GridBagConstraints.HORIZONTAL;
-		
 		content.add(a.kezdo_label,c);
 		System.out.println(a.img.getHeight());
 		System.out.println(a.img.getWidth());
@@ -222,16 +227,27 @@ public class View {
 		c.gridx=2;
 		c.gridy=0;
 		content.add(dob.kezdo_label,c);
+		c.gridx=3;
+		c.gridy=0;
+		content.add(label,c);
+		c.gridx=4;
+		c.gridy=0;
+		content.add(new JButton("ok"),c);
+		c.gridx=5;
+		c.gridy=0;
+		content.add(new JButton("oki"),c);
+		c.gridx=6;
+		c.gridy=0;
+		content.add(new JButton("oksi"),c);
 		c.gridx=0;
-		c.gridy=1;
-		
+		c.gridy=1;		
 		content.add(sz.kezdo_label,c);
 		c.gridx=1;
 		c.gridy=1;
 		content.add(m.kezdo_label,c);
-
+*/
 		panel.add(content,BorderLayout.CENTER);
-		frame.add(panel);
+		frame.add(panel,BorderLayout.CENTER);
 		
 		frame.pack();
 		frame.setVisible(true);
