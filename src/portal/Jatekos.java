@@ -57,7 +57,8 @@ public class Jatekos extends Szereplo implements Drawable{
 		ujhely.move(irany);
 		position = Jatek.palya.checkfield(position, ujhely, this);
 		if (doboz != null) doboz.setPosition(position);
-				
+		
+		Jatek.view.Update();
 	}
 	
 	//!TODO - JATEKOS meghalasa utan VEGE a jateknak
