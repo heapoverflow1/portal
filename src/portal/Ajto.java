@@ -1,6 +1,8 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -32,6 +34,8 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 		}
 		
 		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
 		kezdo_label.setIcon(icon);
 	}
 	
@@ -65,7 +69,7 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 		else return "a";
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		content.add(kezdo_label, c);
 	}
 }

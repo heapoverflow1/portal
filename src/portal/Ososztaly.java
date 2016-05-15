@@ -1,7 +1,9 @@
 package portal;
 
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
 import java.util.List;
 
 public abstract class Ososztaly implements Ertesit, Drawable{
@@ -26,6 +28,6 @@ public abstract class Ososztaly implements Ertesit, Drawable{
 		System.out.println("<Ososztaly::Add(List<Ososztaly>)");
 	}
 	
-	public abstract void draw(Graphics g);
+	public abstract void draw(Container content, GridBagConstraints c);
 
 }

@@ -1,6 +1,8 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -25,8 +27,6 @@ public class Fal extends Ososztaly implements Drawable{
 		    img = ImageIO.read(new File("bin/fal.jpg"));
 		} catch (IOException e) {
 		}
-		
-		
 		
 		icon.setImage(img);
 		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
@@ -55,7 +55,7 @@ public class Fal extends Ososztaly implements Drawable{
 		
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		content.add(kezdo_label, c);
 	}
 }
