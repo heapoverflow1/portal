@@ -31,12 +31,12 @@ public class Tolteny extends Ososztaly implements Drawable{
 			 switch (irany) {
 			 
 			 case FEL: 
-				 y = p.getY()+1;
+				 y = p.getY()-1;
 				 p.setY(y); 
 				 break;
 				 
 			 case LE:
-				 y = p.getY()-1;
+				 y = p.getY()+1;
 				 p.setY(y); 
 				 break;
 				 

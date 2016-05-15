@@ -14,11 +14,9 @@ import javax.swing.JLabel;
 
 public class Ajto extends Fal implements Ertesit, Drawable{
 	boolean isOpen;
-	BufferedImage img = null;
-	ImageIcon icon = new ImageIcon(); 
-	JLabel kezdo_label = new JLabel();
-	
-	
+
+	static JLabel label_closed = new JLabel();
+	static JLabel label_open = new JLabel();	
 	
 	/* Konstruktor
 	 * Az AJTO inicializalasa x, y koordinatakkal
@@ -28,15 +26,8 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 		super(x,y);		
 		isOpen = false;
 		
-		try {
-		    img = ImageIO.read(new File("bin/ajto.png"));
-		} catch (IOException e) {
-		}
-		
-		icon.setImage(img);
-		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
-		icon.setImage(scaleImage);
-		kezdo_label.setIcon(icon);
+		LoadImage(label_open, "bin/ajto_nyitva.png");
+		LoadImage(label_closed, "bin/ajto.png");
 	}
 	
 	//Ajtonyitas
@@ -70,6 +61,7 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 	}
 	
 	public void draw(Container content, GridBagConstraints c){
-		content.add(kezdo_label, c);
+		if (isOpen) content.add(label_open, c);
+		else content.add(label_closed, c);
 	}
 }
