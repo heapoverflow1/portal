@@ -16,7 +16,6 @@ public class View {
 	protected Jatekter jatekter;
 	protected JFrame 	frame;
 	protected JPanel panel;
-	protected Jatek jatek;
 	
 	//Menusav es elemei
 	protected JMenuBar menuBar;
@@ -30,10 +29,6 @@ public class View {
 	
 	public View(Jatekter j){
 		jatekter = j;
-	}
-	
-	public void AddController(Jatek j){
-		jatek = j;
 	}
 	
 	private void UpdateFrame(){
