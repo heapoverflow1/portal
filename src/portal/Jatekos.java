@@ -1,10 +1,25 @@
 package portal;
 
-public class Jatekos extends Szereplo{
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class Jatekos extends Szereplo implements Drawable{
 	Doboz doboz;
 	Szin tolteny_szin;	
 	private int zpmcount;	
 	static int weight;
+	
+	
+	BufferedImage img = null;
+	ImageIcon icon = new ImageIcon(); 
+	JLabel kezdo_label = new JLabel();
 	
 	/* Konstruktor
 	 * A JATEKOS a konstruktorban kapott SZINu toltenye van.
@@ -16,6 +31,21 @@ public class Jatekos extends Szereplo{
 		weight = 1;		
 		tolteny_szin = sz;		
 		doboz = null;
+		
+		
+		
+		try {
+			if (tolteny_szin == Szin.KEK)
+		    img = ImageIO.read(new File("bin/ezredes_fel.png"));
+			else  img = ImageIO.read(new File("bin/jaffa.png"));
+		    
+		} catch (IOException e) {
+		}
+		
+		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
+		kezdo_label.setIcon(icon);
 		
 	}
 	
@@ -179,6 +209,10 @@ public class Jatekos extends Szereplo{
 			return "E "+position.toString();
 		}
 		return "J "+position.toString();
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 	
 }

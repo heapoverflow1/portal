@@ -1,12 +1,37 @@
 package portal;
 
-public class Fal extends Ososztaly{
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class Fal extends Ososztaly implements Drawable{
+	
+	BufferedImage img = null;
+	ImageIcon icon = new ImageIcon(); 
+	JLabel kezdo_label = new JLabel();
 	
 	/* Konstruktor
 	 * A FAL inicializalasa x, y koordinatakkal
 	 */
 	public Fal(int x, int y) {
 		position = new Pont(x,y);
+		try {
+		    img = ImageIO.read(new File("bin/fal.jpg"));
+		} catch (IOException e) {
+		}
+		
+		
+		
+		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
+		kezdo_label.setIcon(icon);
 	}
 	
 	/* !TODO
@@ -28,5 +53,9 @@ public class Fal extends Ososztaly{
 		
 		t.alive=false;
 		
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

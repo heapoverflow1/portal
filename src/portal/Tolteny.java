@@ -1,6 +1,8 @@
 package portal;
 
-public class Tolteny extends Ososztaly{
+import java.awt.Graphics;
+
+public class Tolteny extends Ososztaly implements Drawable{
 	Szin szin;
 	boolean alive = true;
 	
@@ -77,5 +79,8 @@ public class Tolteny extends Ososztaly{
 	Szin getColor(){		
 		return szin;
 	}
-
+	
+	public void draw(Graphics g){
+		//TODO!!!
+	}
 }

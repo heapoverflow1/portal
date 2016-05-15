@@ -1,12 +1,33 @@
 package portal;
 
-public class ZPM extends Ososztaly{
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class ZPM extends Ososztaly implements Drawable{
+	
+	BufferedImage img = null;
+	ImageIcon icon = new ImageIcon(); 
+	JLabel kezdo_label = new JLabel();
 	
 	/* Konstruktor
 	 * A ZPM inicializalasa x, y koordinatakkal
 	 */
 	public ZPM(int x, int y) {
 		position = new Pont(x,y);
+		
+		try {
+		    img = ImageIO.read(new File("bin/zpm.gif"));
+		} catch (IOException e) {
+		}
+		
+		icon.setImage(img);
+		kezdo_label.setIcon(icon);
 	}
 	
 	//!TODO - KOMMENT
@@ -31,5 +52,9 @@ public class ZPM extends Ososztaly{
 	public void ertesit_shoot(Tolteny t) {
 		//  simán tovább engedi nem csinál vele semmit
 		
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

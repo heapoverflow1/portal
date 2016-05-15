@@ -1,9 +1,10 @@
 package portal;
 
 
+import java.awt.Graphics;
 import java.util.List;
 
-public abstract class Ososztaly implements Ertesit{
+public abstract class Ososztaly implements Ertesit, Drawable{
 	
 	//ArrayList<Integer> position; Helyett sajat osztalyt, a Pontot hasznaljuk.
 	public Pont position;
@@ -24,5 +25,7 @@ public abstract class Ososztaly implements Ertesit{
 		ososzt.add(this);
 		System.out.println("<Ososztaly::Add(List<Ososztaly>)");
 	}
+	
+	public abstract void draw(Graphics g);
 
 }

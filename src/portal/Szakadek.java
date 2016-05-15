@@ -1,12 +1,36 @@
 package portal;
 
-public class Szakadek extends Ososztaly {
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class Szakadek extends Ososztaly implements Drawable {
+
+	BufferedImage img = null;
+	ImageIcon icon = new ImageIcon(); 
+	JLabel kezdo_label = new JLabel();
+	
 	/*
 	 * Konstruktor A SZAKADEK inicializalasa x, y koordinatakkal
 	 */
 	public Szakadek(int x, int y) {
 		this.position = new Pont(x, y);
+		try {
+		    img = ImageIO.read(new File("bin/szakadek.png"));
+		} catch (IOException e) {
+		}
+		
+		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
+		kezdo_label.setIcon(icon);
+		
 	}
 
 	// Doboz megsemmisitése, ha beleesett
@@ -42,5 +66,9 @@ public class Szakadek extends Ososztaly {
 	@Override
 	public void ertesit_shoot(Tolteny t) {
 		//A toltenyt nem semmisitjuk meg
+	}
+	
+	public void draw(Graphics g){
+		//TODO!!!
 	}
 }

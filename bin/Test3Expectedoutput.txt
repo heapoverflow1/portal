@@ -1,7 +1,0 @@
-E 0,2
-Dobozok:
-1,2
-E 1,2
-E 2,2
-Dobozok:
-3,2
