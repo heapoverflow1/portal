@@ -1,8 +1,12 @@
 package portal;
 
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Jatek {
 	static Jatekter palya;
@@ -53,10 +57,10 @@ public class Jatek {
 	    
 	    System.out.println("Adja meg a palya nevet! (firstPalya, vagy a tesztek)");
 	   
-	    //Egyelõre a pályák a teszteseteknek megfelelõek
-	    //TODO!! Pályaválasztás most konzolon, ennek is kellene grafikus felület!
-	    //TODO!! Pályaválasztás fájlból jöjjön, ne a tesztesetekbõl!
-	    	//Prototípus koncepctiója, 8. oldal
+	    //Egyelï¿½re a pï¿½lyï¿½k a teszteseteknek megfelelï¿½ek
+	    //TODO!! Pï¿½lyavï¿½lasztï¿½s most konzolon, ennek is kellene grafikus felï¿½let!
+	    //TODO!! Pï¿½lyavï¿½lasztï¿½s fï¿½jlbï¿½l jï¿½jjï¿½n, ne a tesztesetekbï¿½l!
+	    	//Prototï¿½pus koncepctiï¿½ja, 8. oldal
 	    	// https://docs.google.com/document/d/1AlShs6EGiQgDOT84soCT99QxKwG4psa0ydMddu_yyCU/edit
 	    while ((s = in.readLine()) != null && s.length() != 0){ 	    	
 	    	
@@ -106,8 +110,6 @@ public class Jatek {
     			//System.out.println("MoveTest loaded!");
     			E.position=new Pont(1, 1);
     			palya.add(E);
-    			Jaffa.position = new Pont(1,3);
-    			palya.add(Jaffa);
     			palya.add(new Fal(1, 2));
     			palyaLoaded = true;
     		}
@@ -204,32 +206,7 @@ public class Jatek {
 	    palya.setWidth(10);
 	    
 	    view.Init();
-<<<<<<< HEAD
-		
-//	    //TODO!! NE a konzolon egy ciklusban nézzük az irányítást, hanem rendesen KeyEvent szarokkal!
-//	    int pressedKey = ' ';
-//	    while (true){
-//	    	if (pressedKey=='a'){
-//	    		E.move(Irany.BALRA);
-//	    	}
-//	    	else if (pressedKey=='w'){
-//	    		E.move(Irany.FEL);
-//	    	}
-//	    	else if (pressedKey=='s'){
-//	    		E.move(Irany.LE);
-//	    	}
-//	    	else if (pressedKey=='d'){
-//	    		E.move(Irany.JOBBRA);
-//	    	}
-//	    	
-//	    	view.Update();
-//	    	pressedKey = in.read();
-//	    }
-	}
-	
-=======
 	}
 	
 	
->>>>>>> refs/remotes/origin/master
 }
