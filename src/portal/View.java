@@ -1,100 +1,15 @@
 package portal;
 
-<<<<<<< HEAD
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-
-public class View extends JFrame {
-	Jatekter jatekter;
-	
-	GridLayout experimentLayout = new GridLayout(0,2);
-	public void init(){
-		this.setLayout(experimentLayout);
-		JLabel jl = new JLabel();
-		JLabel j2 = new JLabel();
-
-		
-		
-	}
-	public View(Jatekter jatek){
-		jatekter=jatek;
-	}
-	public void Init(){}
-	
-	public void ZPMadded(ZPM z) {		
-		
-	}
-	
-	public void ZPMcollected(ZPM z){
-		
-	}
-	
-	public void DobozMoved(Doboz d) {
-		
-	}
-	
-	public void DobozDestroyed(Doboz d){
-		
-	}
-	
-	public void AjtoOpened(Ajto a){
-		
-	}
-	
-	public void AjtoClosed(Ajto a){
-		
-	}
-	
-	public void CSKCreated(Csillagkapu cs){
-		
-		
-	}
-	
-	public void CSKClosed(Csillagkapu cs){
-		
-		
-	}
-	
-	public void MerlegSulyOK(Merleg m){
-		
-	}
-	
-	public void MerlegSulyNOTOK(Merleg m){
-		
-	}
-	
-	public void SzakadekDied(Szakadek sz){
-		
-	}
-	
-	public void SzereploMoved(Szereplo sz){
-		
-	}
-	
-	public void JatekosDied(Jatekos j){
-		
-	
-	}
-	
-	public void ReplikatorDied(Replikator r){
-		
-		
-	}
-	
-	public void ReplikatorFallAndDie(Replikator r, Szakadek sz){
-		
-	}
-	
-	
-	
-=======
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 
 public class View {
 	protected Jatekter jatekter;
@@ -151,9 +66,40 @@ public class View {
 	}
 	
 	public void Init(){
+		Ajto a = new Ajto(3,2);
+		Szakadek sz = new Szakadek(1,3);
+		Merleg m= new Merleg(1,4,a,1);
+		Doboz dob = new Doboz(4,5);
+		Fal f = new Fal (5,5);
+		
+		List<Ososztaly> ref1 = new ArrayList<Ososztaly>();
+		ref1.add(a);
+		ref1.add(sz);
+		ref1.add(m);
+		ref1.add(dob);
+		ref1.add(f);
+		
+		GridLayout experiment = new GridLayout(10,10);
+		Container content = new JPanel(new GridLayout(10,10));
 		frame = new JFrame("Csillagkapu");
+		frame.setPreferredSize(new Dimension(600, 600));
+		frame.setLayout(new FlowLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		UpdateFrame();
+		
+		for (int i=0;i<100;i++){
+			
+			for (Ososztaly o : ref1){
+				if ((o.position.getX()*10 + o.position.getY()-1)== i){
+					if (o.getClass()==Ajto.class)
+						Ajto a1= (Ajto)o;
+					
+				}
+					
+					
+			}
+		}
+		
 		frame.pack();
 		frame.setVisible(true);
 	}
@@ -162,5 +108,4 @@ public class View {
 		UpdateFrame();
 		frame.revalidate();
 	}
->>>>>>> refs/remotes/origin/JakabAg
 }

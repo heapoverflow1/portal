@@ -1,10 +1,21 @@
 package portal;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Csillagkapu implements Drawable{
 	SpecFal[] falak;	
 	boolean[] Feregjarat;
+	
+	BufferedImage img = null;
+	ImageIcon icon = new ImageIcon(); 
+	JLabel kezdo_label = new JLabel();
 	
 	
 	/* Konstruktor
@@ -17,6 +28,8 @@ public class Csillagkapu implements Drawable{
 		for (int i=0;i<4;i++){
 			falak[i]=null;
 		}
+		
+	
 	}
 	
 	// Beallitja a kek privat SpecFal erteket a kapottra

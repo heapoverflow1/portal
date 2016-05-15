@@ -1,6 +1,13 @@
 package portal;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class SpecFal extends Fal {
     
@@ -10,9 +17,21 @@ public class SpecFal extends Fal {
      */
     Csillagkapu kapuKezelo;
     
+	BufferedImage img = null;
+	ImageIcon icon = new ImageIcon(); 
+	JLabel kezdo_label = new JLabel();
+    
     public SpecFal(int x, int y, Csillagkapu ez) {
         super(x,y);
         kapuKezelo = ez;
+        
+        try {
+		    img = ImageIO.read(new File("bin/specfal.jpg"));
+		} catch (IOException e) {
+		}
+		
+		icon.setImage(img);
+		kezdo_label.setIcon(icon);
     }
     
     public void ertesit_shoot(Tolteny t){

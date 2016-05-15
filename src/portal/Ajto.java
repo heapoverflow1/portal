@@ -1,9 +1,22 @@
 package portal;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Ajto extends Fal implements Ertesit, Drawable{
 	boolean isOpen;
+	BufferedImage img = null;
+	ImageIcon icon = new ImageIcon(); 
+	JLabel kezdo_label = new JLabel();
+	
+	
 	
 	/* Konstruktor
 	 * Az AJTO inicializalasa x, y koordinatakkal
@@ -12,6 +25,14 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 	public Ajto(int x, int y){		
 		super(x,y);		
 		isOpen = false;
+		
+		try {
+		    img = ImageIO.read(new File("bin/ajto.png"));
+		} catch (IOException e) {
+		}
+		
+		icon.setImage(img);
+		kezdo_label.setIcon(icon);
 	}
 	
 	//Ajtonyitas
