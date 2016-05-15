@@ -56,6 +56,6 @@ public class SpecFal extends Fal {
     
     @Override
     public void draw(Container content, GridBagConstraints c){
-    	content.add(kezdo_label, c);
+    	if (!kapuKezelo.Contaion(this)) content.add(kezdo_label, c);
 	}
 }

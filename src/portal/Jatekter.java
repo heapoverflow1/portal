@@ -89,7 +89,7 @@ public class Jatekter {
 	
 	public void checkfield_shoot (Pont p, Tolteny t){
 		for (Ososztaly  i : objects){
-			
+			System.out.println("Ez megvan");
 			if (i.position.compareTo(p))
 				i.ertesit_shoot(t);	
 		}		

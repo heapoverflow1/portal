@@ -75,12 +75,16 @@ public class Jatek {
 	    			palya.add(new Fal(9, j));
 	    		}
 	    		E.position=new Pont(1, 1);
-	    		Jaffa.position=new Pont(8,8);
+	    		Jaffa.position=new Pont(8,6);
 	    		palya.add(E);
 	    		palya.add(Jaffa);
 	    		palya.add(new Doboz(3, 2));
-    			palya.add(new SpecFal(3, 4, palya.kapumgr));
-    			palya.add(new SpecFal(7, 7, palya.kapumgr));
+	    		SpecFal egyik = new SpecFal(3, 4, palya.kapumgr);
+	    		SpecFal masik = new SpecFal(6, 8, palya.kapumgr);
+    			palya.add(egyik);
+    			palya.add(masik);
+    			//palya.kapumgr.SetCsk(egyik, Szin.KEK);
+    			//palya.kapumgr.SetCsk(masik, Szin.SARGA);
     			Ajto door = new Ajto(1, 7);
     			palya.add(new Fal(2, 7));
     			palya.add(new Fal(3, 7));
@@ -90,6 +94,16 @@ public class Jatek {
     			palya.add(door);
     			palya.add(scale);
     			palya.add(new Doboz(1,2,5));
+    			palya.add(new Szakadek(6,7));
+    			palya.add(new Fal(4,7));
+    			palya.add(new Fal(5,7));
+    			palya.add(new Fal(7,7));
+    			palya.add(new Fal(8,7));
+    			palya.add(new Fal(9,7));
+    			palya.add(new ZPM(8, 8));
+    			palya.add(new ZPM(4, 8));
+    			palya.add(new SpecFal(6, 3, palya.kapumgr));
+    			palya.add(new SpecFal(8, 4, palya.kapumgr));
     			palyaLoaded=true;
 	    	}
     		if (params[0].compareTo("moveTest")==0){
@@ -192,26 +206,6 @@ public class Jatek {
 	    palya.setWidth(10);
 	    
 	    view.Init();
-		
-	    //TODO!! NE a konzolon egy ciklusban nézzük az irányítást, hanem rendesen KeyEvent szarokkal!
-//	    int pressedKey = ' ';
-//	    while (true){
-//	    	if (pressedKey=='a'){
-//	    		E.move(Irany.BALRA);
-//	    	}
-//	    	else if (pressedKey=='w'){
-//	    		E.move(Irany.FEL);
-//	    	}
-//	    	else if (pressedKey=='s'){
-//	    		E.move(Irany.LE);
-//	    	}
-//	    	else if (pressedKey=='d'){
-//	    		E.move(Irany.JOBBRA);
-//	    	}
-//	    	
-//	    	view.Update();
-//	    	pressedKey = in.read();
-//	    }
 	}
 	
 	
