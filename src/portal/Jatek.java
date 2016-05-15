@@ -18,95 +18,6 @@ public class Jatek {
 	static Jatekos Jaffa = new Jatekos(1, 1, Szin.ZOLD);
 	static Replikator R = new Replikator(3,3);
 	
-	public static void listSzereplo(){
-		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		ref = palya.getObjects();
-		System.out.println("Szereplok:");
-		for (Ososztaly i : ref){
-			if(i.getClass() == Jatekos.class || i.getClass()== Replikator.class)
-				System.out.println(i.toString());		
-		}
-	}
-	public static void listZPM(){
-		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		ref = palya.getObjects();
-		System.out.println("ZPM-ek:");
-		for (Ososztaly i : ref){
-			if(i.getClass() == ZPM.class)
-				System.out.println(i.position.toString());		
-		}
-	}
-	public static void listFal(){
-		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		ref = palya.getObjects();
-		System.out.println("Falak:");
-		for (Ososztaly i : ref){
-			if(i.getClass() == Fal.class){
-				System.out.println(i.position.toString());
-			}
-		}			
-	}
-	
-	public static void listSpecfal(){
-		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		ref = palya.getObjects();
-		System.out.println("Specfalak:");
-		for (Ososztaly i : ref){
-			if(i.getClass() == SpecFal.class){
-				System.out.println(i.position.toString());
-			}
-		}			
-	}
-	
-	public static void listDoboz(){
-		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		ref = palya.getObjects();
-		System.out.println("Dobozok:");
-		for (Ososztaly i : ref){
-			if(i.getClass() == Doboz.class){
-				System.out.println(i.position.toString());
-			}
-		}			
-	}
-	
-	public static void listSzakadek(){
-		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		ref = palya.getObjects();
-		System.out.println("Szakadekok:");
-		for (Ososztaly i : ref){
-			if(i.getClass() == Szakadek.class){
-				System.out.println(i.position.toString());
-			}
-		}			
-	}
-	
-	public static void listMerlegek(){
-		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		ref = palya.getObjects();
-		System.out.println("Meglegek:");
-		for (Ososztaly i : ref){
-			if(i.getClass() == Merleg.class){
-				System.out.println(i.position.toString());
-			}
-		}			
-	}
-	
-	public static void listAjto(){
-		List<Ososztaly> ref = new ArrayList<Ososztaly>();
-		ref = palya.getObjects();
-		System.out.println("Ajtok:");
-		for (Ososztaly i : ref){
-			if(i.getClass() == Ajto.class){
-				System.out.println(i.toString());
-			}
-		}			
-	}
-	
-	public static void listCsillagkapu(){
-		System.out.println("Csillagkapuk:");
-		System.out.println(palya.kapumgr.toString());
-	}
-	
 	public static Irany getDirFromString(String pms){
 		Irany dir = Irany.JOBBRA;
 		if (pms.compareToIgnoreCase("j")==0){
@@ -139,17 +50,19 @@ public class Jatek {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	    String s;
 	    
-		//TODO!! Pályaválasztás most konzolon, ennek is kellene grafikus felület!
-	    
 	    boolean palyaLoaded = false;
 	    palya = new Jatekter();
 	    view = new View(palya);
-	    palya.setHeight(10);
-	    palya.setWidth(10);
 	    
+	    
+	    System.out.println("Adja meg a palya nevet! (moveTest, cratePickUpTest stb.)");
+	   
 	    //Egyelõre a pályák a teszteseteknek megfelelõek
-	    while ((s = in.readLine()) != null && s.length() != 0){
-	    	if (palyaLoaded) break;
+	    //TODO!! Pályaválasztás most konzolon, ennek is kellene grafikus felület!
+	    //TODO!! Pályaválasztás fájlból jöjjön, ne a tesztesetekbõl!
+	    	//Prototípus koncepctiója, 8. oldal
+	    	// https://docs.google.com/document/d/1AlShs6EGiQgDOT84soCT99QxKwG4psa0ydMddu_yyCU/edit
+	    while ((s = in.readLine()) != null && s.length() != 0){ 	    	
 	    	
 	    	String[] params = s.split(" ");
     		if (params[0].compareTo("moveTest")==0){
@@ -240,15 +153,22 @@ public class Jatek {
     			palya.add(new Szakadek(3,5));
     			palyaLoaded = true;
     		}
+    		
+    		if (palyaLoaded) break;	
+    		else System.out.println("Nem ismerem fel a palya nevet! Probald ujra!");
     	}
 		
 	    if (!palyaLoaded) return;
 	    
+	    System.out.println("Palya betoltese...");
+	    palya.setHeight(10);
+	    palya.setWidth(10);
+	    
 	    view.Init();
 		
-	    int pressedKey = in.read();
+	    //TODO!! NE a konzolon egy ciklusban nézzük az irányítást, hanem rendesen KeyEvent szarokkal!
+	    int pressedKey = ' ';
 	    while (true){
-	    	//System.out.println(pressedKey);
 	    	if (pressedKey=='a'){
 	    		E.move(Irany.BALRA);
 	    	}
