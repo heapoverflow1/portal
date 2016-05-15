@@ -203,7 +203,7 @@ public class View {
 		GridLayout experiment = new GridLayout(10,10);
 		Container content = new JPanel(new GridBagLayout());
 		frame = new JFrame("Csillagkapu");
-		frame.setPreferredSize(new Dimension(600, 600));
+		frame.setMinimumSize(new Dimension(700, 700));
 		//frame.setLayout(new FlowLayout());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setPreferredSize(new Dimension(600, 600));
@@ -246,6 +246,64 @@ public class View {
 		c.gridy=1;
 		content.add(m.kezdo_label,c);
 */
+		Ajto a1= new Ajto(0,0);
+		Fal f1 = new Fal(0,0);
+		Merleg m1 = new Merleg(0,0,a1,1);
+		Szakadek sz1 = new Szakadek(0,0);
+		Doboz d1 = new Doboz(1,1);
+		Ososztaly temp= null;
+		
+		for (int i=0;i<10;++i){
+			
+			for (int j=0;j<10;++j){
+				
+				for (Ososztaly o : ref1){
+					if(o.position.getX()==i && o.position.getY()==j)
+						temp=o;					
+				}
+				c.gridx=j;
+				c.gridy=i;
+				
+				if (temp != null){
+					if (temp.getClass()==Ajto.class){
+						a1=(Ajto)temp;
+						content.add(a1.kezdo_label, c);
+					}
+					
+					if (temp.getClass()==Szakadek.class){
+						sz1=(Szakadek)temp;
+						content.add(sz1.kezdo_label, c);
+					}
+					
+					if (temp.getClass()==Merleg.class){
+						m1=(Merleg)temp;
+						content.add(m1.kezdo_label, c);
+					}
+					
+					if (temp.getClass()==Doboz.class){
+						d1=(Doboz)temp;
+						content.add(d1.kezdo_label, c);
+					}
+					
+					if (temp.getClass()==Fal.class){
+						f1=(Fal)temp;
+						content.add(f1.kezdo_label, c);
+					}
+				}
+				else {
+					
+					JLabel uj = new JLabel();
+					uj.setIcon(icon);
+					content.add(uj,c);
+					
+				}
+				
+				temp=null;
+			}
+			
+		}
+		
+		
 		panel.add(content,BorderLayout.CENTER);
 		frame.add(panel,BorderLayout.CENTER);
 		
