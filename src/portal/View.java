@@ -56,8 +56,6 @@ public class View {
 		List<Ososztaly> ref = new ArrayList<Ososztaly>();
 		ref = jatekter.getObjects();
 		
-		
-		
 		char[][] palya = new char[jatekter.getWidth()][jatekter.getHeight()];
 		for (int i=0;i<jatekter.getWidth(); i++){
 			for (int j=0;j<jatekter.getHeight();j++){
@@ -131,6 +129,8 @@ public class View {
 		Doboz d1 = new Doboz(1,1);
 		Ososztaly temp= null;
 		
+		content.removeAll();
+		
 		for (int i=0;i<10;++i){
 			
 			for (int j=0;j<10;++j){
@@ -189,7 +189,7 @@ public class View {
 		
 		
 		panel.add(content,BorderLayout.CENTER);
-		frame.add(panel,BorderLayout.CENTER);
+		//frame.add(panel,BorderLayout.CENTER);
 		
 		
 	}
@@ -358,10 +358,10 @@ private void InitListeners(){
 			menuBar.add(exit);
 			
 			//JMenuBar felvetele a Framebe
-			frame.setJMenuBar(menuBar);
+			frame.setJMenuBar(menuBar);			
 			
 			//Jpanel teszt
-			panel = new JPanel();
+			panel = new JPanel();	
 			panel.addKeyListener(keyListener);
 			panel.setFocusable(true);
 			frame.add(panel);
