@@ -1,8 +1,0 @@
-loadMap cratePickUpTest
-move E l
-listDoboz
-move E j
-liftDoboz
-move E j
-dropDoboz
-listDoboz

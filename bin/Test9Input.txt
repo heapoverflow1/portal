@@ -1,5 +1,0 @@
-loadMap zpmTest
-listSzereplo
-listZPM
-move E l
-listZPM

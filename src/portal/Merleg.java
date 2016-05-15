@@ -1,13 +1,25 @@
 package portal;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Stack;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Merleg extends Ososztaly implements Ertesit, Drawable{
 	Ajto nyitando;
 	Stack<Doboz> dobozok=new Stack<Doboz>();
 	int currentWeight=0;
 	int openWeight;
+	
+	BufferedImage img = null;
+	ImageIcon icon = new ImageIcon(); 
+	JLabel kezdo_label = new JLabel();
 	
 	/* Konstruktor
 	 * A MERLEG inicializalasa x, y koordinatakkal
@@ -17,6 +29,16 @@ public class Merleg extends Ososztaly implements Ertesit, Drawable{
 		position = new Pont(x, y);
 		this.nyitando = nyitando;
 		this.openWeight=openWeight;
+		try {
+		    img = ImageIO.read(new File("bin/merleg_NOGO.png"));
+		} catch (IOException e) {
+		}
+		
+		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
+		kezdo_label.setIcon(icon);
+		
 	}
 	
 	//rarak egy dobozt a merlegre, sulyaval noveli

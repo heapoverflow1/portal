@@ -167,28 +167,25 @@ public class Jatek {
 	    view.Init();
 		
 	    //TODO!! NE a konzolon egy ciklusban nézzük az irányítást, hanem rendesen KeyEvent szarokkal!
-	    int pressedKey = ' ';
-	    while (true){
-	    	if (pressedKey=='a'){
-	    		E.move(Irany.BALRA);
-	    	}
-	    	else if (pressedKey=='w'){
-	    		E.move(Irany.FEL);
-	    	}
-	    	else if (pressedKey=='s'){
-	    		E.move(Irany.LE);
-	    	}
-	    	else if (pressedKey=='d'){
-	    		E.move(Irany.JOBBRA);
-	    	}
-	    	
-	    	view.Update();
-	    	pressedKey = in.read();
-	    }
+//	    int pressedKey = ' ';
+//	    while (true){
+//	    	if (pressedKey=='a'){
+//	    		E.move(Irany.BALRA);
+//	    	}
+//	    	else if (pressedKey=='w'){
+//	    		E.move(Irany.FEL);
+//	    	}
+//	    	else if (pressedKey=='s'){
+//	    		E.move(Irany.LE);
+//	    	}
+//	    	else if (pressedKey=='d'){
+//	    		E.move(Irany.JOBBRA);
+//	    	}
+//	    	
+//	    	view.Update();
+//	    	pressedKey = in.read();
+//	    }
 	}
 	
-	public void keyPressed(KeyEvent e){
-		//TODO!!		
-		view.Update();
-	}
+	
 }
