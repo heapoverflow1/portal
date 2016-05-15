@@ -252,17 +252,17 @@ private void InitListeners(){
 			menuBar.add(newGame);
 			
 			//Palya 1 megnyitas
-			map1 = new JMenu("1. Pálya");
+			map1 = new JMenuItem("1. Pálya");
 			map1.addActionListener(actionListener);
 			newGame.add(map1);
 			
 			//Palya 2 megnyitas
-			map2 = new JMenu("2. Pálya");
+			map2 = new JMenuItem("2. Pálya");
 			map2.addActionListener(actionListener);
 			newGame.add(map2);
 			
 			//Palya 3 megnyitas
-			map3 = new JMenu("3. Pálya");
+			map3 = new JMenuItem("3. Pálya");
 			map3.addActionListener(actionListener);
 			newGame.add(map3);
 			
