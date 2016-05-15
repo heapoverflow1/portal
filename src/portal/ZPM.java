@@ -1,6 +1,9 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +30,8 @@ public class ZPM extends Ososztaly implements Drawable{
 		}
 		
 		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
 		kezdo_label.setIcon(icon);
 	}
 	
@@ -54,7 +59,7 @@ public class ZPM extends Ososztaly implements Drawable{
 		
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		content.add(kezdo_label, c);
 	}
 }

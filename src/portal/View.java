@@ -33,10 +33,7 @@ public class View {
 	protected JFrame 	frame;
 	protected JPanel panel=new JPanel();
 	Container content = new JPanel(new GridBagLayout());
-	
-
-	
-	
+		
 	//Menusav es elemei
 	protected JMenuBar menuBar;
 	protected JMenu exit, newGame;
@@ -52,58 +49,8 @@ public class View {
 	}
 	
 	private void UpdateFrame(){
-		//TODO!! Jelenítse meg, ne a konzolra írja ki
 		List<Ososztaly> ref = new ArrayList<Ososztaly>();
 		ref = jatekter.getObjects();
-		
-		char[][] palya = new char[jatekter.getWidth()][jatekter.getHeight()];
-		for (int i=0;i<jatekter.getWidth(); i++){
-			for (int j=0;j<jatekter.getHeight();j++){
-				palya[i][j]=' ';
-			}
-		}
-		
-		for (Ososztaly i : ref){
-			char abra = ' ';
-			if(i.getClass() == Ajto.class){
-				abra='a';
-			}else if (i.getClass()==Doboz.class){
-				abra='d';
-			}
-			else if (i.getClass()==Jatekos.class){
-				abra='E';
-			}
-			else if (i.getClass()==Szakadek.class){
-				abra='x';
-			}
-			else if (i.getClass()==Merleg.class){
-				abra='m';
-			}
-			else if (i.getClass()==Fal.class){
-				abra='O';
-			}
-			else if (i.getClass()==SpecFal.class){
-				abra='{';
-			}
-			else if (i.getClass()==ZPM.class){
-				abra='Z';
-			}
-			else if (i.getClass()==Replikator.class){
-				abra='R';
-			}
-			palya[i.position.getX()][i.position.getY()] = abra;
-		}
-		
-		System.out.println("-----------");
-		for (int i=0;i<jatekter.getWidth(); i++){
-			System.out.print("|");
-			for (int j=0;j<jatekter.getHeight();j++){
-				System.out.print(palya[j][i]);
-			}
-			System.out.println("|");
-		}
-		System.out.println("-----------");
-		
 		
 		BufferedImage img = null;
 		ImageIcon icon = new ImageIcon(); 
@@ -114,84 +61,47 @@ public class View {
 		} catch (IOException e) {
 		}
 		
+		GridBagConstraints c = new GridBagConstraints();
+		
 		icon.setImage(img);
 		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
 		icon.setImage(scaleImage);
 		label.setIcon(icon);
 		
-		GridBagConstraints c = new GridBagConstraints();
-		
-		Jatekos e1 = new Jatekos(0,0,Szin.KEK);
-		Ajto a1= new Ajto(0,0);
-		Fal f1 = new Fal(0,0);
-		Merleg m1 = new Merleg(0,0,a1,1);
-		Szakadek sz1 = new Szakadek(0,0);
-		Doboz d1 = new Doboz(1,1);
-		Ososztaly temp= null;
-		
+		char[][] palya = new char[jatekter.getWidth()][jatekter.getHeight()];
+		for (int i=0;i<jatekter.getWidth(); i++){
+			for (int j=0;j<jatekter.getHeight();j++){
+				palya[i][j]=' ';
+			}
+		}
 		content.removeAll();
 		
-		for (int i=0;i<10;++i){
-			
-			for (int j=0;j<10;++j){
-				
-				for (Ososztaly o : ref){
-					if(o.position.getX()==i && o.position.getY()==j)
-						temp=o;					
-				}
-				c.gridx=i;
-				c.gridy=j;
-				
-				if (temp != null){
-					if (temp.getClass()==Ajto.class){
-						a1=(Ajto)temp;
-						content.add(a1.kezdo_label, c);
-					}
-					
-					if (temp.getClass()==Szakadek.class){
-						sz1=(Szakadek)temp;
-						content.add(sz1.kezdo_label, c);
-					}
-					
-					if (temp.getClass()==Merleg.class){
-						m1=(Merleg)temp;
-						content.add(m1.kezdo_label, c);
-					}
-					
-					if (temp.getClass()==Doboz.class){
-						d1=(Doboz)temp;
-						content.add(d1.kezdo_label, c);
-					}
-					
-					if (temp.getClass()==Fal.class){
-						f1=(Fal)temp;
-						content.add(f1.kezdo_label, c);
-					}
-					
-					if (temp.getClass()==Jatekos.class){
-						e1=(Jatekos)temp;
-						content.add(e1.kezdo_label, c);
-					}
-					
-				}
-				else {
-					
+		for (Ososztaly o : ref){
+			c.gridx=o.position.getX();
+			c.gridy=o.position.getY();
+			palya[o.position.getX()][o.position.getY()] = 'X';
+			o.draw(content, c);
+		}
+		
+		System.out.println("-----------");
+		for (int i=0;i<jatekter.getWidth(); i++){
+			System.out.print("|");
+			for (int j=0;j<jatekter.getHeight();j++){
+				System.out.print(palya[j][i]);
+				if (palya[i][j]==' '){
+					c.gridx=i;
+					c.gridy=j;
 					JLabel uj = new JLabel();
 					uj.setIcon(icon);
 					content.add(uj,c);
-					
 				}
-				
-				temp=null;
 			}
-			
+			System.out.println("|");
 		}
-		
-		
+		System.out.println("-----------");
+
 		panel.add(content,BorderLayout.CENTER);
 		//frame.add(panel,BorderLayout.CENTER);
-		
-		
 	}
 	
 private void InitListeners(){
@@ -369,41 +279,6 @@ private void InitListeners(){
 		}
 	
 	public void Init(){
-		
-//		BufferedImage img = null;
-//		ImageIcon icon = new ImageIcon(); 
-//		JLabel label = new JLabel();
-//		
-//		try {
-//		    img = ImageIO.read(new File("bin/mezo.jpg"));
-//		} catch (IOException e) {
-//		}
-//		
-//		icon.setImage(img);
-//		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
-//		icon.setImage(scaleImage);
-//		label.setIcon(icon);
-		
-	
-//		Jatekos e = new Jatekos(1,1,Szin.KEK);
-//		Ajto a = new Ajto(3,2);
-//		Szakadek sz = new Szakadek(1,3);
-//		Merleg m= new Merleg(1,4,a,1);
-//		Doboz dob = new Doboz(4,5);
-//		Fal f = new Fal (5,5);
-//		Fal f2 = new Fal (0,0);
-//		
-//		List<Ososztaly> ref1 = new ArrayList<Ososztaly>();
-//		ref1.add(a);
-//		ref1.add(sz);
-//		ref1.add(m);
-//		ref1.add(dob);
-//		ref1.add(f);
-//		ref1.add(f2);
-//		ref1.add(e);
-		
-		//GridLayout experiment = new GridLayout(10,10);
-		//Container content = new JPanel(new GridBagLayout());
 		frame = new JFrame("Csillagkapu");
 		frame.setMinimumSize(new Dimension(700, 700));
 		//frame.setLayout(new FlowLayout());
@@ -415,107 +290,6 @@ private void InitListeners(){
 		InitMenuBar();
 		
 		UpdateFrame();
-		
-		//GridBagConstraints c = new GridBagConstraints();
-		/*
-		c.gridx=0;
-		c.gridy=0;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		content.add(a.kezdo_label,c);
-		System.out.println(a.img.getHeight());
-		System.out.println(a.img.getWidth());
-		c.gridx=1;
-		c.gridy=0;
-		content.add(f.kezdo_label,c);
-		c.gridx=2;
-		c.gridy=0;
-		content.add(dob.kezdo_label,c);
-		c.gridx=3;
-		c.gridy=0;
-		content.add(label,c);
-		c.gridx=4;
-		c.gridy=0;
-		content.add(new JButton("ok"),c);
-		c.gridx=5;
-		c.gridy=0;
-		content.add(new JButton("oki"),c);
-		c.gridx=6;
-		c.gridy=0;
-		content.add(new JButton("oksi"),c);
-		c.gridx=0;
-		c.gridy=1;		
-		content.add(sz.kezdo_label,c);
-		c.gridx=1;
-		c.gridy=1;
-		content.add(m.kezdo_label,c);
-*/
-//		Jatekos e1 = new Jatekos(0,0,Szin.KEK);
-//		Ajto a1= new Ajto(0,0);
-//		Fal f1 = new Fal(0,0);
-//		Merleg m1 = new Merleg(0,0,a1,1);
-//		Szakadek sz1 = new Szakadek(0,0);
-//		Doboz d1 = new Doboz(1,1);
-//		Ososztaly temp= null;
-		
-//		for (int i=0;i<10;++i){
-//			
-//			for (int j=0;j<10;++j){
-//				
-//				for (Ososztaly o : ref1){
-//					if(o.position.getX()==i && o.position.getY()==j)
-//						temp=o;					
-//				}
-//				c.gridx=j;
-//				c.gridy=i;
-//				
-//				if (temp != null){
-//					if (temp.getClass()==Ajto.class){
-//						a1=(Ajto)temp;
-//						content.add(a1.kezdo_label, c);
-//					}
-//					
-//					if (temp.getClass()==Szakadek.class){
-//						sz1=(Szakadek)temp;
-//						content.add(sz1.kezdo_label, c);
-//					}
-//					
-//					if (temp.getClass()==Merleg.class){
-//						m1=(Merleg)temp;
-//						content.add(m1.kezdo_label, c);
-//					}
-//					
-//					if (temp.getClass()==Doboz.class){
-//						d1=(Doboz)temp;
-//						content.add(d1.kezdo_label, c);
-//					}
-//					
-//					if (temp.getClass()==Fal.class){
-//						f1=(Fal)temp;
-//						content.add(f1.kezdo_label, c);
-//					}
-//					
-//					if (temp.getClass()==Jatekos.class){
-//						e1=(Jatekos)temp;
-//						content.add(e1.kezdo_label, c);
-//					}
-//					
-//				}
-//				else {
-//					
-//					JLabel uj = new JLabel();
-//					uj.setIcon(icon);
-//					content.add(uj,c);
-//					
-//				}
-//				
-//				temp=null;
-//			}
-//			
-//		}
-//		
-//		
-//		panel.add(content,BorderLayout.CENTER);
-//		frame.add(panel,BorderLayout.CENTER);
 		
 		frame.pack();
 		frame.setVisible(true);

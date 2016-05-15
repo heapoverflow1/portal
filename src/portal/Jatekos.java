@@ -1,6 +1,8 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -211,8 +213,8 @@ public class Jatekos extends Szereplo implements Drawable{
 		return "J "+position.toString();
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		content.add(kezdo_label, c);
 	}
 	
 }

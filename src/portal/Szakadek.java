@@ -1,6 +1,8 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -68,7 +70,7 @@ public class Szakadek extends Ososztaly implements Drawable {
 		//A toltenyt nem semmisitjuk meg
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		content.add(kezdo_label, c);
 	}
 }
