@@ -3,14 +3,18 @@ package portal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.*;
+
 public class View {
-	Jatekter jatekter;
+	protected Jatekter jatekter;
+	protected JFrame 	frame;
+	protected JPanel panel;
+	
 	public View(Jatekter j){
 		jatekter = j;
 	}
-	public void Init(){}
 	
-	public void Update(){
+	private void UpdateFrame(){
 		//TODO!! Jelenítse meg, ne a konzolra írja ki
 		List<Ososztaly> ref = new ArrayList<Ososztaly>();
 		ref = jatekter.getObjects();
@@ -53,5 +57,18 @@ public class View {
 			System.out.println("|");
 		}
 		System.out.println("-----------");
+	}
+	
+	public void Init(){
+		frame = new JFrame("Csillagkapu");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		UpdateFrame();
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	public void Update(){
+		UpdateFrame();
+		frame.revalidate();
 	}
 }
