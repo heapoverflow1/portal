@@ -79,7 +79,6 @@ public class Jatek {
 	    		palya.add(E);
 	    		palya.add(Jaffa);
 	    		palya.add(new Doboz(3, 2));
-    			palya.add(new Fal(3, 4));
     			palya.add(new SpecFal(3, 4, palya.kapumgr));
     			palya.add(new SpecFal(7, 7, palya.kapumgr));
     			Ajto door = new Ajto(1, 7);

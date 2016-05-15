@@ -14,10 +14,14 @@ import javax.swing.JLabel;
 
 public class Ajto extends Fal implements Ertesit, Drawable{
 	boolean isOpen;
+	
 	BufferedImage img = null;
 	ImageIcon icon = new ImageIcon(); 
-	JLabel kezdo_label = new JLabel();
+	static JLabel label_closed = new JLabel();
 	
+	BufferedImage img2 = null;
+	ImageIcon icon2 = new ImageIcon(); 
+	static JLabel label_open = new JLabel();
 	
 	
 	/* Konstruktor
@@ -30,13 +34,18 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 		
 		try {
 		    img = ImageIO.read(new File("bin/ajto.png"));
+		    img2 = ImageIO.read(new File("bin/ajto_nyitva.png"));
 		} catch (IOException e) {
 		}
 		
 		icon.setImage(img);
+		icon2.setImage(img2);
 		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		Image scaleImage2 = icon2.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
 		icon.setImage(scaleImage);
-		kezdo_label.setIcon(icon);
+		icon2.setImage(scaleImage2);
+		label_closed.setIcon(icon);
+		label_open.setIcon(icon2);
 	}
 	
 	//Ajtonyitas
@@ -70,6 +79,7 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 	}
 	
 	public void draw(Container content, GridBagConstraints c){
-		content.add(kezdo_label, c);
+		if (isOpen) content.add(label_open, c);
+		else content.add(label_closed, c);
 	}
 }
