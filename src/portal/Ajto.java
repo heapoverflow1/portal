@@ -40,8 +40,8 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 	}
 	
 	public String toString(){
-		if (isOpen) return position.toString()+" Ny";
-		else return position.toString()+" Z";
+		if (isOpen) return "A";
+		else return "a";
 	}
 	
 	public void draw(Graphics g){
