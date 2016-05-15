@@ -16,8 +16,6 @@ public class Doboz extends Ososztaly implements Drawable{
 	boolean isLifted = false;
 	static int weight=1;
 	
-	BufferedImage img = null;
-	ImageIcon icon = new ImageIcon(); 
 	JLabel kezdo_label = new JLabel();
 	
 	/* Konstruktor
@@ -25,31 +23,13 @@ public class Doboz extends Ososztaly implements Drawable{
 	 */
 	public Doboz(int x, int y) {		
 		position = new Pont(x,y);
-		
-		try {
-		    img = ImageIO.read(new File("bin/doboz.png"));
-		} catch (IOException e) {
-		}
-		
-		icon.setImage(img);
-		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
-		icon.setImage(scaleImage);
-		kezdo_label.setIcon(icon);
+		LoadImage(kezdo_label, "bin/doboz.png");
 	}
 	
 	public Doboz(int x, int y, int w) {		
 		position = new Pont(x,y);
-		weight=w;
-		
-		try {
-		    img = ImageIO.read(new File("bin/doboz.png"));
-		} catch (IOException e) {
-		}
-		
-		icon.setImage(img);
-		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
-		icon.setImage(scaleImage);
-		kezdo_label.setIcon(icon);
+		weight=w;		
+		LoadImage(kezdo_label, "bin/doboz.png");
 	}
 	
 	//Doboz felemelese

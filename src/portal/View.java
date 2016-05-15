@@ -79,9 +79,10 @@ public class View {
 		for (Ososztaly o : ref){
 			c.gridx=o.position.getX();
 			c.gridy=o.position.getY();
-			palya[o.position.getX()][o.position.getY()] = 'X';
+			palya[c.gridx][c.gridy] = 'X';
 			o.draw(content, c);
 		}
+		jatekter.kapumgr.draw(content, c);
 		
 		System.out.println("-----------");
 		for (int i=0;i<jatekter.getWidth(); i++){
@@ -100,6 +101,7 @@ public class View {
 		}
 		System.out.println("-----------");
 
+		content.repaint();
 		panel.add(content,BorderLayout.CENTER);
 		//frame.add(panel,BorderLayout.CENTER);
 	}
@@ -192,7 +194,7 @@ private void InitListeners(){
 						e1.printStackTrace();
 					}
 				}
-				if(e.getKeyCode() == KeyEvent.VK_UP){
+				else if(e.getKeyCode() == KeyEvent.VK_UP){
 					Jatek.Jaffa.move(Irany.FEL);
 				}
 				else if(e.getKeyCode() == KeyEvent.VK_DOWN){

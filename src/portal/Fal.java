@@ -12,26 +12,15 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Fal extends Ososztaly implements Drawable{
-	
-	BufferedImage img = null;
-	ImageIcon icon = new ImageIcon(); 
-	JLabel kezdo_label = new JLabel();
+public class Fal extends Ososztaly implements Drawable{ 
+	private JLabel kezdo_label=new JLabel();
 	
 	/* Konstruktor
 	 * A FAL inicializalasa x, y koordinatakkal
 	 */
 	public Fal(int x, int y) {
 		position = new Pont(x,y);
-		try {
-		    img = ImageIO.read(new File("bin/fal.jpg"));
-		} catch (IOException e) {
-		}
-		
-		icon.setImage(img);
-		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
-		icon.setImage(scaleImage);
-		kezdo_label.setIcon(icon);
+		LoadImage(kezdo_label, "bin/fal.jpg");
 	}
 	
 	/* !TODO
@@ -40,8 +29,6 @@ public class Fal extends Ososztaly implements Drawable{
 	 * bar ez nem szep
 	 * -WM
 	 */
-
-	
 
 	@Override
 	public Pont ertesit(Pont innenlep, Szereplo sz) {
