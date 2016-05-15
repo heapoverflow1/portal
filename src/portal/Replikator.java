@@ -13,20 +13,18 @@ import javax.swing.JLabel;
 
 public class Replikator extends Szereplo {
 
-	BufferedImage img = null;
-	ImageIcon icon = new ImageIcon(); 
-	JLabel kezdo_label = new JLabel();
+	JLabel fel = new JLabel();
+	JLabel le = new JLabel();
+	JLabel jobb = new JLabel();
+	JLabel bal = new JLabel();
 	
 	public Replikator(int x, int y) {
 		super(x, y);
 		
-		try {
-		    img = ImageIO.read(new File("bin/replicator_fel.png"));
-		} catch (IOException e) {
-		}
-		
-		icon.setImage(img);
-		kezdo_label.setIcon(icon);
+		LoadImage(fel, "bin/replicator_fel.png");
+		LoadImage(le, "bin/replicator_le.png");
+		LoadImage(jobb, "bin/replicator_jobb.png");
+		LoadImage(bal, "bin/replicator_bal.png");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -53,6 +51,9 @@ public class Replikator extends Szereplo {
 	}
 	
 	public void draw(Container content, GridBagConstraints c){
-		content.add(kezdo_label, c);
+		if (irany==Irany.JOBBRA) content.add(jobb, c);
+		else if (irany==Irany.BALRA) content.add(bal, c);
+		else if (irany==Irany.FEL) content.add(fel, c);
+		else content.add(le, c);
 	}
 }

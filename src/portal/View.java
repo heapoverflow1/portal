@@ -229,7 +229,6 @@ private void InitListeners(){
 					}
 				}
 				
-				Update();
 				
 			}
 		};
