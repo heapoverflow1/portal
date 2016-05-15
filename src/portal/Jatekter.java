@@ -1,5 +1,8 @@
 package portal;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -89,7 +92,6 @@ public class Jatekter {
 	
 	public void checkfield_shoot (Pont p, Tolteny t){
 		for (Ososztaly  i : objects){
-			System.out.println("Ez megvan");
 			if (i.position.compareTo(p))
 				i.ertesit_shoot(t);	
 		}		
@@ -103,6 +105,11 @@ public class Jatekter {
 		return ref;
 	}
 	
+	public void removeAll(){
+		objects.removeAll(objects);
+		removeQueue.removeAll(removeQueue);
+	}
+
 	/*
 	 * KENE valahonnan csillagkapu a createCSK-nak 
 	 */
