@@ -12,16 +12,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
 
 public class Jatek {
 	static Jatekter palya;
 	
-	private static View view;
+	public static View view;
 	
 	private static final Irany JOBBRA = Irany.JOBBRA;
 	static Jatekos E = new Jatekos(1, 2, Szin.KEK);
 	static Jatekos Jaffa = new Jatekos(1, 1, Szin.ZOLD);
-	static Replikator R = new Replikator(3,3);
+	static Replikator rep = new Replikator(3,3);
 	
 	public static Irany getDirFromString(String pms){
 		Irany dir = Irany.JOBBRA;
@@ -264,6 +265,13 @@ public class Jatek {
 			else if (adatok[0].equalsIgnoreCase("J")){
 				Jaffa.position.setX(Integer.parseInt(adatok[1])-1);
 				Jaffa.position.setY(Integer.parseInt(adatok[2])-1);
+			}
+			else if (adatok[0].equalsIgnoreCase("R")){
+				rep.position.setX(Integer.parseInt(adatok[1])-1);
+				rep.position.setY(Integer.parseInt(adatok[2])-1);
+				palya.add(rep);
+				Timer timer = new Timer();
+				timer.schedule( new ReplicatorMover(), 1000, 1000);
 			}
 			//Ezredes, mérleg, ajtó
 		}
