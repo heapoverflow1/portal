@@ -63,7 +63,7 @@ public class Jatekos extends Szereplo implements Drawable{
 	
 	//!TODO - JATEKOS meghalasa utan VEGE a jateknak
 	public void fallAndDie(){
-							
+		dead = true;
 	}
 	
 	
@@ -93,7 +93,7 @@ public class Jatekos extends Szereplo implements Drawable{
 		Merleg m = Jatek.palya.getMerleg(position);
 		if(m != null){
 			
-			doboz=m.removeTopDoboz();
+			doboz = m.removeTopDoboz();
 		}else{
 			
 			doboz = Jatek.palya.getDoboz(position);
@@ -101,7 +101,7 @@ public class Jatekos extends Szereplo implements Drawable{
 		
 		doboz = Jatek.palya.getDoboz(position);
 		
-		if (doboz!=null)
+		if (doboz != null)
 			doboz.Lift();
 		
 	}
@@ -110,7 +110,7 @@ public class Jatekos extends Szereplo implements Drawable{
 	 *  
 	 */
 	void drop(){		
-		if (doboz==null) return;
+		if (doboz == null) return;
 		Pont newPosition=new Pont(doboz.position);
 		
 		//a dobozt arra szeretnem elmozditani, amerre az ezredes nez
@@ -143,7 +143,7 @@ public class Jatekos extends Szereplo implements Drawable{
 		}
 		
 		//ha eljutott idaig akkor mar biztos az uj pozicioba fog kerulni
-		doboz.position=newPosition;
+		doboz.position = newPosition;
 		
 		//ha merlegre tesszuk, akkor hozzaadjuk a merleg stackjehez
 		if(m != null){

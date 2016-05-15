@@ -1,7 +1,8 @@
 package portal;
 
 public abstract class Szereplo extends Ososztaly {
-	Irany irany;	
+	Irany irany;
+	public boolean dead = false;
 	
 	/* Konstruktor
 	 * A SZEREPLO a jatek elejen jobbra all
@@ -20,7 +21,8 @@ public abstract class Szereplo extends Ososztaly {
 	 * adott pozicioval a targytol fuggoen ( ha FAL, akkor a regi pozicio, azaz nem leptunk,
 	 * ha MERLEG, akkor az uj pozicio, tehat leptunk)
 	 */
-	public void move (Irany i){	
+	public void move (Irany i){
+		if (dead) return;
 		this.irany = i;
 		Pont ujhely = new Pont(position);
 		ujhely.move(irany);

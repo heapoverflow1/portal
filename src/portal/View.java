@@ -132,7 +132,6 @@ private void InitListeners(){
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Esemeny van!");
 				//Elso palya betoltese
 				if(e.getSource().equals(map1)){
 					//!TODO MAP1 betoltese
@@ -146,6 +145,7 @@ private void InitListeners(){
 				//Harmadik palya betoltese
 				else if(e.getSource().equals(map3)){
 					//!TODO MAP3 betoltese
+					Jatek.NewGame("bin/luck of the replicators.txt");
 				}
 				
 				UpdateFrame();					//Ujra ki kell rajzolni a palyat
@@ -252,17 +252,17 @@ private void InitListeners(){
 			menuBar.add(newGame);
 			
 			//Palya 1 megnyitas
-			map1 = new JMenu("1. Pálya");
+			map1 = new JMenuItem("1. Pálya");
 			map1.addActionListener(actionListener);
 			newGame.add(map1);
 			
 			//Palya 2 megnyitas
-			map2 = new JMenu("2. Pálya");
+			map2 = new JMenuItem("2. Pálya");
 			map2.addActionListener(actionListener);
 			newGame.add(map2);
 			
 			//Palya 3 megnyitas
-			map3 = new JMenu("3. Pálya");
+			map3 = new JMenuItem("3. Pálya");
 			map3.addActionListener(actionListener);
 			newGame.add(map3);
 			
