@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 
 public class Replikator extends Szereplo {
 
+	boolean dead = false;
+	
 	JLabel fel = new JLabel();
 	JLabel le = new JLabel();
 	JLabel jobb = new JLabel();
@@ -29,6 +31,7 @@ public class Replikator extends Szereplo {
 	}
 
 	public void fallAndDie() {
+		dead = true;
 		try {
 			Jatek.palya.removeQueue.add(this);
 			//Jatek.palya.objects.remove(this);
