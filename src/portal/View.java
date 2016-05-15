@@ -132,7 +132,6 @@ private void InitListeners(){
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Esemeny van!");
 				//Elso palya betoltese
 				if(e.getSource().equals(map1)){
 					//!TODO MAP1 betoltese
@@ -146,6 +145,7 @@ private void InitListeners(){
 				//Harmadik palya betoltese
 				else if(e.getSource().equals(map3)){
 					//!TODO MAP3 betoltese
+					Jatek.NewGame("bin/luck of the replicators.txt");
 				}
 				
 				UpdateFrame();					//Ujra ki kell rajzolni a palyat
