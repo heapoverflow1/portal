@@ -192,6 +192,7 @@ public class View {
 		Merleg m= new Merleg(1,4,a,1);
 		Doboz dob = new Doboz(4,5);
 		Fal f = new Fal (5,5);
+		Fal f2 = new Fal (0,0);
 		
 		List<Ososztaly> ref1 = new ArrayList<Ososztaly>();
 		ref1.add(a);
@@ -199,6 +200,7 @@ public class View {
 		ref1.add(m);
 		ref1.add(dob);
 		ref1.add(f);
+		ref1.add(f2);
 		
 		GridLayout experiment = new GridLayout(10,10);
 		Container content = new JPanel(new GridBagLayout());
