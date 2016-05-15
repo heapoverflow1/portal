@@ -33,7 +33,7 @@ public class View {
 	protected JFrame 	frame;
 	protected JPanel panel=new JPanel();
 	Container content = new JPanel(new GridBagLayout());
-		
+	
 	//Menusav es elemei
 	protected JMenuBar menuBar;
 	protected JMenu exit, newGame;
@@ -79,16 +79,17 @@ public class View {
 		for (Ososztaly o : ref){
 			c.gridx=o.position.getX();
 			c.gridy=o.position.getY();
+			if (c.gridx>=jatekter.getWidth() || c.gridy>=jatekter.getHeight()) continue;
 			palya[c.gridx][c.gridy] = 'X';
 			o.draw(content, c);
 		}
 		jatekter.kapumgr.draw(content, c);
 		
-		System.out.println("-----------");
+		//System.out.println("-----------");
 		for (int i=0;i<jatekter.getWidth(); i++){
-			System.out.print("|");
+			//System.out.print("|");
 			for (int j=0;j<jatekter.getHeight();j++){
-				System.out.print(palya[j][i]);
+				//System.out.print(palya[j][i]);
 				if (palya[i][j]==' '){
 					c.gridx=i;
 					c.gridy=j;
@@ -97,9 +98,9 @@ public class View {
 					content.add(uj,c);
 				}
 			}
-			System.out.println("|");
+			//System.out.println("|");
 		}
-		System.out.println("-----------");
+		//System.out.println("-----------");
 
 		content.repaint();
 		panel.add(content,BorderLayout.CENTER);
@@ -131,14 +132,16 @@ private void InitListeners(){
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				System.out.println("Esemeny van!");
 				//Elso palya betoltese
 				if(e.getSource().equals(map1)){
 					//!TODO MAP1 betoltese
+					Jatek.NewGame("bin/blitz.txt");
 				}
 				//Masodik Palya betoltese
 				else if(e.getSource().equals(map2)){
 					//!TODO MAP2 betoltese
+					Jatek.NewGame("bin/Steal the box.txt");
 				}
 				//Harmadik palya betoltese
 				else if(e.getSource().equals(map3)){
