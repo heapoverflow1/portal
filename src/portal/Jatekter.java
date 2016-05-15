@@ -8,6 +8,8 @@ public class Jatekter {
 	List<Ososztaly> objects;
 	public Csillagkapu kapumgr;
 	public List<Ososztaly> removeQueue;
+	int width;
+	int height;
 	
 	/* Konstruktor
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
@@ -17,6 +19,11 @@ public class Jatekter {
 		removeQueue = new ArrayList<Ososztaly>();
 		kapumgr = new Csillagkapu();
 	}
+	
+	public int getWidth(){return width;}
+	public int getHeight(){return height;}
+	public void setWidth(int w){width=w;}
+	public void setHeight(int h){height=h;}
 	
 	//!TODO - KOMMENT
 	public Doboz getDoboz(Pont innen){
