@@ -139,8 +139,8 @@ public class View {
 					if(o.position.getX()==i && o.position.getY()==j)
 						temp=o;					
 				}
-				c.gridx=j;
-				c.gridy=i;
+				c.gridx=i;
+				c.gridy=j;
 				
 				if (temp != null){
 					if (temp.getClass()==Ajto.class){
@@ -231,9 +231,10 @@ private void InitListeners(){
 				//Harmadik palya betoltese
 				else if(e.getSource().equals(map3)){
 					//!TODO MAP3 betoltese
-				}else{
-					UpdateFrame();					//Ujra ki kell rajzolni a palyat
 				}
+				
+				UpdateFrame();					//Ujra ki kell rajzolni a palyat
+				
 				
 			}
 		};
