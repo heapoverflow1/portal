@@ -1,6 +1,7 @@
 package portal;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class Szakadek extends Ososztaly implements Drawable {
 		}
 		
 		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
 		kezdo_label.setIcon(icon);
 		
 	}

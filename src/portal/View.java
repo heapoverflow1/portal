@@ -1,32 +1,34 @@
 package portal;
 
-<<<<<<< HEAD
+
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-=======
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
->>>>>>> refs/remotes/origin/wBranch3
+
 
 public class View {
 	protected Jatekter jatekter;
 	protected JFrame 	frame;
-	protected JPanel panel;
+	protected JPanel panel=new JPanel(new BorderLayout(5,5));;
 	
 	//Menusav es elemei
 	protected JMenuBar menuBar;
@@ -167,6 +169,19 @@ public class View {
 	}
 	
 	public void Init(){
+		
+		BufferedImage img = null;
+		ImageIcon icon = new ImageIcon(); 
+		JLabel label = new JLabel();
+		
+		try {
+		    img = ImageIO.read(new File("bin/mezo.jpg"));
+		} catch (IOException e) {
+		}
+		
+		icon.setImage(img);
+		label.setIcon(icon);
+		
 		Ajto a = new Ajto(3,2);
 		Szakadek sz = new Szakadek(1,3);
 		Merleg m= new Merleg(1,4,a,1);
@@ -181,7 +196,7 @@ public class View {
 		ref1.add(f);
 		
 		GridLayout experiment = new GridLayout(10,10);
-		Container content = new JPanel(new GridLayout(10,10));
+		Container content = new JPanel(new GridBagLayout());
 		frame = new JFrame("Csillagkapu");
 		frame.setPreferredSize(new Dimension(600, 600));
 		frame.setLayout(new FlowLayout());
@@ -193,18 +208,30 @@ public class View {
 		
 		UpdateFrame();
 		
-		for (int i=0;i<100;i++){
-			
-			for (Ososztaly o : ref1){
-				if ((o.position.getX()*10 + o.position.getY()-1)== i){
-					if (o.getClass()==Ajto.class)
-						Ajto a1= (Ajto)o;
-					
-				}
-					
-					
-			}
-		}
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx=0;
+		c.gridy=0;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		
+		content.add(a.kezdo_label,c);
+		System.out.println(a.img.getHeight());
+		System.out.println(a.img.getWidth());
+		c.gridx=1;
+		c.gridy=0;
+		content.add(f.kezdo_label,c);
+		c.gridx=2;
+		c.gridy=0;
+		content.add(dob.kezdo_label,c);
+		c.gridx=0;
+		c.gridy=1;
+		
+		content.add(sz.kezdo_label,c);
+		c.gridx=1;
+		c.gridy=1;
+		content.add(m.kezdo_label,c);
+
+		panel.add(content,BorderLayout.CENTER);
+		frame.add(panel);
 		
 		frame.pack();
 		frame.setVisible(true);
