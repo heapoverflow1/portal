@@ -1,6 +1,8 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
 
 public class Tolteny extends Ososztaly implements Drawable{
 	Szin szin;
@@ -29,12 +31,12 @@ public class Tolteny extends Ososztaly implements Drawable{
 			 switch (irany) {
 			 
 			 case FEL: 
-				 y = p.getY()+1;
+				 y = p.getY()-1;
 				 p.setY(y); 
 				 break;
 				 
 			 case LE:
-				 y = p.getY()-1;
+				 y = p.getY()+1;
 				 p.setY(y); 
 				 break;
 				 
@@ -80,7 +82,7 @@ public class Tolteny extends Ososztaly implements Drawable{
 		return szin;
 	}
 	
-	public void draw(Graphics g){
+	public void draw(Container content, GridBagConstraints c){
 		//TODO!!!
 	}
 }

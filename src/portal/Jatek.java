@@ -51,7 +51,7 @@ public class Jatek {
 	    view = new View(palya);
 	    
 	    
-	    System.out.println("Adja meg a palya nevet! (moveTest, cratePickUpTest stb.)");
+	    System.out.println("Adja meg a palya nevet! (firstPalya, vagy a tesztek)");
 	   
 	    //Egyelõre a pályák a teszteseteknek megfelelõek
 	    //TODO!! Pályaválasztás most konzolon, ennek is kellene grafikus felület!
@@ -61,6 +61,47 @@ public class Jatek {
 	    while ((s = in.readLine()) != null && s.length() != 0){ 	    	
 	    	
 	    	String[] params = s.split(" ");
+	    	if (params[0].compareTo("firstPalya")==0){
+	    		for (int i=0;i<10;i++){
+	    			palya.add(new Fal(i, 0));
+	    			palya.add(new Fal(i, 9));
+	    		}
+	    		for (int j=1;j<9;j++){
+	    			palya.add(new Fal(0, j));
+	    			palya.add(new Fal(9, j));
+	    		}
+	    		E.position=new Pont(1, 1);
+	    		Jaffa.position=new Pont(8,6);
+	    		palya.add(E);
+	    		palya.add(Jaffa);
+	    		palya.add(new Doboz(3, 2));
+	    		SpecFal egyik = new SpecFal(3, 4, palya.kapumgr);
+	    		SpecFal masik = new SpecFal(6, 8, palya.kapumgr);
+    			palya.add(egyik);
+    			palya.add(masik);
+    			//palya.kapumgr.SetCsk(egyik, Szin.KEK);
+    			//palya.kapumgr.SetCsk(masik, Szin.SARGA);
+    			Ajto door = new Ajto(1, 7);
+    			palya.add(new Fal(2, 7));
+    			palya.add(new Fal(3, 7));
+    			palya.add(new Fal(3, 8));
+    			palya.add(new ZPM(2, 8));
+    			Merleg scale = new Merleg(1,3,door,1);
+    			palya.add(door);
+    			palya.add(scale);
+    			palya.add(new Doboz(1,2,5));
+    			palya.add(new Szakadek(6,7));
+    			palya.add(new Fal(4,7));
+    			palya.add(new Fal(5,7));
+    			palya.add(new Fal(7,7));
+    			palya.add(new Fal(8,7));
+    			palya.add(new Fal(9,7));
+    			palya.add(new ZPM(8, 8));
+    			palya.add(new ZPM(4, 8));
+    			palya.add(new SpecFal(6, 3, palya.kapumgr));
+    			palya.add(new SpecFal(8, 4, palya.kapumgr));
+    			palyaLoaded=true;
+	    	}
     		if (params[0].compareTo("moveTest")==0){
     			//System.out.println("MoveTest loaded!");
     			E.position=new Pont(1, 1);
@@ -163,6 +204,7 @@ public class Jatek {
 	    palya.setWidth(10);
 	    
 	    view.Init();
+<<<<<<< HEAD
 		
 //	    //TODO!! NE a konzolon egy ciklusban nézzük az irányítást, hanem rendesen KeyEvent szarokkal!
 //	    int pressedKey = ' ';
@@ -185,4 +227,9 @@ public class Jatek {
 //	    }
 	}
 	
+=======
+	}
+	
+	
+>>>>>>> refs/remotes/origin/master
 }

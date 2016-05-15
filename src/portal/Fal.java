@@ -1,14 +1,26 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
-public class Fal extends Ososztaly implements Drawable{
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+public class Fal extends Ososztaly implements Drawable{ 
+	private JLabel kezdo_label=new JLabel();
 	
 	/* Konstruktor
 	 * A FAL inicializalasa x, y koordinatakkal
 	 */
 	public Fal(int x, int y) {
 		position = new Pont(x,y);
+		LoadImage(kezdo_label, "bin/fal.jpg");
 	}
 	
 	/* !TODO
@@ -17,8 +29,6 @@ public class Fal extends Ososztaly implements Drawable{
 	 * bar ez nem szep
 	 * -WM
 	 */
-
-	
 
 	@Override
 	public Pont ertesit(Pont innenlep, Szereplo sz) {
@@ -32,7 +42,7 @@ public class Fal extends Ososztaly implements Drawable{
 		
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		content.add(kezdo_label, c);
 	}
 }

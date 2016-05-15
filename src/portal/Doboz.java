@@ -1,20 +1,35 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Doboz extends Ososztaly implements Drawable{
 	boolean isLifted = false;
 	static int weight=1;
 	
+	JLabel kezdo_label = new JLabel();
+	
 	/* Konstruktor
 	 * A DOBOZ inicializalasa x, y koordinatakkal
 	 */
 	public Doboz(int x, int y) {		
-		position = new Pont(x,y);		
+		position = new Pont(x,y);
+		LoadImage(kezdo_label, "bin/doboz.png");
 	}
+	
 	public Doboz(int x, int y, int w) {		
 		position = new Pont(x,y);
-		weight=w;
+		weight=w;		
+		LoadImage(kezdo_label, "bin/doboz.png");
 	}
 	
 	//Doboz felemelese
@@ -51,7 +66,7 @@ public class Doboz extends Ososztaly implements Drawable{
 		//A doboz nem akadályozza meg a töltény útját	
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		content.add(kezdo_label, c);
 	}
 }

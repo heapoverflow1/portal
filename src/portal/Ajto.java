@@ -1,9 +1,22 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Ajto extends Fal implements Ertesit, Drawable{
 	boolean isOpen;
+
+	static JLabel label_closed = new JLabel();
+	static JLabel label_open = new JLabel();	
 	
 	/* Konstruktor
 	 * Az AJTO inicializalasa x, y koordinatakkal
@@ -12,6 +25,9 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 	public Ajto(int x, int y){		
 		super(x,y);		
 		isOpen = false;
+		
+		LoadImage(label_open, "bin/ajto_nyitva.png");
+		LoadImage(label_closed, "bin/ajto.png");
 	}
 	
 	//Ajtonyitas
@@ -44,7 +60,8 @@ public class Ajto extends Fal implements Ertesit, Drawable{
 		else return "a";
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		if (isOpen) content.add(label_open, c);
+		else content.add(label_closed, c);
 	}
 }

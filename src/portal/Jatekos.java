@@ -1,12 +1,28 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Jatekos extends Szereplo implements Drawable{
 	Doboz doboz;
 	Szin tolteny_szin;	
 	private int zpmcount;	
 	static int weight;
+	
+	JLabel ezredes_fel = new JLabel();
+	JLabel ezredes_le = new JLabel();
+	JLabel ezredes_jobb = new JLabel();
+	JLabel ezredes_bal = new JLabel();
+	JLabel jaffa = new JLabel();
 	
 	/* Konstruktor
 	 * A JATEKOS a konstruktorban kapott SZINu toltenye van.
@@ -19,6 +35,11 @@ public class Jatekos extends Szereplo implements Drawable{
 		tolteny_szin = sz;		
 		doboz = null;
 		
+		LoadImage(ezredes_fel, "bin/ezredes_fel.png");
+		LoadImage(ezredes_le, "bin/ezredes_le.png");
+		LoadImage(ezredes_bal, "bin/ezredes_bal.png");
+		LoadImage(ezredes_jobb, "bin/ezredes_jobb.png");
+		LoadImage(jaffa, "bin/jaffa.png");
 	}
 	
 	/* JATEKOS mozgatasa irany iranyba
@@ -147,22 +168,14 @@ public class Jatekos extends Szereplo implements Drawable{
 	
 	//Tolteny valtasa
 	void changeTolteny(){		
-		
 		if (tolteny_szin ==  Szin.KEK)
 			tolteny_szin = Szin.SARGA;
-		
-
-		if (tolteny_szin ==  Szin.SARGA)
+		else if (tolteny_szin ==  Szin.SARGA)
 			tolteny_szin = Szin.KEK;
-		
-
-		if (tolteny_szin ==  Szin.PIROS)
+		else if (tolteny_szin ==  Szin.PIROS)
 			tolteny_szin = Szin.ZOLD;
-		
-
-		if (tolteny_szin ==  Szin.ZOLD)
-			tolteny_szin = Szin.PIROS;		
-	
+		else if (tolteny_szin ==  Szin.ZOLD)
+			tolteny_szin = Szin.PIROS;	
 	}
 	
 	public void setIrany(Irany erre){
@@ -183,8 +196,14 @@ public class Jatekos extends Szereplo implements Drawable{
 		return "J "+position.toString();
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		if (tolteny_szin==Szin.KEK || tolteny_szin==Szin.SARGA){
+			if (irany==Irany.JOBBRA) content.add(ezredes_jobb, c);
+			else if (irany==Irany.BALRA) content.add(ezredes_bal, c);
+			else if (irany==Irany.FEL) content.add(ezredes_fel, c);
+			else content.add(ezredes_le, c);
+		}
+		else content.add(jaffa, c);
 	}
 	
 }

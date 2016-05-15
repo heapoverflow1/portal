@@ -1,11 +1,43 @@
 package portal;
 
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Csillagkapu implements Drawable{
 	SpecFal[] falak;	
 	boolean[] Feregjarat;
 	
+	JLabel kek_GO = new JLabel();
+	JLabel kek_NOGO = new JLabel();
+	JLabel piros_GO = new JLabel();
+	JLabel piros_NOGO = new JLabel();
+	JLabel sarga_GO = new JLabel();
+	JLabel sarga_NOGO = new JLabel();
+	JLabel zold_GO = new JLabel();
+	JLabel zold_NOGO = new JLabel();
+	
+	protected void LoadImage(JLabel label, String path){
+		BufferedImage img = null;
+		ImageIcon icon = new ImageIcon(); 
+		try {
+		    img = ImageIO.read(new File(path));
+		} catch (IOException e) {
+			return;
+		}		
+		icon.setImage(img);
+		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
+		icon.setImage(scaleImage);
+		label.setIcon(icon);
+	}
 	
 	/* Konstruktor
 	 * beallitja a feregjaratot false-ra. Alapertelmezes.
@@ -17,6 +49,21 @@ public class Csillagkapu implements Drawable{
 		for (int i=0;i<4;i++){
 			falak[i]=null;
 		}
+		LoadImage(kek_GO, "bin/portal_kek_GO.png");
+		LoadImage(kek_NOGO, "bin/portal_kek_NOGO.png");
+		LoadImage(piros_GO, "bin/portal_piros_GO.png");
+		LoadImage(piros_NOGO, "bin/portal_piros_NOGO.png");
+		LoadImage(sarga_GO, "bin/portal_sarga_GO.png");
+		LoadImage(sarga_NOGO, "bin/portal_sarga_NOGO.png");
+		LoadImage(zold_GO, "bin/portal_zold_GO.png");
+		LoadImage(zold_NOGO, "bin/portal_zold_NOGO.png");	
+	}
+	
+	public boolean Contaion(SpecFal fal){
+		for (int i=0;i<4;i++){
+			if (falak[i]==fal) return true;
+		}
+		return false;
 	}
 	
 	// Beallitja a kek privat SpecFal erteket a kapottra
@@ -70,7 +117,44 @@ public class Csillagkapu implements Drawable{
 		return visszaEzzel;
 	}
 	
-	public void draw(Graphics g){
-		//TODO!!!
+	public void draw(Container content, GridBagConstraints c){
+		boolean sargakek = false;
+		boolean zoldpiros = false;
+		if (falak[Szin.KEK.getValue()]!=null && falak[Szin.SARGA.getValue()]!=null){sargakek=true;}
+		if (falak[Szin.ZOLD.getValue()]!=null && falak[Szin.PIROS.getValue()]!=null){zoldpiros=true;}
+		
+		Pont pos;
+		
+		if (falak[Szin.KEK.getValue()]!=null){
+			pos = falak[Szin.KEK.getValue()].position;
+			c.gridx = pos.getX();
+			c.gridy = pos.getY();
+			if (sargakek) content.add(kek_GO, c);
+			else content.add(kek_NOGO, c);
+		}
+		
+		if (falak[Szin.SARGA.getValue()]!=null){
+			pos = falak[Szin.SARGA.getValue()].position;
+			c.gridx = pos.getX();
+			c.gridy = pos.getY();
+			if (sargakek) content.add(sarga_GO, c);
+			else content.add(sarga_NOGO, c);
+		}
+		
+		if (falak[Szin.ZOLD.getValue()]!=null){
+			pos = falak[Szin.ZOLD.getValue()].position;
+			c.gridx = pos.getX();
+			c.gridy = pos.getY();
+			if (zoldpiros) content.add(zold_GO, c);
+			else content.add(zold_NOGO, c);
+		}
+
+		if (falak[Szin.PIROS.getValue()]!=null){
+			pos = falak[Szin.PIROS.getValue()].position;
+			c.gridx = pos.getX();
+			c.gridy = pos.getY();
+			if (zoldpiros) content.add(piros_GO, c);
+			else content.add(piros_NOGO, c);
+		}
 	}
 }
