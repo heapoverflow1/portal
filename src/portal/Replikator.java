@@ -12,8 +12,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class Replikator extends Szereplo {
-
-	boolean dead = false;
 	
 	JLabel fel = new JLabel();
 	JLabel le = new JLabel();

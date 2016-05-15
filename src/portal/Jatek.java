@@ -210,7 +210,6 @@ public class Jatek {
 	    System.out.println("Palya betoltese...");*/
 	    
 	    view.Init();
-	    NewGame("bin/Steal the box.txt");
 	}
 	
 	public static void NewGame(String path){
@@ -269,11 +268,12 @@ public class Jatek {
 			else if (adatok[0].equalsIgnoreCase("R")){
 				rep.position.setX(Integer.parseInt(adatok[1])-1);
 				rep.position.setY(Integer.parseInt(adatok[2])-1);
+				rep.dead=false;
 				palya.add(rep);
 				Timer timer = new Timer();
 				timer.schedule( new ReplicatorMover(), 1000, 1000);
 			}
-			//Ezredes, mérleg, ajtó
+			//Ezredes, mï¿½rleg, ajtï¿½
 		}
 		view.Update();
 	}

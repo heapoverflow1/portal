@@ -63,7 +63,7 @@ public class Jatekos extends Szereplo implements Drawable{
 	
 	//!TODO - JATEKOS meghalasa utan VEGE a jateknak
 	public void fallAndDie(){
-							
+		dead = true;
 	}
 	
 	
