@@ -1,8 +1,0 @@
-loadMap replicatorFallTest
-listSzereplo
-listSzakadek
-move R l
-move R l
-move E j
-listSzereplo
-listSzakadek

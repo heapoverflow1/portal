@@ -1,12 +1,8 @@
 package portal;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Jatek {
 	static Jatekter palya;
@@ -69,6 +65,8 @@ public class Jatek {
     			//System.out.println("MoveTest loaded!");
     			E.position=new Pont(1, 1);
     			palya.add(E);
+    			Jaffa.position = new Pont(1,3);
+    			palya.add(Jaffa);
     			palya.add(new Fal(1, 2));
     			palyaLoaded = true;
     		}
@@ -166,29 +164,25 @@ public class Jatek {
 	    
 	    view.Init();
 		
-	    //TODO!! NE a konzolon egy ciklusban nézzük az irányítást, hanem rendesen KeyEvent szarokkal!
-	    int pressedKey = ' ';
-	    while (true){
-	    	if (pressedKey=='a'){
-	    		E.move(Irany.BALRA);
-	    	}
-	    	else if (pressedKey=='w'){
-	    		E.move(Irany.FEL);
-	    	}
-	    	else if (pressedKey=='s'){
-	    		E.move(Irany.LE);
-	    	}
-	    	else if (pressedKey=='d'){
-	    		E.move(Irany.JOBBRA);
-	    	}
-	    	
-	    	view.Update();
-	    	pressedKey = in.read();
-	    }
+//	    //TODO!! NE a konzolon egy ciklusban nézzük az irányítást, hanem rendesen KeyEvent szarokkal!
+//	    int pressedKey = ' ';
+//	    while (true){
+//	    	if (pressedKey=='a'){
+//	    		E.move(Irany.BALRA);
+//	    	}
+//	    	else if (pressedKey=='w'){
+//	    		E.move(Irany.FEL);
+//	    	}
+//	    	else if (pressedKey=='s'){
+//	    		E.move(Irany.LE);
+//	    	}
+//	    	else if (pressedKey=='d'){
+//	    		E.move(Irany.JOBBRA);
+//	    	}
+//	    	
+//	    	view.Update();
+//	    	pressedKey = in.read();
+//	    }
 	}
 	
-	public void keyPressed(KeyEvent e){
-		//TODO!!		
-		view.Update();
-	}
 }
