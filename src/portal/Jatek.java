@@ -209,7 +209,7 @@ public class Jatek {
 	    System.out.println("Palya betoltese...");*/
 	    
 	    view.Init();
-	    NewGame("bin/blitz.txt");
+	    NewGame("bin/Steal the box.txt");
 	}
 	
 	public static void NewGame(String path){
@@ -255,7 +255,7 @@ public class Jatek {
 				palya.add(cucc);
 			}
 			else if (adatok[0].equalsIgnoreCase("M")){
-				palya.add(new Merleg(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1, ajtok.get(Integer.parseInt(adatok[3])), Integer.parseInt(adatok[2])));
+				palya.add(new Merleg(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1, ajtok.get(Integer.parseInt(adatok[3])), Integer.parseInt(adatok[4])));
 			}
 			else if (adatok[0].equalsIgnoreCase("E")){
 				E.position.setX(Integer.parseInt(adatok[1])-1);

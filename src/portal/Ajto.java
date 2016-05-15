@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 public class Ajto extends Fal implements Ertesit, Drawable{
 	boolean isOpen;
 
-	static JLabel label_closed = new JLabel();
-	static JLabel label_open = new JLabel();	
+	JLabel label_closed = new JLabel();
+	JLabel label_open = new JLabel();	
 	
 	/* Konstruktor
 	 * Az AJTO inicializalasa x, y koordinatakkal
