@@ -13,7 +13,7 @@ public class ReplicatorMover extends TimerTask {
 		if (n==1) ir = Irany.JOBBRA;
 		else if (n==2) ir = Irany.FEL;
 		else if (n==3) ir = Irany.LE;
-		Jatek.rep.move(ir);		
+		Jatek.rep.move(ir);
 	}
 	
 }
