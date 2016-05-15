@@ -5,8 +5,13 @@ import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Jatek {
 	static Jatekter palya;
@@ -55,14 +60,14 @@ public class Jatek {
 	    view = new View(palya);
 	    
 	    
-	    System.out.println("Adja meg a palya nevet! (firstPalya, vagy a tesztek)");
+	    //System.out.println("Adja meg a palya nevet! (firstPalya, vagy a tesztek)");
 	   
 	    //Egyelõre a pályák a teszteseteknek megfelelõek
 	    //TODO!! Pályaválasztás most konzolon, ennek is kellene grafikus felület!
 	    //TODO!! Pályaválasztás fájlból jöjjön, ne a tesztesetekbõl!
 	    	//Prototípus koncepctiója, 8. oldal
 	    	// https://docs.google.com/document/d/1AlShs6EGiQgDOT84soCT99QxKwG4psa0ydMddu_yyCU/edit
-	    while ((s = in.readLine()) != null && s.length() != 0){ 	    	
+	    /*while ((s = in.readLine()) != null && s.length() != 0){ 	    	
 	    	
 	    	String[] params = s.split(" ");
 	    	if (params[0].compareTo("firstPalya")==0){
@@ -201,11 +206,68 @@ public class Jatek {
 		
 	    if (!palyaLoaded) return;
 	    
-	    System.out.println("Palya betoltese...");
-	    palya.setHeight(10);
-	    palya.setWidth(10);
+	    System.out.println("Palya betoltese...");*/
 	    
 	    view.Init();
+	    NewGame("bin/blitz.txt");
+	}
+	
+	public static void NewGame(String path){
+		List<String> objektumLista;
+		try{
+			Path megnyitando = Paths.get(path);
+			objektumLista = Files.readAllLines(megnyitando);
+		}catch (Exception e){
+			return;
+		}
+		palya.removeAll();
+		palya.add(E);
+		palya.add(Jaffa);
+		//Map<Integer, Merleg> merlegek = new HashMap<Integer, Merleg>();
+		Map<Integer, Ajto> ajtok = new HashMap<Integer, Ajto>();
+		
+		String palyaMeret = objektumLista.get(0);
+		String adatok[] = palyaMeret.split(",");
+	    palya.setWidth(Integer.parseInt(adatok[0]));
+	    palya.setHeight(Integer.parseInt(adatok[1]));
+	    objektumLista.remove(0);
+	    
+		for (String egysor : objektumLista){
+			adatok = egysor.split(",");
+			if (adatok[0].equalsIgnoreCase("F")){
+				palya.add(new Fal(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1));
+			}
+			else if (adatok[0].equalsIgnoreCase("S")){
+				palya.add(new SpecFal(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1, palya.kapumgr));
+			}
+			else if (adatok[0].equalsIgnoreCase("T")){
+				palya.add(new Szakadek(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1));
+			}
+			else if (adatok[0].equalsIgnoreCase("D")){
+				palya.add(new Doboz(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1, Integer.parseInt(adatok[3])));
+			}
+			else if (adatok[0].equalsIgnoreCase("Z")){
+				palya.add(new ZPM(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1));
+			}
+			else if (adatok[0].equalsIgnoreCase("A")){
+				Ajto cucc = new Ajto(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1);
+				ajtok.put(Integer.parseInt(adatok[3]), cucc);
+				palya.add(cucc);
+			}
+			else if (adatok[0].equalsIgnoreCase("M")){
+				palya.add(new Merleg(Integer.parseInt(adatok[1])-1, Integer.parseInt(adatok[2])-1, ajtok.get(Integer.parseInt(adatok[3])), Integer.parseInt(adatok[2])));
+			}
+			else if (adatok[0].equalsIgnoreCase("E")){
+				E.position.setX(Integer.parseInt(adatok[1])-1);
+				E.position.setY(Integer.parseInt(adatok[2])-1);
+			}
+			else if (adatok[0].equalsIgnoreCase("J")){
+				Jaffa.position.setX(Integer.parseInt(adatok[1])-1);
+				Jaffa.position.setY(Integer.parseInt(adatok[2])-1);
+			}
+			//Ezredes, mérleg, ajtó
+		}
+		view.Update();
 	}
 	
 	
