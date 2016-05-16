@@ -156,19 +156,18 @@ public class Jatekos extends Szereplo implements Drawable{
 	}
 	
 	//A JATEKOS felvett egy ZPM-et, a zpmcount novelese.
-	void collectZPM(){
-					
-		zpmcount++;		
+	void collectZPM(){					
+		zpmcount++;
 	}
 	
 	//Visszaadja a ZPMCOUNT erteket
-	int getZPMcount(){
-				
+	int getZPMcount(){				
 		return zpmcount;
 	}
 	
 	//Tolteny valtasa
-	void changeTolteny(){		
+	void changeTolteny(){
+		//Az osszetartozo szinek kozott lehetseges csak a valtas
 		if (tolteny_szin ==  Szin.KEK)
 			tolteny_szin = Szin.SARGA;
 		else if (tolteny_szin ==  Szin.SARGA)
@@ -183,7 +182,11 @@ public class Jatekos extends Szereplo implements Drawable{
 		this.irany=erre;
 	}
 	
+	//A tolteny szinenek valtasa
 	public void setTolteny(Szin erre){
+		//csak akkor engedelyezett lepes, ha ez nem valtoztatja meg a
+		//jatekos szemelyiseget, hiszen a tolteny szine hordozza, hogy
+		//a jatekos az Ezredes vagy Jaffa
 		if ((erre==Szin.KEK || erre==Szin.SARGA) && (tolteny_szin==Szin.KEK || tolteny_szin==Szin.SARGA))
 			tolteny_szin=erre;
 		if ((erre==Szin.ZOLD || erre==Szin.PIROS) && (tolteny_szin==Szin.ZOLD || tolteny_szin==Szin.PIROS))
@@ -197,7 +200,9 @@ public class Jatekos extends Szereplo implements Drawable{
 		return "J "+position.toString();
 	}
 	
+	//Jatekos kirajzolasa a megadott helyre, allapot alapjan
 	public void draw(Container content, GridBagConstraints c){
+		//Az elore betoltott kepeket rajzoljuk ki
 		if (tolteny_szin==Szin.KEK || tolteny_szin==Szin.SARGA){
 			if (irany==Irany.JOBBRA) content.add(ezredes_jobb, c);
 			else if (irany==Irany.BALRA) content.add(ezredes_bal, c);
