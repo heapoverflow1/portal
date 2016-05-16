@@ -46,6 +46,7 @@ public class ZPM extends Ososztaly implements Drawable{
 			((Jatekos) sz).collectZPM();
 		}
 		Jatek.palya.removeQueue.add(this);
+		//Jatek.palya.ZPMCollected();
 		//meg kéne semmisíteni magát, illetve növelni a ZMPCOUNT-ot. Probléma :
 			// a replilátor is egy szereplo, ergo õ is fel tudja venni a ZPM-et ilyen módon,
 		// meg kéne oldani hogy ne tudja ezt megtenni.
