@@ -16,6 +16,7 @@ public class Csillagkapu implements Drawable{
 	SpecFal[] falak;	
 	boolean[] Feregjarat;
 	
+	//Ezeket kellhet kirajzolni:
 	JLabel kek_GO = new JLabel();
 	JLabel kek_NOGO = new JLabel();
 	JLabel piros_GO = new JLabel();
@@ -25,6 +26,9 @@ public class Csillagkapu implements Drawable{
 	JLabel zold_GO = new JLabel();
 	JLabel zold_NOGO = new JLabel();
 	
+	//Ugyanez a megoldas az oszosztalynal, de a Csillagkapu kezelo nem
+	//leszarmazottja az oszosztalynak
+	//Kommentezest lasd ott.
 	protected void LoadImage(JLabel label, String path){
 		BufferedImage img = null;
 		ImageIcon icon = new ImageIcon(); 
@@ -49,6 +53,8 @@ public class Csillagkapu implements Drawable{
 		for (int i=0;i<4;i++){
 			falak[i]=null;
 		}
+		
+		//A kepek betoltese:
 		LoadImage(kek_GO, "bin/portal_kek_GO.png");
 		LoadImage(kek_NOGO, "bin/portal_kek_NOGO.png");
 		LoadImage(piros_GO, "bin/portal_piros_GO.png");
@@ -59,6 +65,7 @@ public class Csillagkapu implements Drawable{
 		LoadImage(zold_NOGO, "bin/portal_zold_NOGO.png");	
 	}
 	
+	//Ez eredetileg Contains lett volna, de megtetszett az elgepeles
 	public boolean Contaion(SpecFal fal){
 		for (int i=0;i<4;i++){
 			if (falak[i]==fal) return true;
@@ -98,14 +105,20 @@ public class Csillagkapu implements Drawable{
 		return false;
 	}
 
+	//Megnezzuk, hogy teleportal-e a Jatekos.
 	public Pont checkCsk(SpecFal fal, Pont innenjon){
 		for (int i=0;i<4;i++){
 			if (fal==falak[i]){
+				//Ha csillagkapura lepett, es a feregjarat aktiv, a kapu tuloldalara kerul
+				//A parok: 0-1, 2-3. Azaz ha paros sorszamu kapura lepett,
+				//az eggyel nagyobb, ha paratlan sorszamura, az eggyel kisebb
+				//SpecFal poziciojára lép
 				if (i%2==0 && falak[i+1]!=null) return falak[i+1].getTeleportPos();
 				if (i%2==1 && falak[i-1]!=null) return falak[i-1].getTeleportPos();
 				return innenjon;
 			}
 		}
+		//Egyebkent nem mozdulhat, hiszen fal van ott
 		return innenjon;
 	}
 	
@@ -118,6 +131,11 @@ public class Csillagkapu implements Drawable{
 	}
 	
 	public void draw(Container content, GridBagConstraints c){
+		//0-4 darab Csillagkapu kirajzolasa.
+		//Rengeteg lehetoseg van, a kapuk nem feltetlen aktivak
+		
+		//Az aktivsag megvizsgalasa
+		//mindket kapu eseten!
 		boolean sargakek = false;
 		boolean zoldpiros = false;
 		if (falak[Szin.KEK.getValue()]!=null && falak[Szin.SARGA.getValue()]!=null){sargakek=true;}
@@ -125,6 +143,7 @@ public class Csillagkapu implements Drawable{
 		
 		Pont pos;
 		
+		//Ha az adott kapu letezik, odatesszuk az ikont
 		if (falak[Szin.KEK.getValue()]!=null){
 			pos = falak[Szin.KEK.getValue()].position;
 			c.gridx = pos.getX();
