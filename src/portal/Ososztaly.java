@@ -15,41 +15,35 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public abstract class Ososztaly implements Ertesit, Drawable{
-	
 	//ArrayList<Integer> position; Helyett sajat osztalyt, a Pontot hasznaljuk.
 	public Pont position;
-	
-	
+
 	//Konstruktor
-	/**Szerintem ide nem kell konstruktor  -WM*/
-//	public Ososztaly() {
-//		System.out.println(">Ososztaly::konstruktor");		
-//		position = new Pont();
-//		System.out.println("<Ososztaly::konstruktor");
-//	}
+	/**Szerintem ide nem kell konstruktor  -WM*/	
 	
-	//
+	//Méretezett kép betöltése - a leszármazott oszátlyok használják
 	protected void LoadImage(JLabel label, String path){
 		BufferedImage img = null;
 		ImageIcon icon = new ImageIcon(); 
 		try {
 		    img = ImageIO.read(new File(path));
+		    //Kep betoltese
 		} catch (IOException e) {
 			return;
 		}		
 		icon.setImage(img);
+		//A kep atmeretezese. Most 63*63 a szabvany. Ha valtozik, csak itt kell atirni.
 		Image scaleImage = icon.getImage().getScaledInstance(63, 63,Image.SCALE_DEFAULT);
 		icon.setImage(scaleImage);
+		//Hozzaadjuk a JLabelhez
 		label.setIcon(icon);
 	}
 	
 	void Add(List<Ososztaly> ososzt){
-		
-		System.out.println(">Ososztaly::Add(List<Ososztaly>)");
 		ososzt.add(this);
-		System.out.println("<Ososztaly::Add(List<Ososztaly>)");
 	}
 	
+	//Itt is jelezzük, hogy szükséges a Drawable interfesz megvalositasa:
 	public abstract void draw(Container content, GridBagConstraints c);
 
 }
