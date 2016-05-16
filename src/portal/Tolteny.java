@@ -64,7 +64,7 @@ public class Tolteny extends Ososztaly implements Drawable{
 	//fv-ben hivodik a finalize
 	void destroy(){
 		this.alive=false;
-		
+		Jatek.view.Update();
 	}
 
 	@Override

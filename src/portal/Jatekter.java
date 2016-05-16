@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class Jatekter {
 	List<Ososztaly> objects;
@@ -13,6 +14,7 @@ public class Jatekter {
 	public List<Ososztaly> removeQueue;
 	int width;
 	int height;
+	private boolean ZPMspawn = false;
 	
 	/* Konstruktor
 	 * A JATEKTER inicializalasa, az objects lista letrehozasa
@@ -21,6 +23,7 @@ public class Jatekter {
 		objects = new ArrayList<Ososztaly>();
 		removeQueue = new ArrayList<Ososztaly>();
 		kapumgr = new Csillagkapu();
+		ZPMspawn=false;
 	}
 	
 	public int getWidth(){return width;}
@@ -78,6 +81,9 @@ public class Jatekter {
 			}
 		}
 		objects.removeAll(removeQueue);
+		for (Ososztaly o : removeQueue){
+			if (o.getClass()==ZPM.class) ZPMCollected();
+		}
 		removeQueue = new ArrayList<Ososztaly>();
 		
 		if (ellenzok.isEmpty())
@@ -108,22 +114,30 @@ public class Jatekter {
 	public void removeAll(){
 		objects.removeAll(objects);
 		removeQueue.removeAll(removeQueue);
+		ZPMspawn=false;
 	}
-
-	/*
-	 * KENE valahonnan csillagkapu a createCSK-nak 
-	 */
 	
-//	public void checkBullet(Tolteny t){
-//		
-//		for (Ososztaly i : objects){
-//			if(i instanceof Fal){
-//				t.destroy();
-//			}else if(i instanceof SpecFal){
-//				((SpecFal) i).createCSK(t, cs);
-//			}
-//			
-//		}
-//		
-//	}
+	private boolean IsEmpty(Pont pos){
+		for (Ososztaly i : objects){
+			if (i.position.compareTo(pos)) return false;
+		}
+		return true;
+	}
+	
+	public void ZPMCollected(){
+		if (ZPMspawn){
+			Random rand = new Random();
+			int randX;
+			int randY;
+			do{
+				randX = rand.nextInt(width);
+				randY = rand.nextInt(height);
+			}while(!IsEmpty(new Pont(randX, randY)));
+			add(new ZPM(randX, randY));
+			ZPMspawn=false;
+		}
+		else{
+			ZPMspawn=true;
+		}
+	}
 }
